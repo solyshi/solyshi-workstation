@@ -12,3 +12,6 @@
     - yay -Y --gendb
     - yay -Syu --devel
     - yay -Y --devel --save
+8. Install meson and ninja
+9. Install pkg-config
+10. Install wayland
