@@ -23,3 +23,8 @@
 16. ssh-keygen
 17. Install zsh
 18. chsh -s /bin/zsh
+19. Added autostart for hyprland to .zshrc
+20. Installed libinputs
+21. Installed ttf-jetbrains-mono
+22. Switched Hyprland keyboard layout to de
+23. Installed qutebrowser and added keybind to hypr conf
