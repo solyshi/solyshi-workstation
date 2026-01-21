@@ -21,3 +21,5 @@
 14. yay -S kitty
 15. yay -S openssh
 16. ssh-keygen
+17. Install zsh
+18. chsh -s /bin/zsh
