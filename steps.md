@@ -28,3 +28,7 @@
 21. Installed ttf-jetbrains-mono
 22. Switched Hyprland keyboard layout to de
 23. Installed qutebrowser and added keybind to hypr conf
+24. Connected SSH to github and cloned .dotfiles
+25. Integrate dotfiles with a stow workflow. Use:
+    cd ~
+    stow -d ~/solyshi-workstation/dotfiles -t ~ $(cat ~/solyshi-workstation/profiles/desktop.stow) 

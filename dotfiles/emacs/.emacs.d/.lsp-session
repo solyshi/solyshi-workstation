@@ -1,0 +1,1 @@
+#s(lsp-session ("/home/solyshi/Projects/cppcraft" "/home/solyshi/Projects/samvanced" "/home/solyshi/Projects/samvanced-old" "/home/solyshi/Projects/mcjava" "/home/solyshi/Projects/learning/java-dsp-playground") nil #s(hash-table test equal data (jdtls ("/home/solyshi/Projects/mcjava"))) #s(hash-table test equal) #s(hash-table test equal))
