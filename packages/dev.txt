@@ -12,7 +12,7 @@ pkg-config
 
 # editors
 vim
-#neovim
+neovim
 #emacs
 
 # debugging

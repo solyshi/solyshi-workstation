@@ -37,3 +37,8 @@
 28. Moved hyprland autostart to .zprofile and added zsh dotfiles package
 29. Installed xdg-desktop-portal-hyprland
 30. Reorganized packages and installed xdg-user-dirs and xdg-utils
+31. Installed mesa, vulkan-radeo, libva-mesa-driver, vulkan-icd-loader
+32. Installed mesa-utils and vulkan-tools
+33. Install nerd font jetbrains mono
+34. Installed neovim
+35. Installed wget, curl, zip, unzip and tar

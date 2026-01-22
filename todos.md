@@ -1,3 +1,6 @@
 Learn qutebrowser
+Maybe replace qutebrowser
 Configure following (zsh, kitty, hypr)
-Add stow abbrev for the command noted in steps.md
+install qt support
+decide between quickshell and preconfigured widgets. Probably the latter to start with and transition later.
+Install nvim

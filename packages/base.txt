@@ -22,6 +22,7 @@ wget
 curl
 unzip
 zip
+tar
 which
 #less
 #man-db
@@ -30,7 +31,9 @@ which
 # hardware
 mesa
 libinput
-#vulkan-icd-loader
+vulkan-icd-loader
+vulkan-radeon
+libva-mesa-driver
 
 # audio
 pipewire
@@ -41,9 +44,12 @@ pipewire
 
 # fonts
 ttf-jetbrains-mono
+ttf-jetbrains-mono-nerd
 #noto-fonts
 #noto-fonts-emoji
 
 #misc
 xdg-user-dirs
 xdg-utils
+mesa-utils
+vulkan-tools
