@@ -1,0 +1,31 @@
+# wayland
+wayland
+wayland-protocols
+xorg-xwayland
+
+# compositor
+hyprland
+
+# portals
+xdg-desktop-portal
+xdg-desktop-portal-hyprland
+
+# terminal
+kitty
+
+# status bar & sytem UI
+# wl-clipboard
+
+# login & session
+#gt6-wayland
+#gt6-wayland
+
+# browser
+qutebrowser
+
+# media
+gst-plugins-base
+gst-plugins-good
+gst-plugins-bad
+gst-plugins-ugly
+gst-libav

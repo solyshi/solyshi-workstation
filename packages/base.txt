@@ -1,0 +1,49 @@
+# Base System
+base
+linux
+linux-firmware
+linux-headers
+
+# boot & system
+efibootmgr
+sudo
+#polkit
+#dbus
+#systemd
+
+# networking
+networkmanager
+openssh
+
+# shell & tools
+zsh
+git
+wget
+curl
+unzip
+zip
+which
+#less
+#man-db
+#man-pages
+
+# hardware
+mesa
+libinput
+#vulkan-icd-loader
+
+# audio
+pipewire
+#pipewire-alsa
+#pipeware-pulse
+#pipewire-jack
+#wireplumber
+
+# fonts
+ttf-jetbrains-mono
+#noto-fonts
+#noto-fonts-emoji
+
+#misc
+xdg-user-dirs
+xdg-utils

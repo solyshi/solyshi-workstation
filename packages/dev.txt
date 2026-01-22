@@ -1,0 +1,20 @@
+# build toolchain
+base-devel
+gcc
+make
+fakeroot
+debugedit
+
+# build systems
+meson
+ninja
+pkg-config
+
+# editors
+vim
+#neovim
+#emacs
+
+# debugging
+
+# virtualization helpers

@@ -35,3 +35,5 @@
 26. yay -S gst-plugins-{base,good,bad,ugly} gst-libav (for qutebrowser video playback)
 27. yay -S xdg-desktop-portal (??)
 28. Moved hyprland autostart to .zprofile and added zsh dotfiles package
+29. Installed xdg-desktop-portal-hyprland
+30. Reorganized packages and installed xdg-user-dirs and xdg-utils
