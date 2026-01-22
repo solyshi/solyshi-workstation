@@ -28,6 +28,10 @@ fd
 # Frontend / JS
 nodejs
 
+# Rust
+cargo
+
 # Package Managers
 npm
 pnpm
+

@@ -46,4 +46,4 @@
 36. Installed fzf
 37. Installed luarocks, tree-sitter-cli, ripgrep, fd,
 38. Installed nodejs, npm, pnpm
-
+39. Installed cargo
