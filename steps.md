@@ -47,3 +47,6 @@
 37. Installed luarocks, tree-sitter-cli, ripgrep, fd,
 38. Installed nodejs, npm, pnpm
 39. Installed cargo
+40. Installed python3
+41. Installed sdkman
+42. Installed jdk25 and 21 with sdk install java "version" (21.xx.xx-tem and 25.x.x-tem)

@@ -25,11 +25,17 @@ fd
 
 # virtualization helpers
 
+# JDK / Java
+sdkman
+
 # Frontend / JS
 nodejs
 
 # Rust
 cargo
+
+# Python
+python3
 
 # Package Managers
 npm
