@@ -50,3 +50,6 @@
 40. Installed python3
 41. Installed sdkman
 42. Installed jdk25 and 21 with sdk install java "version" (21.xx.xx-tem and 25.x.x-tem)
+43. sdk install gradle 9.x.x
+44. sdk install maven 3.12.x
+45. Default qutebrowser config + dark mode
