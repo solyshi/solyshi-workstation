@@ -55,3 +55,4 @@
 45. Default qutebrowser config + dark mode
 46. Installed oh-my-zsh (github curl) and added autocompleteplugin (github clone)
 47. Installed zsh-syntax-highlighting git clone into .oh-my-zsh
+48. Installed powerlevel10k git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
