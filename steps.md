@@ -53,3 +53,4 @@
 43. sdk install gradle 9.x.x
 44. sdk install maven 3.12.x
 45. Default qutebrowser config + dark mode
+46. Installed oh-my-zsh (github curl) and added autocompleteplugin (github clone)
