@@ -54,3 +54,4 @@
 44. sdk install maven 3.12.x
 45. Default qutebrowser config + dark mode
 46. Installed oh-my-zsh (github curl) and added autocompleteplugin (github clone)
+47. Installed zsh-syntax-highlighting git clone into .oh-my-zsh
