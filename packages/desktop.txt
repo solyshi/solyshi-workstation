@@ -5,6 +5,7 @@ xorg-xwayland
 
 # compositor
 hyprland
+hyprpaper
 
 # portals
 xdg-desktop-portal

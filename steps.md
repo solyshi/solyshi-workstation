@@ -57,3 +57,4 @@
 47. Installed zsh-syntax-highlighting git clone into .oh-my-zsh
 48. Installed powerlevel10k git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 49. Installed man and zsh colored-man-pages
+50. Installed hyprpaper, set the wallpapers and configured monitors in hypr
