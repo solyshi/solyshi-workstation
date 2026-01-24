@@ -60,3 +60,4 @@
 50. Installed hyprpaper, set the wallpapers and configured monitors in hypr
 51. Installed waybar and matugen
 52. Made a waybar reload script with hypr keybinding
+53. Fixed mislocation in wallpaper module
