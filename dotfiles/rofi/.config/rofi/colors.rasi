@@ -1,0 +1,9 @@
+* {
+    background: #12140e;
+    foreground: #e2e3d8;
+    surface: #1e201a;
+    primary: #b1d18a;
+    secondary: #bfcbad;
+    tertiary: #a0d0cc;
+    error: #ffb4ab;
+}

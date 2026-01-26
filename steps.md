@@ -63,3 +63,5 @@
 53. Fixed mislocation in wallpaper module
 54. Enabled ipc on hypr and made a simple matugen config.
 55. Some untracked little hypr changes and matugen support 
+56. Tinkering with fonts, installed fira font
+59. More rofi configuration. First iteration done for now

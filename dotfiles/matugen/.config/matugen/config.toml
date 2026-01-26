@@ -5,7 +5,8 @@ set_wallpaper = false  # We'll handle this with hyprpaper directly
 [config.reload_apps_list]
 waybar = true
 hyprland = true
-#kitty = true
+kitty = true
+rofi = true
 #mako = true
 
 [[config.custom_keywords]]
@@ -20,9 +21,13 @@ output_path = "~/.config/hypr/colors.conf"
 input_path = "~/.config/matugen/templates/waybar-colors.css"
 output_path = "~/.config/waybar/colors.css"
 
-#[templates.kitty]
-#input_path = "~/.config/kitty/colors.conf"
-#output_path = "~/.config/kitty/colors.conf"
+[templates.kitty]
+input_path = "~/.config/matugen/templates/kitty-colors.conf"
+output_path = "~/.config/kitty/colors.conf"
+
+[templates.rofi]
+input_path = "~/.config/matugen/templates/rofi-colors.rasi"
+output_path = "~/.config/rofi/colors.rasi"
 
 #[templates.mako]
 #input_path = "~/.config/mako/config"
