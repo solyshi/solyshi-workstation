@@ -67,3 +67,4 @@
 59. More rofi configuration. First iteration done for now
 60. Installed mako
 61. Installed wl-clipboard and cliphist and integrated to hyprland
+62. Installed Vesktop and Tradingview
