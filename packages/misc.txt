@@ -1,3 +1,4 @@
 tradingview
 vesktop
 libreoffice
+thunderbird
