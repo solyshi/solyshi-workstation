@@ -1,15 +1,15 @@
 * {
-    background:     #1a1111;
-    foreground:     #f1dedd;
-    surface:        #1a1111;
-    surface-high:   #322827;
-    on-surface:     #f1dedd;
+    background:     #12140e;
+    foreground:     #e2e3d8;
+    surface:        #12140e;
+    surface-high:   #282b24;
+    on-surface:     #e2e3d8;
     
-    primary:        #ffb3ae;
-    on-primary:     #571e1c;
-    primary-container: #733330;
+    primary:        #b1d18a;
+    on-primary:     #1f3701;
+    primary-container: #344e16;
     
-    secondary:      #e7bdb9;
+    secondary:      #bfcbad;
     error:          #ffb4ab;
     
     border-color:   @primary;

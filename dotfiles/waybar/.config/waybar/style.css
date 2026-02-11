@@ -45,6 +45,11 @@ tooltip {
     transition: all .3s ease;
 }
 
+#clock calendar {
+    background-color: @surface-container;
+    color: @on-surface;
+}
+
 #workspaces button:hover {
     color: @primary;
     border: none;

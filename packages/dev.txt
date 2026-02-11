@@ -9,6 +9,7 @@ debugedit
 meson
 ninja
 pkg-config
+cmake
 
 # editors
 vim
@@ -43,4 +44,7 @@ python3
 # Package Managers
 npm
 pnpm
+
+# C/C++
+clang
 

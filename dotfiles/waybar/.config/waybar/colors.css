@@ -1,13 +1,13 @@
 /* Matugen generated colors */
-@define-color background #1a1111;
-@define-color foreground #f1dedd;
-@define-color surface #1a1111;
-@define-color surface_bright #423736;
-@define-color surface_container #271d1d;
-@define-color on_surface #f1dedd;
-@define-color primary #ffb3ae;
-@define-color on_primary #571e1c;
-@define-color primary_container #733330;
-@define-color secondary #e7bdb9;
-@define-color tertiary #e2c28c;
+@define-color background #12140e;
+@define-color foreground #e2e3d8;
+@define-color surface #12140e;
+@define-color surface_bright #383a32;
+@define-color surface_container #1e201a;
+@define-color on_surface #e2e3d8;
+@define-color primary #b1d18a;
+@define-color on_primary #1f3701;
+@define-color primary_container #344e16;
+@define-color secondary #bfcbad;
+@define-color tertiary #a0d0cc;
 @define-color error #ffb4ab;
