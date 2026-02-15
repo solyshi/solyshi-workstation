@@ -11,3 +11,5 @@ Fix theming very important or i go crazy
 Redo delayed wp application
 
 Add automatic mounting of other disks to first time install
+
+Install and configure tmux

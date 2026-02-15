@@ -79,3 +79,4 @@
 70. yay -S dolphin
 71. Added dolphin stow
 72. Made some more unifications for color schemes
+73. Installed tmux

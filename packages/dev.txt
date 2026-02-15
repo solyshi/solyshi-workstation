@@ -22,6 +22,9 @@ tree-sitter-cli
 ripgrep
 fd
 
+# mulitplexing
+tmux
+
 # debugging
 
 # virtualization helpers
