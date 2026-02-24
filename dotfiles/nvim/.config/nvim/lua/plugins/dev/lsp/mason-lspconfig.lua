@@ -20,6 +20,7 @@ return {
                 "jsonls",
                 "lua_ls",
                 "pyright",
+                "tailwindcss"
             },
             automatic_enable = {
                 exclude = { "rust_analyzer", "jdtls" },

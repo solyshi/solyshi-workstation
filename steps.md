@@ -41,7 +41,6 @@
 31. Installed mesa, vulkan-radeo, libva-mesa-driver, vulkan-icd-loader
 32. Installed mesa-utils and vulkan-tools
 33. Install nerd font jetbrains mono
-
 34. Installed neovim
 35. Installed wget, curl, zip, unzip and tar
 36. Installed fzf
@@ -80,3 +79,4 @@
 71. Added dolphin stow
 72. Made some more unifications for color schemes
 73. Installed tmux
+74. Installed tailwind lsp
