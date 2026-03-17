@@ -1,1 +1,9 @@
-source=~/.config/mako/colors
+background-color=#12140e
+text-color=#e2e3d8
+border-color=#b1d18a
+progress-color=over #b1d18a
+
+[urgency=high]
+background-color=#93000a
+text-color=#ffdad6
+border-color=#ffb4ab
