@@ -1,0 +1,62 @@
+# ============================================================
+# 01-base.txt — Basis-System
+# Alles was ein minimales, bootbares Arch-System braucht
+# ============================================================
+
+# Base
+base
+base-devel
+linux
+linux-lts
+linux-firmware
+linux-headers
+linux-lts-headers
+
+# Boot
+efibootmgr
+sudo
+
+# Networking
+networkmanager
+openssh
+
+# Shell & Tools
+zsh
+git
+wget
+curl
+unzip
+zip
+tar
+which
+fzf
+stow
+man-db
+man-pages
+
+# Hardware & Grafik
+mesa
+mesa-utils
+libinput
+vulkan-icd-loader
+vulkan-radeon
+libva-mesa-driver
+vulkan-tools
+
+# Audio
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+wireplumber
+libpulse
+
+# Fonts
+ttf-jetbrains-mono
+ttf-jetbrains-mono-nerd
+ttf-fira-code
+ttf-hack
+
+# Misc System
+xdg-user-dirs
+xdg-utils

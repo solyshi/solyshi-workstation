@@ -294,3 +294,12 @@ Dynamisches Projekt-Management-Skript — sucht in `~/solyshi-workstation` und `
 ## 19. Offene Punkte
 
 Siehe `todos.md`
+
+## 20. Bootstrap Script
+
+- Pfad: `~/solyshi-workstation/install/bootstrap.sh`
+- Interaktives Menü mit 6 Optionen (Basis bis Alles)
+- `--dry-run` Flag für sicheres Testen
+- Package-Listen neu strukturiert: `01-base`, `02-desktop`, `03-dev`, `04-apps`
+- Clont Repo automatisch falls nicht vorhanden
+

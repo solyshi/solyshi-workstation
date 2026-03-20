@@ -1,0 +1,51 @@
+# ============================================================
+# 02-desktop.txt — Desktop Environment
+# Wayland, Hyprland, UI-Stack
+# ============================================================
+
+# Wayland
+wayland
+wayland-protocols
+xorg-xwayland
+
+# Compositor
+hyprland
+
+# Portals
+xdg-desktop-portal
+xdg-desktop-portal-hyprland
+
+# Terminal
+kitty
+
+# Status Bar
+waybar
+
+# Wallpaper
+hyprpaper
+
+# Launcher & Clipboard
+rofi-wayland
+wl-clipboard
+cliphist
+
+# Notifications
+mako
+
+# Theming (AUR)
+matugen-bin
+
+# Screenshots
+grim
+slurp
+
+# Browser
+qutebrowser
+gst-plugins-base
+gst-plugins-good
+gst-plugins-bad
+gst-plugins-ugly
+gst-libav
+
+# File Manager
+dolphin

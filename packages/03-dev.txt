@@ -1,0 +1,44 @@
+# ============================================================
+# 03-dev.txt — Entwicklungsumgebung
+# ============================================================
+
+# Build Toolchain
+gcc
+make
+fakeroot
+debugedit
+meson
+ninja
+pkg-config
+cmake
+clang
+
+# Editors
+vim
+neovim
+
+# Utilities
+luarocks
+tree-sitter-cli
+ripgrep
+fd
+tmux
+
+# Datenbank
+postgresql
+
+# Java / JVM (AUR — benötigt separate SDKMAN-Installation)
+sdkman-bin
+
+# Frontend / JS
+nodejs
+npm
+pnpm
+typescript
+
+# Rust
+rust
+
+# Python
+python
+python-pip

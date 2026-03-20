@@ -1,0 +1,23 @@
+# ============================================================
+# 04-apps.txt — Anwendungen
+# ============================================================
+
+# Kommunikation
+vesktop
+thunderbird
+
+# Produktivität
+libreoffice-fresh
+
+# Musik
+spotify
+
+# Trading
+tradingview
+
+# Gaming
+steam
+prismlauncher
+
+# Identifizierung
+ausweisapp2

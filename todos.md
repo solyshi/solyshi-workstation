@@ -49,3 +49,5 @@
 - [x] Screenshot-Keybinds eingerichtet (grim + slurp)
 - [x] Autostart Apps auf Workspaces (kitty, qutebrowser, thunderbird)
 - [x] Workspace-Layout finalisiert und konsistent indexiert
+- [x] Bootstrap Script erstellt (interaktiv, dry-run, reproduzierbar)
+- [x] Package-Listen restrukturiert (01-04)

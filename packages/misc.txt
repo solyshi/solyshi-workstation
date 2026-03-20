@@ -1,5 +1,0 @@
-tradingview
-vesktop
-libreoffice
-thunderbird
-steam
