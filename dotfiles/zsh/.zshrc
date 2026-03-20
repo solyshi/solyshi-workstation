@@ -82,5 +82,11 @@ proj () {
     tmux new-session -A -s "$1"
 }
 
+conf () {
+    local dir=~/solyshi-workstation/
+    cd "$dir" || return
+    tmux new-session -A -s "config"
+}
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
