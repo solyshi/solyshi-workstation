@@ -3,4 +3,3 @@ vesktop
 libreoffice
 thunderbird
 steam
-bakkesmod-steam

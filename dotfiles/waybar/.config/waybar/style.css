@@ -13,20 +13,26 @@ window#waybar {
 
 .modules-left {
     border-radius: 10px;
-    background: alpha(@background, .6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+    background: alpha(@background, .85);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, .8);
+    padding: 0px 8px;
+    margin: 4px 0px 4px 8px;
 }
 
 .modules-center {
     border-radius: 10px;
-    background: alpha(@background, .6);
-    box-shadow: 0px 9px 2px rgba(0, 0, 0, .6);
+    background: alpha(@background, .85);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, .8);
+    padding: 0px 12px;
+    margin: 4px 0px;
 }
 
 .modules-right {
     border-radius: 10px;
-    background: alpha(@background, .6);
-    box-shadow: 0px 0px rgba(0, 0, 0, .6);
+    background: alpha(@background, .85);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, .8);
+    padding: 0px 8px;
+    margin: 4px 8px 4px 0px;
 }
 
 tooltip {

@@ -38,10 +38,10 @@ libva-mesa-driver
 
 # audio
 pipewire
-#pipewire-alsa
-#pipeware-pulse
-#pipewire-jack
-#wireplumber
+pipewire-alsa
+pipeware-pulse
+pipewire-jack
+wireplumber
 
 # fonts
 ttf-jetbrains-mono
