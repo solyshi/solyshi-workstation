@@ -264,6 +264,9 @@ Verhindert Emergency Mode bei nicht verfügbaren Geräten.
 - Autostart: kitty→WS1, qutebrowser→WS2, thunderbird→WS9 (silent)
 - Screenshot-Keybinds: Print (fullscreen), Shift+Print (Bereich), Ctrl+Print (Clipboard)
 - Screenshots gespeichert in `~/Pictures/Screenshots/`
+- Workspace-Layout: WS1 kitty, WS2 qutebrowser, WS3 dolphin (manuell), WS9 thunderbird, WS10 tradingview (manuell)
+- Autostart Apps: kitty→WS1, qutebrowser→WS2, thunderbird→WS9 (silent)
+- TradingView windowrule: workspace 10 (Super+0)
 
 ---
 

@@ -48,3 +48,4 @@
 - [x] grim + slurp installiert
 - [x] Screenshot-Keybinds eingerichtet (grim + slurp)
 - [x] Autostart Apps auf Workspaces (kitty, qutebrowser, thunderbird)
+- [x] Workspace-Layout finalisiert und konsistent indexiert
