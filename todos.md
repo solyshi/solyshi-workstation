@@ -3,7 +3,6 @@
 ## 🔴 High Priority
 
 - [ ] **Lockscreen einrichten** — kein Lockscreen aktiv (z.B. hyprlock)
-- [ ] **windowrules.conf in hyprland.conf einbinden** — Datei existiert, aber kein `source =` Eintrag
 - [ ] **Rofi Theming** — matugen-Farben greifen nicht konsistent, UI unfertig
 
 ## 🟡 Medium Priority
@@ -36,4 +35,5 @@
 - [x] .gitignore für qutebrowser Auto-Dateien
 - [x] grim + slurp installiert (Screenshot-Tool)
 - [x] tmux installiert und konfiguriert
+- [x] **windowrules.conf in hyprland.conf einbinden** — Datei existiert, aber kein `source =` Eintrag
 EOF
