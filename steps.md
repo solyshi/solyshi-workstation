@@ -222,6 +222,7 @@ sudo pacman -S dolphin
 sudo pacman -S steam
 yay -S prismlauncher    # Minecraft
 yay -S ausweisapp2
+yay -S fastfetch
 ```
 
 ---
