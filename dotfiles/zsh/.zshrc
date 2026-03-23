@@ -1,3 +1,8 @@
+# Autostart Fastfetch
+if [[ -o interactive && -z "$TMUX" && "$SHLVL" -eq 1 ]]; then
+    fastfetch
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -53,14 +58,6 @@ plugins=(
 )
 
 source "$ZSH/oh-my-zsh.sh"
-
-# =============================
-# Powerlevel10k Instant Prompt
-# =============================
-if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 [[ ! -f "$XDG_CONFIG_HOME/p10k/p10k.zsh" ]] || source "$XDG_CONFIG_HOME/p10k/p10k.zsh"
 
 # =============================
@@ -74,29 +71,11 @@ fi
 npm config set prefix "$NPM_CONFIG_PREFIX" >/dev/null 2>&1
 
 # =============================
-# Project Launcher (for tmux+nvim phase)
+# Keybindings
 # =============================
-proj () {
-    local dir=~/projects/$1
-    [ -d "$dir" ] || { echo "No such project"; return; }
-    cd "$dir" || return
-    tmux new-session -A -s "$1"
-}
 
-conf () {
-    local dir=~/solyshi-workstation/
-    cd "$dir" || return
-    tmux new-session -A -s "config"
-}
-
-# Bindings
-
-# Bindet den Sessionizer auf Strg + f
+# CTRL+F for Tmux-Sessionizer
 bindkey -s '^f' 'tmux-sessionizer\n'
-
-if [[ -o interactive && -z "$TMUX" && "$SHLVL" -eq 1 ]]; then
-    fastfetch
-fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
