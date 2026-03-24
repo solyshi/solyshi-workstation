@@ -23,6 +23,7 @@ export PATH="$CARGO_HOME/bin:$PATH"
 export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
 export PATH="$SDKMAN_DIR/candidates/java/current/bin:$PATH"
 export PATH="$HOME/scripts:$PATH"
+export PATH="$PATH:~/.spicetify:$PATH"
 
 # ==============================================================================
 # Oh My Zsh

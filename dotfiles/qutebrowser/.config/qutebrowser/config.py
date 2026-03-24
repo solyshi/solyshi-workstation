@@ -675,7 +675,7 @@ c.content.xss_auditing = False
 ## Directory to save downloads to. If unset, a sensible OS-specific
 ## default is used.
 ## Type: Directory
-c.downloads.location.directory = None
+c.downloads.location.directory = "~/Downloads/"
 
 ## Prompt the user for the download location. If set to false,
 ## `downloads.location.directory` will be used.
@@ -698,14 +698,14 @@ c.downloads.location.suggestion = 'path'
 ## handler is used. Any `{}` in the string will be expanded to the
 ## filename, else the filename will be appended.
 ## Type: String
-c.downloads.open_dispatcher = None
+c.downloads.open_dispatcher = "zathura"
 
 ## Where to show the downloaded files.
 ## Type: VerticalPosition
 ## Valid values:
 ##   - top
 ##   - bottom
-c.downloads.position = 'top'
+c.downloads.position = 'bottom'
 
 ## Automatically abort insecure (HTTP) downloads originating from secure
 ## (HTTPS) pages. For per-domain settings, the relevant URL is the URL

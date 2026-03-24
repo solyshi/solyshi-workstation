@@ -130,7 +130,22 @@ install_dev() {
 install_apps() {
     section "04 — Anwendungen"
     install_from_file "$PACKAGES_DIR/04-apps.txt"
+    setup_spicetify
     success "Anwendungen installiert"
+}
+
+# =============================================================================
+# Spicetify
+# =============================================================================
+setup_spicetify() {
+    section "SPICETIFY"
+
+    sudo chmod a+wr /opt/spotify
+    sudo chmod a+wr /opt/spotify/App -R
+
+    info "Installing Spicetify Marketplace..."
+    curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
+    success "Spicetify successfully installed"
 }
 
 # =============================================================================

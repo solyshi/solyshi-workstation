@@ -10,9 +10,6 @@
 - [ ] **Vim-Tmux-Navigator** — `Ctrl+h/j/k/l` nahtlos zwischen Nvim und Tmux
 - [ ] **Harpoon** — Datei-Navigation via `Alt+1/2/3/4` in Nvim
 - [ ] **vim-tmux-runner (VTR)** — Befehle aus Nvim an Tmux-Pane senden
-- [ ] **Zsh Config aufräumen** — Plugins, Aliase, XDG-Pfade prüfen und dokumentieren
-- [ ] **Hyprland Config finalisieren** — Animationen, Dekorationen feintunen
-- [ ] **Kitty Config finalisieren** — Font-Größe, Tab-Bar Styling
 
 ## 🟢 Nice to have / Langfristig
 
@@ -21,7 +18,6 @@
 - [ ] **Spicetify** — Spotify Theming mit matugen-Farben
 - [ ] **Waybar erweitern** — weitere Module nach Bedarf
 - [ ] **Quickshell** — später als Waybar-Alternative evaluieren
-- [ ] **SDKMAN Pfad** — nach Neuinstallation XDG_DATA_HOME Pfad prüfen
 - [ ] **Documentation Scrimming** - Lösung finden um entweder von CLI oder NVIM schnell und zuverlässig Dokumentationen zu finden und zu durchforsten (bspw. ein Keybind um Python Dokumentation lokal im terminal oder nvim zu öffnen, oder andere dokumentationen)
 - [ ] **Hyprland Bindings Cheatsheet** - Eigenes Cheatsheet für Workstation Keybindings bauen (eventuell toggable)
 - [ ] **cheat.sh** — curl oder nvim Plugin für schnelle Code-Snippets direkt im Terminal
@@ -56,3 +52,8 @@
 - [x] **Screenshot-Keybind** — grim + slurp in Hyprland einbinden
 - [x] tmux-resurrect + tmux-continuum eingerichtet (automatische Session-Persistenz)
 - [x] tmux Config aufgeräumt (base-index, escape-time, mouse, splits, reload-bind)
+- [x] **Hyprland Config finalisieren** — Animationen, Dekorationen feintunen
+- [x] **Kitty Config finalisieren** — Font-Größe, Tab-Bar Styling
+- [x] **Zsh Config aufräumen** — Plugins, Aliase, XDG-Pfade prüfen und dokumentieren
+- [x] **SDKMAN Pfad** — nach Neuinstallation XDG_DATA_HOME Pfad prüfen
+

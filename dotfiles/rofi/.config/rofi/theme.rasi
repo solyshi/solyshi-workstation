@@ -1,98 +1,107 @@
-@import "~/.config/rofi/colors.rasi"
-
-/* ROUNDED THEME FOR ROFI */
-/* Author: Newman Sanchez (https://github.com/newmanls) */
+@import "colors.rasi"
 
 * {
-    font:   "JetBrains Mono Font";
+  font:   "JetBrains Mono Font";
 
-    background-color:   transparent;
-    text-color:         @foreground;
+  bg1     : @surface;
+  fg0     : @inverse-surface;
+  red     : @error;
+  blue    : @primary;
 
-    margin:     0px;
-    padding:    0px;
-    spacing:    0px;
+  accent: @blue;
+  urgent: @red;
+
+  background-color : transparent;
+  text-color       : @fg0;
+
+  margin  : 0;
+  padding : 0;
+  spacing : 0;
+}
+
+element-icon, element-text, scrollbar {
+  cursor: pointer;
 }
 
 window {
-    location:       north;
-    y-offset:       calc(50% - 336px);
-    width:          480;
-    border-radius:  24px;
+  location : center;
+  width    : 350px;
+  x-offset : 0px;
+  y-offset : 0px;
 
-    background-color:   @background;
-}
-
-mainbox {
-    padding:    36px;
+  background-color: @bg1;
+  border: 2px;
+  border-color: @accent;
+  border-radius: 12px;
 }
 
 inputbar {
-    background-color:   @surface;
-    border-color:       @primary;
+  spacing  : 8px;
+  padding  : 4px 8px;
+  children : [ icon-search, entry ];
 
-    border:         2px;
-    border-radius:  16px;
-
-    padding:    8px 8px;
-    spacing:    8px;
-    children:   [ prompt, entry ];
+  background-color: @bg1;
 }
 
-prompt {
-    text-color: @primary;
+icon-search, entry, element-icon, element-text {
+  vertical-align: 0.5;
 }
 
-entry {
-    placeholder:        "Search";
-    placeholder-color:  @on-surface;
-}
-
-message {
-    margin:             12px 0 0;
-    border-radius:      16px;
-    border-color:       @surface;
-    background-color:   @surface;
+icon-search {
+  expand   : false;
+  filename : "search-symbolic";
+  size     : 14px;
 }
 
 textbox {
-    padding:    8px 24px;
+  padding          : 4px 8px;
+  background-color : @bg1;
 }
 
 listview {
-    background-color:   transparent;
-
-    margin:     12px 0 0;
-    lines:      8;
-    columns:    1;
-
-    fixed-height: false;
+  padding      : 4px 0px;
+  lines        : 12;
+  columns      : 1;
+  scrollbar    : true;
+  fixed-height : false;
+  dynamic      : true;
 }
 
 element {
-    padding:        8px 16px;
-    spacing:        8px;
-    border-radius:  16px;
+  padding : 4px 8px;
+  spacing : 8px;
+}
+
+element normal urgent {
+  text-color: @urgent;
 }
 
 element normal active {
-    text-color: @primary;
+  text-color: @accent;
 }
 
 element alternate active {
-    text-color: @primary;
+  text-color: @accent;
 }
 
-element selected normal, element selected active {
-    background-color:   @primary;
-    text-color: @on-primary;
+element selected {
+  text-color       : @bg1;
+  background-color : @blue;
+}
+
+element selected urgent {
+  background-color: @urgent;
 }
 
 element-icon {
-    size:           1em;
-    vertical-align: 0.5;
+  size: 0.8em;
 }
 
 element-text {
-    text-color: inherit;
+  text-color: inherit;
+}
+
+scrollbar {
+  handle-width : 0px;
+  padding      : 0px;
 }

@@ -11,6 +11,7 @@ libreoffice-fresh
 
 # Musik
 spotify
+spicetify-cli
 
 # Trading
 tradingview
