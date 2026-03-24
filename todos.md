@@ -14,7 +14,6 @@
 - [ ] **Zsh Config aufräumen** — Plugins, Aliase, XDG-Pfade prüfen und dokumentieren
 - [ ] **Hyprland Config finalisieren** — Animationen, Dekorationen feintunen
 - [ ] **Kitty Config finalisieren** — Font-Größe, Tab-Bar Styling
-- [ ] **Screenshot-Keybind** — grim + slurp in Hyprland einbinden
 
 ## 🟢 Nice to have / Langfristig
 
@@ -24,6 +23,9 @@
 - [ ] **Waybar erweitern** — weitere Module nach Bedarf
 - [ ] **Quickshell** — später als Waybar-Alternative evaluieren
 - [ ] **SDKMAN Pfad** — nach Neuinstallation XDG_DATA_HOME Pfad prüfen
+- [ ] **Documentation Scrimming** - Lösung finden um entweder von CLI oder NVIM schnell und zuverlässig Dokumentationen zu finden und zu durchforsten (bspw. ein Keybind um Python Dokumentation lokal im terminal oder nvim zu öffnen, oder andere dokumentationen)
+- [ ] **Hyprland Bindings Cheatsheet** - Eigenes Cheatsheet für Workstation Keybindings bauen (eventuell toggable)
+- [ ] **cheat.sh** — curl oder nvim Plugin für schnelle Code-Snippets direkt im Terminal
 
 ## ✅ Erledigt
 
@@ -52,3 +54,4 @@
 - [x] Bootstrap Script erstellt (interaktiv, dry-run, reproduzierbar)
 - [x] Package-Listen restrukturiert (01-04)
 - [x] Btop floating Scratchpad keybind
+- [x] **Screenshot-Keybind** — grim + slurp in Hyprland einbinden
