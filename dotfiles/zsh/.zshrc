@@ -55,20 +55,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
   git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source "$ZSH/oh-my-zsh.sh"
-[[ ! -f "$XDG_CONFIG_HOME/p10k/p10k.zsh" ]] || source "$XDG_CONFIG_HOME/p10k/p10k.zsh"
 
 # =============================
 # SDKMAN Init
 # =============================
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
-# =============================
-# NPM Global Install Location
-# =============================
-npm config set prefix "$NPM_CONFIG_PREFIX" >/dev/null 2>&1
 
 # =============================
 # Keybindings
