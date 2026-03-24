@@ -1,11 +1,4 @@
 # ==============================================================================
-# p10k Instant Prompt — has to be on top
-# # ==============================================================================
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# ==============================================================================
 # XDG Base Directories
 # ==============================================================================
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -142,5 +135,12 @@ bindkey -s '^f' 'tmux-sessionizer\n'
 # ==============================================================================
 if [[ -o interactive && -z "$TMUX" && "$SHLVL" -eq 1 ]]; then
   fastfetch
+fi
+
+# ==============================================================================
+# p10k Instant Prompt — has to be on bottom
+# ==============================================================================
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
