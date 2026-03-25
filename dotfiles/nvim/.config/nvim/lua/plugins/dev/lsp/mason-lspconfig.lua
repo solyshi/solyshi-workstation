@@ -10,7 +10,7 @@ return {
                 "asm_lsp",
                 "bashls",
                 "clangd",
-                "cmake",
+                "neocmake",
                 "omnisharp",
                 "cssls",
                 "fish_lsp",
@@ -20,10 +20,11 @@ return {
                 "jsonls",
                 "lua_ls",
                 "pyright",
-                "tailwindcss"
+                "tailwindcss",
+                "rust_analyzer"
             },
             automatic_enable = {
-                exclude = { "rust_analyzer", "jdtls" },
+                exclude = { "jdtls" },
             },
         })
     end,

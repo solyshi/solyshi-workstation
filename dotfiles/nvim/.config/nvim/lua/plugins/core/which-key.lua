@@ -29,6 +29,7 @@ return {
                 { "<leader>c", group = "Code" },
                 { "<leader>n", group = "Neovim Tips" },
                 { "<leader>b", group = "Build System" },
+                { "<leader>g", group = "Git" },
             })
         end
     }

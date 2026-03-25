@@ -4,6 +4,7 @@
 
 - [ ] **Lockscreen einrichten** — kein Lockscreen aktiv (hyprlock + hypridle)
 - [ ] **Rofi Theming** — matugen-Farben greifen nicht konsistent, UI unfertig
+- [ ] **Overseer Nvim** -- Properly integrate overseer task runner in nvim for every possible stack I use
 
 ## 🟡 Medium Priority
 
@@ -15,12 +16,12 @@
 
 - [ ] **Qutebrowser** — Einarbeiten oder durch anderen Browser ersetzen
 - [ ] **Delayed Wallpaper Fix** — Wallpaper-Wechsel Mechanismus verbessern
-- [ ] **Spicetify** — Spotify Theming mit matugen-Farben
 - [ ] **Waybar erweitern** — weitere Module nach Bedarf
 - [ ] **Quickshell** — später als Waybar-Alternative evaluieren
 - [ ] **Documentation Scrimming** - Lösung finden um entweder von CLI oder NVIM schnell und zuverlässig Dokumentationen zu finden und zu durchforsten (bspw. ein Keybind um Python Dokumentation lokal im terminal oder nvim zu öffnen, oder andere dokumentationen)
 - [ ] **Hyprland Bindings Cheatsheet** - Eigenes Cheatsheet für Workstation Keybindings bauen (eventuell toggable)
 - [ ] **cheat.sh** — curl oder nvim Plugin für schnelle Code-Snippets direkt im Terminal
+- [ ] **RUST NVIM** - Replace neovim rust_analyzer with rustaceanvim eventually
 
 ## ✅ Erledigt
 
@@ -56,4 +57,4 @@
 - [x] **Kitty Config finalisieren** — Font-Größe, Tab-Bar Styling
 - [x] **Zsh Config aufräumen** — Plugins, Aliase, XDG-Pfade prüfen und dokumentieren
 - [x] **SDKMAN Pfad** — nach Neuinstallation XDG_DATA_HOME Pfad prüfen
-
+- [x] **Spicetify** — Spotify Theming mit matugen-Farben

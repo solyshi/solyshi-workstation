@@ -94,7 +94,7 @@ local servers = {
     "bashls",
     "cssls", -- with  vscode-langservers-extracted
     "clangd",
-    "cmake-language-server",
+    "neocmake",
     "emmet_language_server", -- with default-npm-packages
     "eslint",                -- with vscode-langservers-extracted
     "gopls",
@@ -104,7 +104,9 @@ local servers = {
     "ruby_lsp",              -- ruby-lsp in brew
     "ts_ls",                 -- "typescript-language-server"
     "yamlls",                -- "yaml-language-server",
-    "pyright"
+    "pyright",
+    "ruff",
+    "rust_analyzer"
 }
 
 local Lsp = {}
