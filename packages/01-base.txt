@@ -1,6 +1,6 @@
 # ============================================================
-# 01-base.txt — Basis-System
-# Alles was ein minimales, bootbares Arch-System braucht
+# 01-base.txt — Core-System
+# Core Packages
 # ============================================================
 
 # Base
@@ -34,7 +34,7 @@ stow
 man-db
 man-pages
 
-# Hardware & Grafik
+# Hardware & Graphics
 mesa
 mesa-utils
 libinput

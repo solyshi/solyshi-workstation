@@ -1,15 +1,15 @@
 # ============================================================
-# 04-apps.txt — Anwendungen
+# 04-apps.txt — Applications
 # ============================================================
 
-# Kommunikation
+# Communications
 vesktop
 thunderbird
 
-# Produktivität
+# Productivity
 libreoffice-fresh
 
-# Musik
+# Music
 spotify
 spicetify-cli
 
@@ -20,5 +20,5 @@ tradingview
 steam
 prismlauncher
 
-# Identifizierung
+# Identification
 ausweisapp2

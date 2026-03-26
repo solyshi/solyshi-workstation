@@ -1,8 +1,8 @@
 #!/bin/bash
 # =============================================================================
 # solyshi-workstation — bootstrap.sh
-# Interaktive Neuinstallation der Workstation
-# Ausführen: bash ~/solyshi-workstation/install/bootstrap.sh
+# Interactive workstation reinstallation
+# Run: bash ~/solyshi-workstation/install/bootstrap.sh
 # =============================================================================
 
 
@@ -17,7 +17,7 @@ DOTFILES_DIR="$REPO_DIR/dotfiles"
 STOW_PROFILE="$REPO_DIR/profiles/desktop.stow"
 
 # =============================================================================
-# Farben & Hilfsfunktionen
+# Colors & helper functions
 # =============================================================================
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -44,8 +44,8 @@ confirm() {
 }
 
 # =============================================================================
-# Pakete aus Datei lesen und via yay installieren
-# Kommentare (#) und Leerzeilen werden ignoriert
+# Read packages from file and install via yay
+# Comments (#) and empty lines are ignored
 # =============================================================================
 install_from_file() {
     local file="$1"
@@ -58,7 +58,7 @@ install_from_file() {
 
     [[ ${#pkgs[@]} -eq 0 ]] && return
 
-    info "Installiere ${#pkgs[@]} Pakete aus $(basename "$file")..."
+    info "Installing ${#pkgs[@]} packages from $(basename "$file")..."
     if $DRY_RUN; then
         echo "  [DRY-RUN] yay -S --needed --noconfirm ${pkgs[*]}"
     else
@@ -67,25 +67,25 @@ install_from_file() {
 }
 
 # =============================================================================
-# Vorbedingungen
+# Prerequisites
 # =============================================================================
 check_requirements() {
-    section "Vorbedingungen prüfen"
-    [[ $EUID -eq 0 ]] && error "Nicht als root ausführen!"
-    command -v pacman &>/dev/null || error "Kein pacman gefunden — kein Arch Linux?"
+    section "Checking prerequisites"
+    [[ $EUID -eq 0 ]] && error "Do not run as root!"
+    command -v pacman &>/dev/null || error "No pacman found — not Arch Linux?"
     success "System OK"
 }
 
 # =============================================================================
-# yay installieren (falls noch nicht vorhanden)
+# Install yay (if not already present)
 # =============================================================================
 install_yay() {
     section "yay (AUR Helper)"
     if command -v yay &>/dev/null; then
-        success "yay bereits installiert ($(yay --version | head -1))"
+        success "yay already installed ($(yay --version | head -1))"
         return
     fi
-    info "Installiere yay..."
+    info "Installing yay..."
     sudo pacman -S --needed --noconfirm git base-devel
     local tmpdir
     tmpdir=$(mktemp -d)
@@ -94,44 +94,44 @@ install_yay() {
     rm -rf "$tmpdir"
     yay -Y --gendb --noconfirm
     yay -Y --devel --save --noconfirm
-    success "yay installiert"
+    success "yay installed"
 }
 
 # =============================================================================
-# Pakete installieren
+# Install packages
 # =============================================================================
 install_base() {
     section "01 — Base System"
     install_from_file "$PACKAGES_DIR/01-base.txt"
-    success "Base System installiert"
+    success "Base system installed"
 }
 
 install_desktop() {
     section "02 — Desktop Environment"
     install_from_file "$PACKAGES_DIR/02-desktop.txt"
-    success "Desktop installiert"
+    success "Desktop installed"
 }
 
 install_dev() {
     section "03 — Dev Environment"
-    # sdkman-bin aus der Liste heraushalten — wird separat behandelt
+    # Exclude sdkman-bin from the list — handled separately
     local tmpfile
     tmpfile=$(mktemp)
     grep -v "sdkman-bin" "$PACKAGES_DIR/03-dev.txt" > "$tmpfile"
     install_from_file "$tmpfile"
     rm "$tmpfile"
 
-    if confirm "SDKMAN einrichten? (Java, Gradle, Maven)"; then
+    if confirm "Set up SDKMAN? (Java, Gradle, Maven)"; then
         setup_sdkman
     fi
-    success "Dev Environment installiert"
+    success "Dev environment installed"
 }
 
 install_apps() {
-    section "04 — Anwendungen"
+    section "04 — Applications"
     install_from_file "$PACKAGES_DIR/04-apps.txt"
     setup_spicetify
-    success "Anwendungen installiert"
+    success "Applications installed"
 }
 
 # =============================================================================
@@ -149,22 +149,22 @@ setup_spicetify() {
 }
 
 # =============================================================================
-# SDKMAN Setup
+# SDKMAN setup
 # =============================================================================
 setup_sdkman() {
     section "SDKMAN"
     local sdkman_dir="${XDG_DATA_HOME:-$HOME/.local/share}/sdkman"
 
     if [[ -f "$sdkman_dir/bin/sdkman-init.sh" ]]; then
-        success "SDKMAN bereits installiert"
+        success "SDKMAN already installed"
     else
-        info "Installiere SDKMAN nach $sdkman_dir..."
+        info "Installing SDKMAN to $sdkman_dir..."
         export SDKMAN_DIR="$sdkman_dir"
         curl -s "https://get.sdkman.io" | bash
 
-        # Pfad-Fix: SDKMAN legt manchmal .sdkman/ Unterverzeichnis an
+        # Path fix: SDKMAN sometimes creates a .sdkman/ subdirectory
         if [[ -d "$sdkman_dir/.sdkman" && ! -f "$sdkman_dir/bin/sdkman-init.sh" ]]; then
-            warn "SDKMAN Pfad-Fix anwenden..."
+            warn "Applying SDKMAN path fix..."
             mv "$sdkman_dir/.sdkman/"* "$sdkman_dir/" 2>/dev/null || true
             mv "$sdkman_dir/.sdkman/".* "$sdkman_dir/" 2>/dev/null || true
             rm -rf "$sdkman_dir/.sdkman"
@@ -178,75 +178,75 @@ setup_sdkman() {
         echo "  [DRY-RUN] sdk install java 21.0.9-tem"
         echo "  [DRY-RUN] sdk install gradle"
     else
-        info "Installiere Java 21 (Temurin)..."
-        sdk install java 21.0.9-tem || warn "Java 21 bereits installiert"
+        info "Installing Java 21 (Temurin)..."
+        sdk install java 21.0.9-tem || warn "Java 21 already installed"
 
-        if confirm "Java 25 ebenfalls installieren?"; then
-            sdk install java 25.0.0-tem || warn "Java 25 bereits installiert"
+        if confirm "Also install Java 25?"; then
+            sdk install java 25.0.0-tem || warn "Java 25 already installed"
         fi
 
-        info "Installiere Gradle..."
-        sdk install gradle || warn "Gradle bereits installiert"
+        info "Installing Gradle..."
+        sdk install gradle || warn "Gradle already installed"
 
-        if confirm "Maven installieren?"; then
-            sdk install maven || warn "Maven bereits installiert"
+        if confirm "Install Maven?"; then
+            sdk install maven || warn "Maven already installed"
         fi
     fi
 
-    success "SDKMAN eingerichtet"
+    success "SDKMAN set up"
 }
 
 # =============================================================================
-# Dotfiles via stow verlinken
+# Link dotfiles via stow
 # =============================================================================
 setup_stow() {
     section "Dotfiles (stow)"
     command -v stow &>/dev/null || yay -S --needed --noconfirm stow
 
-    info "Verlinke Dotfiles..."
+    info "Linking dotfiles..."
     # shellcheck disable=SC2046
     stow -d "$DOTFILES_DIR" -t "$HOME" $(tr '\n' ' ' < "$STOW_PROFILE")
 
-    success "Dotfiles verlinkt"
+    success "Dotfiles linked"
 }
 
 # =============================================================================
-# Services aktivieren
+# Enable services
 # =============================================================================
 setup_services() {
     section "Services"
-    info "NetworkManager aktivieren..."
+    info "Enabling NetworkManager..."
     if $DRY_RUN; then
         echo "  [DRY-RUN] sudo systemctl enable --now NetworkManager"
     else
         sudo systemctl enable --now NetworkManager
     fi
-    success "NetworkManager aktiv"
+    success "NetworkManager active"
 
-    if confirm "PostgreSQL einrichten?"; then
+    if confirm "Set up PostgreSQL?"; then
         if $DRY_RUN; then
             echo "  [DRY-RUN] sudo systemctl enable --now postgresql"
         else
             if [[ ! -d /var/lib/postgres/data ]]; then
-                info "PostgreSQL initialisieren..."
+                info "Initializing PostgreSQL..."
                 sudo -iu postgres initdb --locale en_US.UTF-8 -D /var/lib/postgres/data
             fi
             sudo systemctl enable --now postgresql
-            success "PostgreSQL aktiv"
+            success "PostgreSQL active"
         fi
     fi
 
-    info "Mako (User-Service) aktivieren..."
+    info "Enabling Mako (user service)..."
     if $DRY_RUN; then
         echo "  [DRY-RUN] systemctl --user enable mako"
     else
-        systemctl --user enable mako 2>/dev/null || warn "Mako konnte nicht aktiviert werden"
+        systemctl --user enable mako 2>/dev/null || warn "Could not enable Mako"
     fi
-    success "Services eingerichtet"
+    success "Services configured"
 }
 
 # =============================================================================
-# systemd-boot auf LTS setzen
+# Set systemd-boot to LTS
 # =============================================================================
 setup_boot() {
     section "systemd-boot"
@@ -254,12 +254,12 @@ setup_boot() {
     entry=$(find /boot/loader/entries/ -maxdepth 1 -name "*lts*" 2>/dev/null | head -1 | xargs basename 2>/dev/null)
 
     if [[ -z "$entry" ]]; then
-        warn "Kein LTS Boot-Eintrag gefunden — überspringe"
+        warn "No LTS boot entry found — skipping"
         return
     fi
 
     if $DRY_RUN; then
-        echo "  [DRY-RUN] Boot-Eintrag setzen: $entry"
+        echo "  [DRY-RUN] Setting boot entry: $entry"
         return
     fi
 
@@ -268,66 +268,66 @@ setup_boot() {
     else
         echo "default $entry" | sudo tee -a /boot/loader/loader.conf
     fi
-    success "Boot-Eintrag gesetzt: $entry"
+    success "Boot entry set: $entry"
 }
 
 # =============================================================================
-# Verzeichnisse anlegen
+# Create directories
 # =============================================================================
 setup_directories() {
     mkdir -p "$HOME/Pictures/Screenshots"
     mkdir -p "$HOME/projects"
-    success "Verzeichnisse angelegt"
+    success "Directories created"
 }
 
 # =============================================================================
-# Shell auf Zsh setzen
+# Set shell to Zsh
 # =============================================================================
 setup_shell() {
     section "Shell"
     if [[ "$SHELL" == *"zsh"* ]]; then
-        success "Zsh bereits aktiv"
+        success "Zsh already active"
         return
     fi
-    info "Setze Zsh als Standard-Shell..."
+    info "Setting Zsh as default shell..."
     chsh -s /bin/zsh
-    success "Zsh gesetzt — gilt ab nächstem Login"
+    success "Zsh set — takes effect on next login"
 }
 
 # =============================================================================
-# Hauptmenü
+# Main menu
 # =============================================================================
 main() {
     clear
     echo -e "${BOLD}"
     echo "  ╔══════════════════════════════════════════╗"
     echo "  ║     solyshi-workstation bootstrap        ║"
-    echo "  ║     Arch Linux — Interaktive Installation║"
+    echo "  ║     Arch Linux — Interactive Setup       ║"
     echo "  ╚══════════════════════════════════════════╝"
     echo -e "${NC}"
 
     check_requirements
 
-    # Repo clonen falls noch nicht vorhanden
+    # Clone repo if not already present
     if [[ ! -d "$HOME/solyshi-workstation" ]]; then
-        info "Repo clonen..."
+        info "Cloning repo..."
         git clone git@github.com:Chri1899/solyshi-workstation.git "$HOME/solyshi-workstation"
     fi
 
     install_yay
 
     echo ""
-    echo -e "  ${BOLD}Was soll installiert werden?${NC}"
+    echo -e "  ${BOLD}What should be installed?${NC}"
     echo ""
-    echo "  [1] Nur Dotfiles verlinken"
-    echo "  [2] Base System + Dotfiles"
-    echo "  [3] Base + Desktop + Dotfiles"
-    echo "  [4] Base + Desktop + Dev + Dotfiles"
-    echo "  [5] Alles (inkl. Apps, Services, Boot)"
-    echo "  [6] Individuell auswählen"
-    echo "  [q] Abbrechen"
+    echo "  [1] Link dotfiles only"
+    echo "  [2] Base system + dotfiles"
+    echo "  [3] Base + desktop + dotfiles"
+    echo "  [4] Base + desktop + dev + dotfiles"
+    echo "  [5] Everything (incl. apps, services, boot)"
+    echo "  [6] Select individually"
+    echo "  [q] Cancel"
     echo ""
-    read -rp "  Auswahl: " choice
+    read -rp "  Choice: " choice
 
     case "$choice" in
         1)
@@ -372,32 +372,32 @@ main() {
             setup_directories
             ;;
         6)
-            confirm "Base System installieren?"   && install_base
-            confirm "Desktop installieren?"        && install_desktop
-            confirm "Dev Environment installieren?" && install_dev
-            confirm "Anwendungen installieren?"    && install_apps
+            confirm "Install base system?"        && install_base
+            confirm "Install desktop?"            && install_desktop
+            confirm "Install dev environment?"    && install_dev
+            confirm "Install applications?"       && install_apps
             setup_shell
-            confirm "Dotfiles verlinken?"          && setup_stow
-            confirm "Services einrichten?"         && setup_services
-            confirm "systemd-boot auf LTS setzen?" && setup_boot
+            confirm "Link dotfiles?"              && setup_stow
+            confirm "Configure services?"         && setup_services
+            confirm "Set systemd-boot to LTS?"    && setup_boot
             setup_directories
             ;;
         q|Q)
-            echo "  Abgebrochen."
+            echo "  Cancelled."
             exit 0
             ;;
         *)
-            error "Ungültige Auswahl"
+            error "Invalid choice"
             ;;
     esac
 
     echo ""
     echo -e "${BOLD}${GREEN}"
     echo "  ╔══════════════════════════════════════════╗"
-    echo "  ║     Bootstrap abgeschlossen!             ║"
+    echo "  ║     Bootstrap complete!                  ║"
     echo "  ╚══════════════════════════════════════════╝"
     echo -e "${NC}"
-    warn "Bitte neu starten um alle Änderungen zu übernehmen."
+    warn "Please reboot to apply all changes."
     echo ""
 }
 

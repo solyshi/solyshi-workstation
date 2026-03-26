@@ -1,5 +1,5 @@
 # ============================================================
-# 03-dev.txt — Entwicklungsumgebung
+# 03-dev.txt — Development Environment
 # ============================================================
 
 # Build Toolchain
@@ -24,10 +24,10 @@ ripgrep
 fd
 tmux
 
-# Datenbank
+# Databases
 postgresql
 
-# Java / JVM (AUR — benötigt separate SDKMAN-Installation)
+# Java / JVM 
 sdkman-bin
 
 # Frontend / JS
