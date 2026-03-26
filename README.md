@@ -213,7 +213,6 @@ Session management via the `tmux-sessionizer` script, bound to a keybind in Hypr
 - [ ] Offline documentation (Zeal + dasht)
 - [ ] cheat.sh integration (curl or Neovim plugin)
 - [ ] Properly integrate overseer task runner in nvim for every possible stack I use
-- [ ] Unified documentation language throughout the repo 
 - [ ] Replace neovim rust_analyzer with rustaceanvim eventually
 - [ ] Extend Waybar with more useful modules
 - [ ] Replace some UI packages with Quickshell eventually
