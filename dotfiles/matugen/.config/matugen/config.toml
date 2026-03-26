@@ -39,7 +39,3 @@ output_path = "~/.config/vesktop/themes/matugen.css"
 [templates.qutebrowser]
 input_path = "~/.config/matugen/templates/qute-colors.py"
 output_path = "~/.config/qutebrowser/colors.py"
-
-[templates.spicetify]
-input_path = "~/.config/matugen/templates/spicetify-color.ini"
-output_path = "~/.config/spicetify/Themes/Soly/color.ini"

@@ -1,9 +1,10 @@
-background-color=#12140e
-text-color=#e2e3d8
-border-color=#b1d18a
-progress-color=over #b1d18a
+include=~/.config/mako/colors
 
-[urgency=high]
-background-color=#93000a
-text-color=#ffdad6
-border-color=#ffb4ab
+border-radius=8
+border-size=2
+padding=10
+
+font=JetBrainsMono NF 10
+default-timeout=5000
+max-visible=3
+anchor=top-right

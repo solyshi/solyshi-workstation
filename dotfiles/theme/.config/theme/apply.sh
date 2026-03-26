@@ -14,5 +14,7 @@ hyprctl hyprpaper wallpaper ",$WALLPAPER"
 # Generate theme
 matugen image "$WALLPAPER"
 
-# Waybar must be restarted to pick up new CSS
+# Reload apps
+hyprctl reload
+makoctl reload
 ~/.config/waybar/scripts/launch.sh
