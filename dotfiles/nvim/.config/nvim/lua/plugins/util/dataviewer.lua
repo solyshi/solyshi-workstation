@@ -22,7 +22,6 @@ return {
         cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
         config = function()
             vim.keymap.set("n", "<leader>td", "<cmd>:CsvViewToggle<cr>", { desc = "Toggle Data Viewer" })
-            vim.cmd("CsvViewEnable")
         end
     }
 }

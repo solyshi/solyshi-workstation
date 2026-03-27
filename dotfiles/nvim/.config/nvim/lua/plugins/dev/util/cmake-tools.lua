@@ -1,5 +1,6 @@
 return {
     "Civitasv/cmake-tools.nvim",
+    enabled = false,
     ft = { "cmake", "cxx", "c", "cpp" },
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()

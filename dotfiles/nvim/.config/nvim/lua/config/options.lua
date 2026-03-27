@@ -14,7 +14,7 @@ opt.expandtab = true          -- Convert tabs to spaces
 opt.shiftwidth = 4            -- Number of spaces for each indent
 opt.tabstop = 4               -- Number of spaces for a tab char
 opt.softtabstop = 4           -- Number of spaces for tab key
-opt.smartindent = true        -- Enable smart indentation opt.breakindent = true		    -- Enable line breaking indentation General Behvaiours
+opt.smartindent = true        -- Enable smart indentation opt.breakindent = true		
 opt.backup = false            -- Disable backup files
 opt.clipboard = "unnamedplus" -- System clipboard access
 opt.encoding = "UTF-8"        -- Set file encoding

@@ -87,7 +87,6 @@ for _, mapping in ipairs(key_mappings) do
     vim.keymap.set("n", mapping[1], mapping[2], vim.tbl_extend("force", opts, { desc = mapping[3] }))
 end
 
--- TODO: Cleanup LSPs
 local servers = {
     -- lspconfigName
     "asm_lsp",
@@ -97,11 +96,9 @@ local servers = {
     "neocmake",
     "emmet_language_server", -- with default-npm-packages
     "eslint",                -- with vscode-langservers-extracted
-    "gopls",
     "html",                  -- with  vscode-langservers-extracted
     "jsonls",                -- with  vscode-langservers-extracted
     "lua_ls",                -- lsp/formatter
-    "ruby_lsp",              -- ruby-lsp in brew
     "ts_ls",                 -- "typescript-language-server"
     "yamlls",                -- "yaml-language-server",
     "pyright",

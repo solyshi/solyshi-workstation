@@ -25,7 +25,6 @@ return {
                 { "<leader>t", group = "Tools" },
                 { "<leader>h", group = "Help" },
                 { "<leader>s", group = "Settings" },
-                { "<leader>p", group = "Projects" },
                 { "<leader>c", group = "Code" },
                 { "<leader>n", group = "Neovim Tips" },
                 { "<leader>b", group = "Build System" },

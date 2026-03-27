@@ -17,8 +17,7 @@ return {
                 typescript = { "prettier" },
                 typescriptreact = { "prettier" },
                 lua = { "stylua" },
-                go = { "gofmt" },
-                elixir = { "mix" },
+                python = { "ruff" },
             },
             formatters = {
                 ["clang-format"] = {

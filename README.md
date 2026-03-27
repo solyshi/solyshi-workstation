@@ -42,7 +42,6 @@ Managed with GNU Stow, structured for reproducibility and easy bootstrap on a fr
 ---
 
 ## Repository Structure
-
 ```
 solyshi-workstation/
 ├── dotfiles/
@@ -76,7 +75,6 @@ solyshi-workstation/
 ## Installation
 
 ### 1. Clone the repository
-
 ```bash
 git clone https://github.com/Chri1899/solyshi-workstation.git ~/solyshi-workstation
 cd ~/solyshi-workstation
@@ -85,7 +83,6 @@ cd ~/solyshi-workstation
 ### 2. Run the bootstrap script
 
 The script supports an interactive menu and a dry-run mode to preview changes before applying.
-
 ```bash
 bash install/bootstrap.sh
 ```
@@ -99,7 +96,6 @@ Available options:
 ### 3. Apply dotfiles manually (optional)
 
 To stow individual packages without the bootstrap script:
-
 ```bash
 cd ~/solyshi-workstation
 stow -d ~/solyshi-workstation/dotfiles -t ~ $(cat ~/solyshi-workstation/profiles/desktop.stow)
@@ -127,7 +123,6 @@ Templates are provided for:
 | Vesktop     | `matugen/templates/vesktop-colors.css`    |
 
 To regenerate colors from a wallpaper:
-
 ```bash
 matugen image /path/to/wallpaper.jpg
 ```
@@ -141,7 +136,6 @@ The wallpaper picker at `dotfiles/theme/.config/theme/wallpaper-picker.sh` handl
 ### Hyprland
 
 Config is split into logical files, all sourced from `hyprland.conf`:
-
 ```
 hypr/
 ├── hyprland.conf
@@ -172,26 +166,37 @@ hypr/
 
 Plugin manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
 
-| Category   | Plugin(s)                  |
-|------------|----------------------------|
-| LSP        | nvim-lspconfig, Mason      |
-| Completion | blink-cmp                  |
-| Syntax     | Treesitter                 |
-| Git        | Neogit, Gitsigns, Diffview |
-| Navigation | FZF                        |
-| Formatting | Conform                    |
-| Java       | nvim-java                  |
+| Category      | Plugin(s)                          |
+|---------------|------------------------------------|
+| LSP           | nvim-lspconfig, Mason              |
+| Completion    | blink-cmp                          |
+| Snippets      | LuaSnip, friendly-snippets         |
+| Syntax        | Treesitter                         |
+| Git           | Neogit, Gitsigns, Diffview         |
+| Navigation    | fzf-lua                            |
+| Formatting    | Conform                            |
+| Java          | nvim-java                          |
+| C++/CMake     | cmake-tools.nvim                   |
+| File Manager  | ranger.nvim                        |
+| UI            | snacks.nvim, slimline.nvim         |
+| Editing       | nvim-autopairs, nvim-ts-autotag    |
+| Utilities     | todo-comments, undotree, csvview   |
+| Tmux          | vim-tmux-navigator                 |
+
+Build/Run philosophy: stack-specific CLI commands via tmux, no unified build abstraction in Neovim.
 
 ### Tmux
 
 Plugin manager: TPM
 
-| Plugin         | Purpose                         |
-|----------------|---------------------------------|
-| tmux-resurrect | Persist sessions across reboots |
-| tmux-continuum | Automatic session saving        |
+| Plugin                | Purpose                         |
+|-----------------------|---------------------------------|
+| tmux-resurrect        | Persist sessions across reboots |
+| tmux-continuum        | Automatic session saving        |
+| vim-tmux-navigator    | Seamless Neovim/tmux navigation |
 
 Session management via the `tmux-sessionizer` script, bound to a keybind in Hyprland.
+Workflow: one tmux session per project, window 1 = Neovim, window 2 = build/run terminal.
 
 ### Zsh
 
@@ -206,13 +211,10 @@ Session management via the `tmux-sessionizer` script, bound to a keybind in Hypr
 ## Roadmap
 
 - [ ] Keybind cheatsheet (floating Kitty window + glow + Markdown)
-- [ ] Rofi theme polish
 - [ ] Lockscreen setup (hyprlock + hypridle)
-- [ ] Vim-Tmux-Navigator integration
 - [ ] Zsh cleanup pass
 - [ ] Offline documentation (Zeal + dasht)
 - [ ] cheat.sh integration (curl or Neovim plugin)
-- [ ] Properly integrate overseer task runner in nvim for every possible stack I use
-- [ ] Replace neovim rust_analyzer with rustaceanvim eventually
+- [ ] Replace rust_analyzer with rustaceanvim
 - [ ] Extend Waybar with more useful modules
 - [ ] Replace some UI packages with Quickshell eventually

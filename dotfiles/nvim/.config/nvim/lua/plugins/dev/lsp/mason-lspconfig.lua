@@ -13,7 +13,6 @@ return {
                 "neocmake",
                 "omnisharp",
                 "cssls",
-                "fish_lsp",
                 "gradle_ls",
                 "groovyls",
                 "html",

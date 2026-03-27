@@ -3,12 +3,7 @@ return {
     event = "BufReadPre",
     config = function()
         require("colorizer").setup({
-          filetypes = {
-            "css",
-            "javascript",
-            html = { mode = "foreground" },
-          },
+            filetypes = { "*" },
         })
     end
-    -- TODO: Enable in specific mode or auto attach everywhere or toggle
 }

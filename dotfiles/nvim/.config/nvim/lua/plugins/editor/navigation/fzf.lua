@@ -34,7 +34,7 @@ return {
         vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Live Grep" })
         vim.keymap.set("n", "<leader>fw", fzf.grep_cword, { desc = "Grep on Cursor" })
         vim.keymap.set("v", "<leader>fv", fzf.grep_visual, { desc = "Grep in Visual Mode" })
-        -- DEPRECATED TODO: Update vim.keymap.set("n", "<leader>fG", fzf.live_grep_resume, { desc = "Live Grep Resume" })
+        vim.keymap.set("n", "<leader>fG", fzf.grep_last, { desc = "Live Grep Resume" })
 
         fzf.setup({
             keymap = {
