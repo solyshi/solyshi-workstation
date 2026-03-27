@@ -48,6 +48,7 @@ gst-plugins-good
 gst-plugins-bad
 gst-plugins-ugly
 gst-libav
+python-adblock
 
 # File Manager
 dolphin

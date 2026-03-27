@@ -1,68 +1,68 @@
 # Matugen generated colors for qutebrowser
 
 # Webpage background (Dark mode support)
-c.colors.webpage.bg = "#18130b"
+c.colors.webpage.bg = "#19120d"
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = (
     True  # Optional, falls du echtes Dark-Theming willst
 )
 
 # Completion (Vorschläge in der Befehlszeile)
-c.colors.completion.category.bg = "#3a342b"
-c.colors.completion.category.fg = "#f0be6d"
+c.colors.completion.category.bg = "#3c332d"
+c.colors.completion.category.fg = "#ffb784"
 c.colors.completion.category.border.top = (
-    "#3a342b"
+    "#3c332d"
 )
 c.colors.completion.category.border.bottom = (
-    "#3a342b"
+    "#3c332d"
 )
-c.colors.completion.even.bg = "#18130b"
-c.colors.completion.odd.bg = "#201b13"
-c.colors.completion.fg = "#ece1d4"
-c.colors.completion.item.selected.bg = "#f0be6d"
-c.colors.completion.item.selected.fg = "#432c00"
-c.colors.completion.match.fg = "#b5cea4"
-c.colors.completion.scrollbar.bg = "#18130b"
-c.colors.completion.scrollbar.fg = "#f0be6d"
+c.colors.completion.even.bg = "#19120d"
+c.colors.completion.odd.bg = "#221a15"
+c.colors.completion.fg = "#f0dfd6"
+c.colors.completion.item.selected.bg = "#ffb784"
+c.colors.completion.item.selected.fg = "#4f2500"
+c.colors.completion.match.fg = "#c8ca94"
+c.colors.completion.scrollbar.bg = "#19120d"
+c.colors.completion.scrollbar.fg = "#ffb784"
 
 # Context menu
-c.colors.contextmenu.menu.bg = "#18130b"
-c.colors.contextmenu.menu.fg = "#ece1d4"
-c.colors.contextmenu.selected.bg = "#f0be6d"
-c.colors.contextmenu.selected.fg = "#432c00"
+c.colors.contextmenu.menu.bg = "#19120d"
+c.colors.contextmenu.menu.fg = "#f0dfd6"
+c.colors.contextmenu.selected.bg = "#ffb784"
+c.colors.contextmenu.selected.fg = "#4f2500"
 
 # Downloads
-c.colors.downloads.bar.bg = "#18130b"
-c.colors.downloads.start.bg = "#f0be6d"
-c.colors.downloads.start.fg = "#432c00"
-c.colors.downloads.stop.bg = "#374c2c"
+c.colors.downloads.bar.bg = "#19120d"
+c.colors.downloads.start.bg = "#ffb784"
+c.colors.downloads.start.fg = "#4f2500"
+c.colors.downloads.stop.bg = "#47491f"
 c.colors.downloads.error.bg = "#ffb4ab"
 c.colors.downloads.error.fg = "#690005"
 
 # Hints (Die Buchstaben zum Springen)
-c.colors.hints.bg = "#f0be6d"
-c.colors.hints.fg = "#432c00"
-c.colors.hints.match.fg = "#dbc3a1"
+c.colors.hints.bg = "#ffb784"
+c.colors.hints.fg = "#4f2500"
+c.colors.hints.match.fg = "#e4bfa8"
 
 # Statusbar
-c.colors.statusbar.normal.bg = "#18130b"
-c.colors.statusbar.normal.fg = "#ece1d4"
-c.colors.statusbar.insert.bg = "#b5cea4"
-c.colors.statusbar.insert.fg = "#223518"
-c.colors.statusbar.command.bg = "#18130b"
-c.colors.statusbar.command.fg = "#ece1d4"
-c.colors.statusbar.url.success.https.fg = "#f0be6d"
-c.colors.statusbar.url.hover.fg = "#dbc3a1"
+c.colors.statusbar.normal.bg = "#19120d"
+c.colors.statusbar.normal.fg = "#f0dfd6"
+c.colors.statusbar.insert.bg = "#c8ca94"
+c.colors.statusbar.insert.fg = "#30330b"
+c.colors.statusbar.command.bg = "#19120d"
+c.colors.statusbar.command.fg = "#f0dfd6"
+c.colors.statusbar.url.success.https.fg = "#ffb784"
+c.colors.statusbar.url.hover.fg = "#e4bfa8"
 
 # Tabs (Hier habe ich den "Waybar-Look" eingebaut)
-c.colors.tabs.bar.bg = "#18130b"
-c.colors.tabs.even.bg = "#201b13"
-c.colors.tabs.even.fg = "#d2c4b4"
-c.colors.tabs.odd.bg = "#201b13"
-c.colors.tabs.odd.fg = "#d2c4b4"
-c.colors.tabs.selected.even.bg = "#f0be6d"
-c.colors.tabs.selected.even.fg = "#432c00"
-c.colors.tabs.selected.odd.bg = "#f0be6d"
-c.colors.tabs.selected.odd.fg = "#432c00"
-c.colors.tabs.indicator.start = "#f0be6d"
+c.colors.tabs.bar.bg = "#19120d"
+c.colors.tabs.even.bg = "#221a15"
+c.colors.tabs.even.fg = "#d7c3b7"
+c.colors.tabs.odd.bg = "#221a15"
+c.colors.tabs.odd.fg = "#d7c3b7"
+c.colors.tabs.selected.even.bg = "#ffb784"
+c.colors.tabs.selected.even.fg = "#4f2500"
+c.colors.tabs.selected.odd.bg = "#ffb784"
+c.colors.tabs.selected.odd.fg = "#4f2500"
+c.colors.tabs.indicator.start = "#ffb784"
 c.colors.tabs.indicator
