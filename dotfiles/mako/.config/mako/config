@@ -12,6 +12,7 @@ padding=15
 border-size=2
 border-radius=12
 font=JetBrainsMono NF 10
+default-timeout=5000
 
 # Icons
 icons=1
