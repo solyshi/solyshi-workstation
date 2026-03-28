@@ -60,9 +60,24 @@ window#waybar {
     padding: 0 10px;
     margin: 2px 4px;
     border-radius: 8px;
+
 }
 
 #clock:hover {
+    background-color: @primary;
+    color: @on_primary;
+    transition: all 0.3s ease;
+}
+
+#custom-weather {
+    color: @primary;
+    background-color: transparent;
+    padding: 0 10px;
+    margin: 2px 4px;
+    border-radius: 8px;
+}
+
+#custom-weather:hover {
     background-color: @primary;
     color: @on_primary;
     transition: all 0.3s ease;

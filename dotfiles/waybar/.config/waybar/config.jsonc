@@ -9,7 +9,8 @@
         "hyprland/window"
     ],
     "modules-center": [
-        "clock"
+        "clock",
+        "custom/weather"
     ],
     "modules-right": [
         "pulseaudio/slider",
@@ -22,6 +23,14 @@
         "on-click": "bash ~/.config/rofi/scripts/powermenu.sh",
         "tooltip": false
     },
+    "custom/weather": {
+        "exec": "curl -s 'wttr.in/?format=1'",
+        "interval": 1800,
+        "format": "{}",
+        "tooltip-format": "curl -s 'wttr.in/?format='",
+        "on-click": "xdg-open 'https://wttr.in'",
+        "tooltip": true,
+    },
     "hyprland/workspaces": {
         "format": "{name}",
         "on-click": "activate",
@@ -32,15 +41,15 @@
         "separate-outputs": true
     },
     "clock": {
-        "format": "{:%H:%M}  ",
-        "format-alt": "{:%A, %B %d, %Y (%R)}",
+        "interval": 1,
+        "format": "{:%H:%M:%S}  ",
+        "format-alt": " {:%H:%M   %Y, %d %B, %A}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
             "mode-mon-col": 3,
             "weeks-pos": "right",
             "on-scroll": 1,
-            "on-click-right": "mode",
             "format": {
                 "months": "<span color='#ffead3'><b>{}</b></span>",
                 "days": "<span color='#ecc6d9'><b>{}</b></span>",

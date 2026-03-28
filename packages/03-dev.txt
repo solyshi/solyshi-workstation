@@ -38,7 +38,7 @@ pnpm
 typescript
 
 # Rust
-rust
+rustup
 
 # Python
 python

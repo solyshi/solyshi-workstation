@@ -1,9 +1,9 @@
 return {
-    "catgoose/nvim-colorizer.lua",
-    event = "BufReadPre",
+    'brenoprata10/nvim-highlight-colors',
     config = function()
-        require("colorizer").setup({
-            filetypes = { "*" },
+        require('nvim-highlight-colors').setup({
+            enable_tailwind = true,
+            render = 'background', -- oder 'foreground' / 'first_column'
         })
     end
 }

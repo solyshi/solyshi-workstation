@@ -121,6 +121,11 @@ install_dev() {
     install_from_file "$tmpfile"
     rm "$tmpfile"
 
+    # Rust Setup direkt nach der Paketinstallation
+    if confirm "Set up Rust toolchain (stable + src)?"; then
+        setup_rust
+    fi
+
     if confirm "Set up SDKMAN? (Java, Gradle, Maven)"; then
         setup_sdkman
     fi
@@ -146,6 +151,29 @@ setup_spicetify() {
     info "Installing Spicetify Marketplace..."
     curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
     success "Spicetify successfully installed"
+}
+
+# =============================================================================
+# Rust setup
+# =============================================================================
+setup_rust() {
+    section "RUSTUP"
+    
+    if command -v rustup &>/dev/null; then
+        info "Configuring Rust toolchain..."
+        if $DRY_RUN; then
+            echo "  [DRY-RUN] rustup default stable"
+            echo "  [DRY-RUN] rustup component add rust-src"
+        else
+            # Setze stable als Standard (installiert Toolchain falls nötig)
+            rustup default stable
+            # Installiere die Sourcen für den rust-analyzer (LSP)
+            rustup component add rust-src
+            success "Rust stable toolchain and sources installed"
+        fi
+    else
+        warn "rustup not found. Make sure it's in 03-dev.txt or installed via yay."
+    fi
 }
 
 # =============================================================================
