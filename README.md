@@ -61,7 +61,12 @@ solyshi-workstation/
 │   ├── emacs/        # Emacs config (secondary editor)
 │   └── scripts/      # Utility scripts (tmux-sessionizer, etc.)
 ├── install/
-│   └── bootstrap.sh  # Interactive bootstrap script with dry-run support
+│   ├── bootstrap.sh  # Interactive bootstrap script with dry-run support
+│   └── lib/
+│       ├── packages.sh    # yay, package group installation
+│       ├── toolchains.sh  # Rust, SDKMAN, Spicetify setup
+│       ├── services.sh    # systemd services, SDDM, boot config
+│       └── dotfiles.sh    # stow linking, shell, directories
 ├── system/
 │   └── sddm/
 │       └── sddm.conf.d/
@@ -85,11 +90,20 @@ git clone https://github.com/Chri1899/solyshi-workstation.git ~/solyshi-workstat
 cd ~/solyshi-workstation
 ```
 
-### 2. Run the bootstrap script
+### 2. Configure keyboard layout
+
+Before running the script, set your keyboard layout at the top of `install/bootstrap.sh`:
+```bash
+KEYBOARD_LAYOUT="de"   # change to e.g. us, fr, gb
+```
+This is applied automatically to `~/.config/hypr/functionality/input.conf` after dotfiles are linked.
+
+### 3. Run the bootstrap script
 
 The script supports an interactive menu and a dry-run mode to preview changes before applying.
 ```bash
-bash install/bootstrap.sh
+bash install/bootstrap.sh           # interactive
+bash install/bootstrap.sh --dry-run # preview without applying
 ```
 
 Available options:
@@ -98,7 +112,7 @@ Available options:
 - Interactive package group selection (base, desktop, dev, apps)
 - Automatic stow of dotfiles
 
-### 3. Apply dotfiles manually (optional)
+### 4. Apply dotfiles manually (optional)
 
 To stow individual packages without the bootstrap script:
 ```bash
@@ -150,7 +164,7 @@ hypr/
 │   ├── layouts.conf
 │   ├── monitors.conf
 │   └── theme.conf
-├── functionallity/
+├── functionality/
 │   ├── autostart.conf
 │   ├── input.conf
 │   └── programs.conf
