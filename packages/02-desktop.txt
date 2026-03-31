@@ -60,7 +60,7 @@ gst-libav
 python-adblock
 
 # File Manager
-dolphin
+nautilus
 
 # Resource Manager
 btop

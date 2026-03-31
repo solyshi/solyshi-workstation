@@ -35,7 +35,7 @@ Managed with GNU Stow, structured for reproducibility and easy bootstrap on a fr
 | Display Manager | SDDM (Silent theme)    |
 | Notifications | Mako                   |
 | Browser       | Qutebrowser            |
-| File Manager  | Dolphin                |
+| File Manager  | Nautilus               |
 | Music         | Spotify + Spicetify    |
 | Theming       | matugen (Material You) |
 | Dotfile Mgmt  | GNU Stow               |
@@ -60,6 +60,7 @@ solyshi-workstation/
 │   ├── theme/        # Wallpaper picker and apply script
 │   ├── emacs/        # Emacs config (secondary editor)
 │   └── scripts/      # Utility scripts (tmux-sessionizer, etc.)
+│   └── nautilus/     # File Browser Configurations
 ├── install/
 │   ├── bootstrap.sh  # Interactive bootstrap script with dry-run support
 │   └── lib/
