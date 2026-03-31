@@ -47,6 +47,9 @@ matugen-bin
 grim
 slurp
 
+# Recording
+wf-recorder
+
 # Browser
 qutebrowser
 gst-plugins-base
@@ -61,3 +64,4 @@ dolphin
 
 # Resource Manager
 btop
+

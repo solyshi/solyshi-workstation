@@ -22,3 +22,6 @@ prismlauncher
 
 # Identification
 ausweisapp2
+
+# Video Player
+mpv

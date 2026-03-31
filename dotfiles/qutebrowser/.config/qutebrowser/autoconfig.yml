@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.notifications.enabled:
-    https://web.whatsapp.com: true
+  colors.webpage.darkmode.enabled:
+    global: true
