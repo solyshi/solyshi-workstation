@@ -1,26 +1,20 @@
 return {
-  "kelly-lin/ranger.nvim",
-  config = function()
-      local ranger_nvim = require("ranger-nvim")
-
-      vim.keymap.set("n", "<leader>-", "<cmd>Ranger<cr>", { desc = "Open File Explorer" })
-
-        ranger_nvim.setup({
-            enable_cmds = true,
-            replace_netrw = true,
-            keybinds = {
-                ["ov"] = ranger_nvim.OPEN_MODE.vsplit,
-                ["oh"] = ranger_nvim.OPEN_MODE.split,
-                ["ot"] = ranger_nvim.OPEN_MODE.tabedit,
-                ["or"] = ranger_nvim.OPEN_MODE.rifle,
-            },
-            ui = {
-                border = "none",
-                height = 1,
-                width = 1,
-                x = 0.5,
-                y = 0.5,
-            }
-        })
-    end
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+    keys = {
+        {
+            "<leader>-",
+            "<cmd>Yazi<cr>",
+            desc = "Open File Explorer",
+        },
+    },
+    opts = {
+        open_for_directories = false,
+        keymaps = {
+            show_help = "<f1>",
+        },
+    },
 }

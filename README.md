@@ -248,3 +248,4 @@ The theme config is stored in `system/sddm/sddm.conf.d/theme.conf` and symlinked
 - [ ] Zsh cleanup pass
 - [ ] Extend Waybar with more useful modules
 - [ ] Replace some UI packages with Quickshell eventually
+- [ ] Integrate Yazi and Nautilus

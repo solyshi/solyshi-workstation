@@ -44,3 +44,5 @@ rustup
 python
 python-pip
 
+# Yazi 
+yazi
