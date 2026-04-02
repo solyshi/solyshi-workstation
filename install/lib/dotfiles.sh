@@ -15,6 +15,7 @@ setup_stow() {
         echo "  [DRY-RUN] stow -d $DOTFILES_DIR -t $HOME $(tr '\n' ' ' < "$STOW_PROFILE")"
     else
         stow -d "$DOTFILES_DIR" -t "$HOME" $(tr '\n' ' ' < "$STOW_PROFILE")
+        stow -d ~/solyshi-workstation/ -t ~ scripts
         success "Dotfiles linked"
         apply_keyboard_layout
     fi

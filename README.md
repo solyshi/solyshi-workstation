@@ -46,37 +46,38 @@ Managed with GNU Stow, structured for reproducibility and easy bootstrap on a fr
 ```
 solyshi-workstation/
 ├── dotfiles/
-│   ├── hypr/         # Hyprland config (split into appearance, keybinds, rules, scripts)
-│   ├── waybar/       # Bar config, styles, launch script
-│   ├── kitty/        # Terminal colors and config
-│   ├── nvim/         # Neovim config (lazy.nvim, LSP, plugins)
-│   ├── zsh/          # .zshrc, .zprofile, p10k
-│   ├── tmux/         # tmux config with TPM
-│   ├── rofi/         # Launcher theme and powermenu
-│   ├── mako/         # Notification daemon config
-│   ├── matugen/      # Color generation templates for all apps
-│   ├── qutebrowser/  # Browser config and colors
-│   ├── spicetify/    # Spotify theming
-│   ├── theme/        # Wallpaper picker and apply script
-│   ├── emacs/        # Emacs config (secondary editor)
-│   └── scripts/      # Utility scripts (tmux-sessionizer, etc.)
-│   └── nautilus/     # File Browser Configurations
+│   ├── hypr/                   # Hyprland config (split into appearance, keybinds, rules, scripts)
+│   ├── waybar/                 # Bar config, styles, launch script
+│   ├── yazi/                   # TUI File Browser configs 
+│   ├── kitty/                  # Terminal colors and config
+│   ├── nvim/                   # Neovim config (lazy.nvim, LSP, plugins)
+│   ├── zsh/                    # .zshrc, .zprofile, p10k
+│   ├── tmux/                   # tmux config with TPM
+│   ├── rofi/                   # Launcher theme and powermenu
+│   ├── mako/                   # Notification daemon config
+│   ├── matugen/                # Color generation templates for all apps
+│   ├── qutebrowser/            # Browser config and colors
+│   ├── spicetify/              # Spotify theming
+│   ├── theme/                  # Wallpaper picker and apply script
+│   ├── emacs/                  # Emacs config (secondary editor)
+│   └── nautilus/               # File Browser Configurations
 ├── install/
-│   ├── bootstrap.sh  # Interactive bootstrap script with dry-run support
+│   ├── bootstrap.sh            # Interactive bootstrap script with dry-run support
 │   └── lib/
-│       ├── packages.sh    # yay, package group installation
-│       ├── toolchains.sh  # Rust, SDKMAN, Spicetify setup
-│       ├── services.sh    # systemd services, SDDM, boot config
-│       └── dotfiles.sh    # stow linking, shell, directories
+│       ├── packages.sh         # yay, package group installation
+│       ├── toolchains.sh       # Rust, SDKMAN, Spicetify setup
+│       ├── services.sh         # systemd services, SDDM, boot config
+│       └── dotfiles.sh         # stow linking, shell, directories
+│   └── packages/
+│       ├── 01-base.txt
+│       ├── 02-desktop.txt
+│       ├── 03-dev.txt
+│       └── 04-apps.txt
 ├── system/
 │   └── sddm/
 │       └── sddm.conf.d/
-│           └── theme.conf    # SDDM theme selection (symlinked to /etc/sddm.conf.d/)
-├── packages/
-│   ├── 01-base.txt
-│   ├── 02-desktop.txt
-│   ├── 03-dev.txt
-│   └── 04-apps.txt
+│           └── theme.conf      # SDDM theme selection (symlinked to /etc/sddm.conf.d/)
+├── scripts/                    # Utility scripts (tmux-sessionizer, etc.)
 └── profiles/
     └── desktop.stow  # Stow profile for desktop setup
 ```

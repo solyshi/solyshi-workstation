@@ -20,7 +20,7 @@ DRY_RUN=false
 [[ "$1" == "--dry-run" ]] && DRY_RUN=true
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PACKAGES_DIR="$REPO_DIR/packages"
+PACKAGES_DIR="$REPO_DIR/install/pkg"
 DOTFILES_DIR="$REPO_DIR/dotfiles"
 STOW_PROFILE="$REPO_DIR/profiles/desktop.stow"
 LIB_DIR="$REPO_DIR/install/lib"
