@@ -121,7 +121,7 @@ To stow individual packages without the bootstrap script:
 cd ~/solyshi-workstation
 stow -d ~/solyshi-workstation/dotfiles -t ~ $(cat ~/solyshi-workstation/profiles/desktop.stow)
 OR
-stow -d dotfiles -t ~ hypr kitty nvim zsh tmux waybar rofi mako matugen
+stow -d dotfiles -t ~ hypr kitty nvim zsh tmux waybar rofi mako matugen nautilus yazi
 ```
 
 ---
