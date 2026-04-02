@@ -1,0 +1,45 @@
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+[mgr]
+cwd = { fg = "#ffb784" }
+
+hovered         = { fg = "#f0dfd6", bg = "#312822", bold = true }
+preview_hovered = { underline = true }
+
+find_keyword  = { fg = "#c8ca94", bold = true }
+find_position = { fg = "#e4bfa8", italic = true }
+
+marker_copied  = { fg = "#c8ca94", bg = "#c8ca94" }
+marker_cut     = { fg = "#ffb4ab",    bg = "#ffb4ab" }
+marker_marked  = { fg = "#e4bfa8", bg = "#e4bfa8" }
+marker_selected = { fg = "#ffb784", bg = "#ffb784" }
+
+tab_active   = { fg = "#4f2500", bg = "#ffb784" }
+tab_inactive = { fg = "#d7c3b7", bg = "#261e18" }
+
+[status]
+overall = { fg = "#f0dfd6", bg = "#221a15" }
+
+mode_normal = { fg = "#4f2500", bg = "#ffb784", bold = true }
+mode_select = { fg = "#30330b", bg = "#c8ca94", bold = true }
+mode_unset  = { fg = "#690005", bg = "#ffb4ab", bold = true }
+
+progress_label  = { fg = "#f0dfd6", bold = true }
+progress_normal = { fg = "#ffb784", bg = "#221a15" }
+progress_error  = { fg = "#ffb4ab", bg = "#221a15" }
+
+[filetype]
+rules = [
+    { mime = "image/*",       fg = "#c8ca94" },
+    { mime = "video/*",       fg = "#c8ca94" },
+    { mime = "audio/*",       fg = "#c8ca94" },
+    { mime = "application/pdf", fg = "#ffb4ab" },
+    { mime = "application/zip", fg = "#e4bfa8" },
+    { mime = "application/x-tar", fg = "#e4bfa8" },
+    { mime = "text/*",        fg = "#f0dfd6" },
+    { name = "*.toml",        fg = "#ffb784" },
+    { name = "*.yaml",        fg = "#ffb784" },
+    { name = "*.json",        fg = "#ffb784" },
+    { name = "*.lua",         fg = "#e4bfa8" },
+    { name = "*.sh",          fg = "#e4bfa8" },
+]

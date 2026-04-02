@@ -1,8 +1,8 @@
 # --- Colors (Matugen generated) ---
-background-color=#15130c
-text-color=#e8e2d4
-border-color=#4a4739
-progress-color=over #d9c76f
+background-color=#19120d
+text-color=#f0dfd6
+border-color=#52443b
+progress-color=over #ffb784
 
 # --- Urgency High (Errors / Critical) ---
 [urgency=high]
@@ -12,5 +12,5 @@ border-color=#ffb4ab
 
 # --- Urgency Low ---
 [urgency=low]
-background-color=#1e1c13
-text-color=#ccc6b4
+background-color=#221a15
+text-color=#d7c3b7

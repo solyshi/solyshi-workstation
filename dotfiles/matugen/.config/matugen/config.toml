@@ -39,3 +39,7 @@ output_path = "~/.config/vesktop/themes/matugen.css"
 [templates.qutebrowser]
 input_path = "~/.config/matugen/templates/qute-colors.py"
 output_path = "~/.config/qutebrowser/colors.py"
+
+[templates.yazi]
+input_path = "~/.config/matugen/templates/yazi-flavor.toml"
+output_path = "~/.config/yazi/flavors/matugen.yazi/flavor.toml"
