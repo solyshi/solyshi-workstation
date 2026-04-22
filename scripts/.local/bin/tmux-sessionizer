@@ -3,7 +3,7 @@
 # 1. We take the 'solyshi-workstation' folder directly (-maxdepth 0)
 # 2. We take all subdirectories of '~/projects' (-maxdepth 1)
 # We combine both results
-selected=$(printf "%s\n" "$HOME/solyshi-workstation" $(find ~/projects -maxdepth 1 -mindepth 1 -type d) | fzf \
+selected=$(printf "%s\n" "$HOME/solyshi-workstation" $(find ~/projects -maxdepth 2 -mindepth 2 -type d) | fzf \
     --height 40% \
     --reverse \
     --border \

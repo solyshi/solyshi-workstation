@@ -13,6 +13,7 @@ pkg-config
 cmake
 clang
 patch
+bear
 
 # Editors
 vim
@@ -48,3 +49,6 @@ python-pip
 
 # Yazi 
 yazi
+
+# Libs
+sdl2

@@ -1,45 +1,45 @@
 "$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 [mgr]
-cwd = { fg = "#b1d18a" }
+cwd = { fg = "#88d6ba" }
 
-hovered         = { fg = "#e2e3d8", bg = "#282b24", bold = true }
+hovered         = { fg = "#dee4df", bg = "#252b28", bold = true }
 preview_hovered = { underline = true }
 
-find_keyword  = { fg = "#a0d0cc", bold = true }
-find_position = { fg = "#bfcbad", italic = true }
+find_keyword  = { fg = "#a8cbe1", bold = true }
+find_position = { fg = "#b2ccc1", italic = true }
 
-marker_copied  = { fg = "#a0d0cc", bg = "#a0d0cc" }
+marker_copied  = { fg = "#a8cbe1", bg = "#a8cbe1" }
 marker_cut     = { fg = "#ffb4ab",    bg = "#ffb4ab" }
-marker_marked  = { fg = "#bfcbad", bg = "#bfcbad" }
-marker_selected = { fg = "#b1d18a", bg = "#b1d18a" }
+marker_marked  = { fg = "#b2ccc1", bg = "#b2ccc1" }
+marker_selected = { fg = "#88d6ba", bg = "#88d6ba" }
 
-tab_active   = { fg = "#1f3701", bg = "#b1d18a" }
-tab_inactive = { fg = "#c5c8ba", bg = "#1e201a" }
+tab_active   = { fg = "#00382a", bg = "#88d6ba" }
+tab_inactive = { fg = "#bfc9c3", bg = "#1b211e" }
 
 [status]
-overall = { fg = "#e2e3d8", bg = "#1a1c16" }
+overall = { fg = "#dee4df", bg = "#171d1a" }
 
-mode_normal = { fg = "#1f3701", bg = "#b1d18a", bold = true }
-mode_select = { fg = "#003735", bg = "#a0d0cc", bold = true }
+mode_normal = { fg = "#00382a", bg = "#88d6ba", bold = true }
+mode_select = { fg = "#0c3446", bg = "#a8cbe1", bold = true }
 mode_unset  = { fg = "#690005", bg = "#ffb4ab", bold = true }
 
-progress_label  = { fg = "#e2e3d8", bold = true }
-progress_normal = { fg = "#b1d18a", bg = "#1a1c16" }
-progress_error  = { fg = "#ffb4ab", bg = "#1a1c16" }
+progress_label  = { fg = "#dee4df", bold = true }
+progress_normal = { fg = "#88d6ba", bg = "#171d1a" }
+progress_error  = { fg = "#ffb4ab", bg = "#171d1a" }
 
 [filetype]
 rules = [
-    { mime = "image/*",       fg = "#a0d0cc" },
-    { mime = "video/*",       fg = "#a0d0cc" },
-    { mime = "audio/*",       fg = "#a0d0cc" },
+    { mime = "image/*",       fg = "#a8cbe1" },
+    { mime = "video/*",       fg = "#a8cbe1" },
+    { mime = "audio/*",       fg = "#a8cbe1" },
     { mime = "application/pdf", fg = "#ffb4ab" },
-    { mime = "application/zip", fg = "#bfcbad" },
-    { mime = "application/x-tar", fg = "#bfcbad" },
-    { mime = "text/*",        fg = "#e2e3d8" },
-    { name = "*.toml",        fg = "#b1d18a" },
-    { name = "*.yaml",        fg = "#b1d18a" },
-    { name = "*.json",        fg = "#b1d18a" },
-    { name = "*.lua",         fg = "#bfcbad" },
-    { name = "*.sh",          fg = "#bfcbad" },
+    { mime = "application/zip", fg = "#b2ccc1" },
+    { mime = "application/x-tar", fg = "#b2ccc1" },
+    { mime = "text/*",        fg = "#dee4df" },
+    { name = "*.toml",        fg = "#88d6ba" },
+    { name = "*.yaml",        fg = "#88d6ba" },
+    { name = "*.json",        fg = "#88d6ba" },
+    { name = "*.lua",         fg = "#b2ccc1" },
+    { name = "*.sh",          fg = "#b2ccc1" },
 ]
