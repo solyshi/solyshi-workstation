@@ -91,7 +91,7 @@ main() {
     # Clone repo if not already present
     if [[ ! -d "$HOME/solyshi-workstation" ]]; then
         info "Cloning repo..."
-        git clone git@github.com:Chri1899/solyshi-workstation.git "$HOME/solyshi-workstation"
+        git clone git@github.com:solyshi/solyshi-workstation.git "$HOME/solyshi-workstation"
     fi
 
     install_yay
