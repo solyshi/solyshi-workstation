@@ -20,7 +20,8 @@ return {
                 "lua_ls",
                 "pyright",
                 "tailwindcss",
-                "rust_analyzer"
+                "rust_analyzer",
+                "lemminx"
             },
             automatic_enable = {
                 exclude = { "jdtls" },

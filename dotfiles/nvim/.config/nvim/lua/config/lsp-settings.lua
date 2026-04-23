@@ -103,7 +103,8 @@ local servers = {
     "yamlls",                -- "yaml-language-server",
     "pyright",
     "ruff",
-    "rust_analyzer"
+    "rust_analyzer",
+    "lemminx"
 }
 
 local Lsp = {}
