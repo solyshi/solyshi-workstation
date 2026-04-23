@@ -24,7 +24,7 @@ return {
                 "lemminx"
             },
             automatic_enable = {
-                exclude = { "jdtls" },
+                exclude = { "jdtls", "groovyls", "gradle_ls" },
             },
         })
     end,

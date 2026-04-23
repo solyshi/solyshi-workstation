@@ -15,5 +15,6 @@ return {
         { "<leader>gp", "<cmd>Octo pr list<cr>",      desc = "List PRs" },
         { "<leader>gP", "<cmd>Octo pr create<cr>",    desc = "Create PR" },
         { "<leader>gR", "<cmd>Octo review start<cr>", desc = "Start Review" },
+        { "<leader>go", "<cmd>Octo repo view<cr>",    desc = "View Repo" },
     },
 }
