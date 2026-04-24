@@ -1,11 +1,12 @@
 #!/bin/bash
 # =============================================================================
-# services.sh — System service and display manager setup functions
+# services.sh — System service and display manager setup
 # Sourced by bootstrap.sh; expects DRY_RUN, REPO_DIR to be set.
 # =============================================================================
 
 setup_services() {
     section "Services"
+
     info "Enabling NetworkManager..."
     if $DRY_RUN; then
         echo "  [DRY-RUN] sudo systemctl enable --now NetworkManager"
@@ -14,6 +15,41 @@ setup_services() {
     fi
     success "NetworkManager active"
 
+    # Bluetooth — only if unit exists (packages were installed)
+    if systemctl cat bluetooth.service &>/dev/null; then
+        info "Enabling Bluetooth service..."
+        if $DRY_RUN; then
+            echo "  [DRY-RUN] sudo systemctl enable --now bluetooth"
+        else
+            sudo systemctl enable --now bluetooth
+            success "Bluetooth active"
+        fi
+    fi
+
+    # SSD TRIM — only if any block device supports it
+    if lsblk --discard 2>/dev/null | awk 'NR>1 {print $3}' | grep -qv "^0B$"; then
+        confirm "SSD TRIM detected. Enable fstrim.timer?" && {
+            if $DRY_RUN; then
+                echo "  [DRY-RUN] sudo systemctl enable --now fstrim.timer"
+            else
+                sudo systemctl enable --now fstrim.timer
+                success "fstrim.timer active"
+            fi
+        }
+    fi
+
+    # Timeshift / cronie — only if timeshift-autosnap is installed
+    if pacman -Q timeshift-autosnap &>/dev/null; then
+        info "Enabling cronie for Timeshift snapshots..."
+        if $DRY_RUN; then
+            echo "  [DRY-RUN] sudo systemctl enable --now cronie"
+        else
+            sudo systemctl enable --now cronie
+            success "cronie active (Timeshift snapshots enabled)"
+        fi
+    fi
+
+    # PostgreSQL
     if confirm "Set up PostgreSQL?"; then
         if $DRY_RUN; then
             echo "  [DRY-RUN] sudo systemctl enable --now postgresql"
@@ -33,12 +69,14 @@ setup_services() {
         fi
     fi
 
+    # Mako notification daemon (user service)
     info "Enabling Mako (user service)..."
     if $DRY_RUN; then
         echo "  [DRY-RUN] systemctl --user enable mako"
     else
         systemctl --user enable mako 2>/dev/null || warn "Could not enable Mako"
     fi
+
     success "Services configured"
 }
 
@@ -70,27 +108,4 @@ setup_sddm() {
     sudo ln -sf "$conf_src" "$conf_dst"
     sudo systemctl enable sddm
     success "SDDM configured and enabled"
-}
-
-setup_boot() {
-    section "systemd-boot"
-    local entry
-    entry=$(find /boot/loader/entries/ -maxdepth 1 -name "*lts*" 2>/dev/null | head -1 | xargs basename 2>/dev/null)
-
-    if [[ -z "$entry" ]]; then
-        warn "No LTS boot entry found — skipping"
-        return
-    fi
-
-    if $DRY_RUN; then
-        echo "  [DRY-RUN] Setting boot entry: $entry"
-        return
-    fi
-
-    if grep -q "^default" /boot/loader/loader.conf; then
-        sudo sed -i "s/^default.*/default $entry/" /boot/loader/loader.conf
-    else
-        echo "default $entry" | sudo tee -a /boot/loader/loader.conf
-    fi
-    success "Boot entry set: $entry"
 }
