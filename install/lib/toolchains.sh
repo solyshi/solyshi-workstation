@@ -67,10 +67,11 @@ setup_sdkman() {
         fi
     fi
 
+    # sdkman-init.sh references vars that may be unset — suspend nounset around it
+    set +u
     # shellcheck disable=SC1090,SC1091
-    if ! source "$sdkman_dir/bin/sdkman-init.sh"; then
-        error "Failed to source SDKMAN init script at $sdkman_dir/bin/sdkman-init.sh"
-    fi
+    source "$sdkman_dir/bin/sdkman-init.sh" || { set -u; error "Failed to source SDKMAN init script at $sdkman_dir/bin/sdkman-init.sh"; }
+    set -u
 
     if $DRY_RUN; then
         echo "  [DRY-RUN] sdk install java 21.0.9-tem"

@@ -21,6 +21,8 @@ setup_ssh() {
         return
     fi
 
+    command -v ssh-keygen &>/dev/null || sudo pacman -S --needed --noconfirm openssh
+
     mkdir -p "$HOME/.ssh"
     chmod 700 "$HOME/.ssh"
     ssh-keygen -t ed25519 -C "$email" -f "$HOME/.ssh/id_ed25519" -N ""
@@ -86,6 +88,8 @@ setup_gh_auth() {
         echo "  [DRY-RUN] gh auth login --git-protocol ssh"
         return
     fi
+
+    command -v gh &>/dev/null || sudo pacman -S --needed --noconfirm github-cli
 
     info "Follow the device code flow to authenticate (no browser required)..."
     gh auth login --git-protocol ssh
