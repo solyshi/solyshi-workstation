@@ -87,7 +87,7 @@ solyshi-workstation/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/Chri1899/solyshi-workstation.git ~/solyshi-workstation
+git clone git@github.com:solyshi/solyshi-workstation.git ~/solyshi-workstation
 cd ~/solyshi-workstation
 ```
 
