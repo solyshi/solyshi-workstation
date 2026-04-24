@@ -1,0 +1,2 @@
+Place a default wallpaper here as: default.jpg
+Required by install/lib/firstboot.sh setup_matugen_default()

@@ -1,5 +1,6 @@
 # ============================================================
-# 03-dev.txt — Development Environment
+# 03-dev-core.txt — Core Development Toolchain
+# Compilers, build tools, editors, CLI utilities
 # ============================================================
 
 # Build Toolchain
@@ -15,6 +16,10 @@ clang
 patch
 bear
 
+# Debuggers
+gdb
+lldb
+
 # Editors
 vim
 neovim
@@ -27,28 +32,3 @@ fd
 tmux
 tmuxinator
 zeal
-
-# Databases
-postgresql
-
-# Java / JVM 
-sdkman-bin
-
-# Frontend / JS
-nodejs
-npm
-pnpm
-typescript
-
-# Rust
-rustup
-
-# Python
-python
-python-pip
-
-# Yazi 
-yazi
-
-# Libs
-sdl2

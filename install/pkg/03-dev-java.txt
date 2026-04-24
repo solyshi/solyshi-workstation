@@ -1,0 +1,6 @@
+# ============================================================
+# 03-dev-java.txt — Java / JVM (via SDKMAN)
+# sdkman-bin is listed for reference; setup_sdkman handles install
+# ============================================================
+
+sdkman-bin

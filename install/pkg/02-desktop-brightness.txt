@@ -1,0 +1,6 @@
+# ============================================================
+# 02-desktop-brightness.txt — Brightness Control
+# Hardware-checked before install (backlight required)
+# ============================================================
+
+brightnessctl

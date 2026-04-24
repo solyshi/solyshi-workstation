@@ -1,0 +1,9 @@
+# ============================================================
+# 02-desktop-media.txt — Media & Screen Tools
+# Screenshots, recording, night mode
+# ============================================================
+
+grim
+slurp
+wf-recorder
+wlsunset

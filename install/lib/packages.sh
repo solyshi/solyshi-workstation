@@ -4,8 +4,6 @@
 # Sourced by bootstrap.sh; expects DRY_RUN, PACKAGES_DIR to be set.
 # =============================================================================
 
-# Read packages from file and install via yay.
-# Comments (#) and empty lines are ignored.
 install_from_file() {
     local file="$1"
     local pkgs=()
@@ -49,35 +47,125 @@ install_base() {
     success "Base system installed"
 }
 
-install_desktop() {
-    section "02 — Desktop Environment"
-    install_from_file "$PACKAGES_DIR/02-desktop.txt"
+install_desktop_core() {
+    section "02 — Desktop Core"
+    install_from_file "$PACKAGES_DIR/02-desktop-core.txt"
     setup_sddm
-    success "Desktop installed"
+    success "Desktop core installed"
 }
 
-install_dev() {
-    section "03 — Dev Environment"
-    # Exclude sdkman-bin from the list — handled separately
-    local tmpfile
-    tmpfile=$(mktemp)
-    grep -v "sdkman-bin" "$PACKAGES_DIR/03-dev.txt" > "$tmpfile"
-    install_from_file "$tmpfile"
-    rm "$tmpfile"
-
-    if confirm "Set up Rust toolchain (stable + src)?"; then
-        setup_rust
-    fi
-
-    if confirm "Set up SDKMAN? (Java, Gradle, Maven)"; then
-        setup_sdkman
-    fi
-    success "Dev environment installed"
+install_desktop_media() {
+    section "02 — Desktop Media Tools"
+    install_from_file "$PACKAGES_DIR/02-desktop-media.txt"
+    success "Desktop media tools installed"
 }
 
-install_apps() {
-    section "04 — Applications"
-    install_from_file "$PACKAGES_DIR/04-apps.txt"
-    setup_spicetify
-    success "Applications installed"
+install_bluetooth() {
+    section "02 — Bluetooth"
+    local detected=false
+    if rfkill list bluetooth 2>/dev/null | grep -q bluetooth || \
+       ls /sys/class/bluetooth/ 2>/dev/null | grep -q .; then
+        detected=true
+        info "Bluetooth hardware detected."
+    else
+        warn "No Bluetooth hardware detected."
+    fi
+
+    if $detected; then
+        confirm "Install Bluetooth support?" || return
+    else
+        confirm "Install Bluetooth support anyway?" || return
+    fi
+
+    install_from_file "$PACKAGES_DIR/02-desktop-bluetooth.txt"
+    success "Bluetooth packages installed"
+}
+
+install_brightness() {
+    section "02 — Brightness Control"
+    if ls /sys/class/backlight/ 2>/dev/null | grep -q .; then
+        confirm "Backlight detected. Install brightnessctl?" || return
+        install_from_file "$PACKAGES_DIR/02-desktop-brightness.txt"
+        success "brightnessctl installed"
+    else
+        info "No backlight found (desktop/external monitors) — skipping brightnessctl"
+    fi
+}
+
+install_display_tools() {
+    section "02 — Display Tools"
+    install_from_file "$PACKAGES_DIR/02-desktop-display.txt"
+    success "Display tools installed"
+}
+
+install_desktop_apps() {
+    section "02 — Desktop Apps"
+    install_from_file "$PACKAGES_DIR/02-desktop-apps.txt"
+    success "Desktop apps installed"
+}
+
+install_dev_core() {
+    section "03 — Dev Core"
+    install_from_file "$PACKAGES_DIR/03-dev-core.txt"
+    success "Dev core installed"
+}
+
+install_dev_langs() {
+    section "03 — Dev Languages"
+    install_from_file "$PACKAGES_DIR/03-dev-langs.txt"
+    success "Dev languages installed"
+}
+
+install_dev_db() {
+    section "03 — Dev Database"
+    install_from_file "$PACKAGES_DIR/03-dev-db.txt"
+    success "Dev database installed"
+}
+
+install_dev_utils() {
+    section "03 — Dev Utilities"
+    install_from_file "$PACKAGES_DIR/03-dev-utils.txt"
+    success "Dev utilities installed"
+}
+
+install_apps_comms() {
+    section "04 — Communication Apps"
+    install_from_file "$PACKAGES_DIR/04-apps-comms.txt"
+    success "Communication apps installed"
+}
+
+install_apps_productivity() {
+    section "04 — Productivity Apps"
+    install_from_file "$PACKAGES_DIR/04-apps-productivity.txt"
+    if command -v spotify &>/dev/null; then
+        confirm "Set up Spicetify?" && setup_spicetify
+    fi
+    success "Productivity apps installed"
+}
+
+install_apps_gaming() {
+    section "04 — Gaming"
+    install_from_file "$PACKAGES_DIR/04-apps-gaming.txt"
+    success "Gaming apps installed"
+}
+
+setup_packages() {
+    install_yay
+
+    confirm "Install base system?"                                          && install_base
+    confirm "Install desktop core (Hyprland, Waybar, Kitty, Rofi, Mako)?" && install_desktop_core
+    confirm "Install desktop media tools (grim, slurp, wf-recorder)?"     && install_desktop_media
+    install_bluetooth
+    install_brightness
+    confirm "Install display tools (kanshi, playerctl)?"                   && install_display_tools
+    confirm "Install desktop apps (qutebrowser, btop)?"                   && install_desktop_apps
+    confirm "Install dev core (compilers, editors, debuggers)?"            && install_dev_core
+    confirm "Install dev languages (Node, Python, Rust)?"                  && install_dev_langs
+    confirm "Install dev database (PostgreSQL)?"                           && install_dev_db
+    confirm "Install dev utilities (yazi)?"                                && install_dev_utils
+    confirm "Set up Java / SDKMAN?"                                        && setup_sdkman
+    confirm "Set up Rust toolchain?"                                       && setup_rust
+    confirm "Install communication apps (Vesktop, Thunderbird)?"          && install_apps_comms
+    confirm "Install productivity apps (LibreOffice, Spotify, Timeshift)?" && install_apps_productivity
+    confirm "Install gaming apps (Steam, PrismLauncher)?"                 && install_apps_gaming
 }

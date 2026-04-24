@@ -1,11 +1,11 @@
 # ============================================================
-# 02-desktop.txt — Desktop Environment
-# Wayland, Hyprland, UI-Stack
+# 02-desktop-core.txt — Core Desktop Environment
+# Compositor, bar, terminal, launcher, notifications, theming
 # ============================================================
 
-# Desktop Manager
+# Display Manager
 sddm
-qt6-svg 
+qt6-svg
 qt6-virtualkeyboard
 sddm-silent-theme
 
@@ -20,6 +20,14 @@ hyprland
 # Portals
 xdg-desktop-portal
 xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+
+# Privilege escalation
+polkit-gnome
+
+# Lockscreen / idle
+hyprlock
+hypridle
 
 # Terminal
 kitty
@@ -40,28 +48,5 @@ cliphist
 # Notifications
 mako
 
-# Theming (AUR)
+# Theming
 matugen-bin
-
-# Screenshots
-grim
-slurp
-
-# Recording
-wf-recorder
-
-# Browser
-qutebrowser
-gst-plugins-base
-gst-plugins-good
-gst-plugins-bad
-gst-plugins-ugly
-gst-libav
-python-adblock
-
-# File Manager
-nautilus
-
-# Resource Manager
-btop
-

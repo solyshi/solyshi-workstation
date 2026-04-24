@@ -1,14 +1,14 @@
 #!/bin/bash
 # =============================================================================
 # solyshi-workstation — bootstrap.sh
-# Interactive workstation reinstallation
+# Interactive 6-stage workstation setup wizard
 # Run: bash ~/solyshi-workstation/install/bootstrap.sh [--dry-run]
 # =============================================================================
 
 set -e
 
 # =============================================================================
-# User configuration — edit these before running on a new machine
+# User configuration — edit before running on a new machine
 # =============================================================================
 # Keyboard layout passed to Hyprland's kb_layout option (e.g. us, de, fr, gb)
 KEYBOARD_LAYOUT="de"
@@ -26,7 +26,7 @@ STOW_PROFILE="$REPO_DIR/profiles/desktop.stow"
 LIB_DIR="$REPO_DIR/install/lib"
 
 # =============================================================================
-# Colors & helper functions
+# Colors & helpers
 # =============================================================================
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -53,8 +53,12 @@ confirm() {
 }
 
 # =============================================================================
-# Source function libraries
+# Source libraries
 # =============================================================================
+# shellcheck source=lib/identity.sh
+source "$LIB_DIR/identity.sh"
+# shellcheck source=lib/system.sh
+source "$LIB_DIR/system.sh"
 # shellcheck source=lib/packages.sh
 source "$LIB_DIR/packages.sh"
 # shellcheck source=lib/toolchains.sh
@@ -63,6 +67,8 @@ source "$LIB_DIR/toolchains.sh"
 source "$LIB_DIR/services.sh"
 # shellcheck source=lib/dotfiles.sh
 source "$LIB_DIR/dotfiles.sh"
+# shellcheck source=lib/firstboot.sh
+source "$LIB_DIR/firstboot.sh"
 
 # =============================================================================
 # Prerequisites
@@ -75,7 +81,7 @@ check_requirements() {
 }
 
 # =============================================================================
-# Main menu
+# Main — 6-stage wizard
 # =============================================================================
 main() {
     clear
@@ -85,91 +91,41 @@ main() {
     echo "  ║     Arch Linux — Interactive Setup       ║"
     echo "  ╚══════════════════════════════════════════╝"
     echo -e "${NC}"
+    $DRY_RUN && warn "DRY-RUN mode — no changes will be applied"
 
     check_requirements
 
-    # Clone repo if not already present
+    # ── Stage 1 ──────────────────────────────────────────────────────────────
+    section "[1/6] Identity & Auth"
+    setup_identity
+
+    # Clone repo now that SSH is configured
     if [[ ! -d "$HOME/solyshi-workstation" ]]; then
         info "Cloning repo..."
         git clone git@github.com:solyshi/solyshi-workstation.git "$HOME/solyshi-workstation"
     fi
 
-    install_yay
+    # ── Stage 2 ──────────────────────────────────────────────────────────────
+    section "[2/6] System Config"
+    setup_system_config
 
-    echo ""
-    echo -e "  ${BOLD}What should be installed?${NC}"
-    echo ""
-    echo "  [1] Link dotfiles only"
-    echo "  [2] Base system + dotfiles"
-    echo "  [3] Base + desktop + dotfiles"
-    echo "  [4] Base + desktop + dev + dotfiles"
-    echo "  [5] Everything (incl. apps, services, boot)"
-    echo "  [6] Select individually"
-    echo "  [q] Cancel"
-    echo ""
-    read -rp "  Choice: " choice
+    # ── Stage 3 ──────────────────────────────────────────────────────────────
+    section "[3/6] Packages"
+    setup_packages
 
-    case "$choice" in
-        1)
-            setup_stow
-            setup_directories
-            ;;
-        2)
-            install_base
-            setup_shell
-            setup_stow
-            setup_services
-            setup_directories
-            ;;
-        3)
-            install_base
-            install_desktop
-            setup_shell
-            setup_stow
-            setup_services
-            setup_boot
-            setup_directories
-            ;;
-        4)
-            install_base
-            install_desktop
-            install_dev
-            setup_shell
-            setup_stow
-            setup_services
-            setup_boot
-            setup_directories
-            ;;
-        5)
-            install_base
-            install_desktop
-            install_dev
-            install_apps
-            setup_shell
-            setup_stow
-            setup_services
-            setup_boot
-            setup_directories
-            ;;
-        6)
-            confirm "Install base system?"        && install_base
-            confirm "Install desktop?"            && install_desktop
-            confirm "Install dev environment?"    && install_dev
-            confirm "Install applications?"       && install_apps
-            setup_shell
-            confirm "Link dotfiles?"              && setup_stow
-            confirm "Configure services?"         && setup_services
-            confirm "Set systemd-boot to LTS?"    && setup_boot
-            setup_directories
-            ;;
-        q|Q)
-            echo "  Cancelled."
-            exit 0
-            ;;
-        *)
-            error "Invalid choice"
-            ;;
-    esac
+    # ── Stage 4 ──────────────────────────────────────────────────────────────
+    section "[4/6] Services"
+    setup_services
+
+    # ── Stage 5 ──────────────────────────────────────────────────────────────
+    section "[5/6] Dotfiles"
+    setup_shell
+    setup_stow
+    setup_directories
+
+    # ── Stage 6 ──────────────────────────────────────────────────────────────
+    section "[6/6] First Boot"
+    setup_firstboot
 
     echo ""
     echo -e "${BOLD}${GREEN}"
