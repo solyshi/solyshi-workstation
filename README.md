@@ -16,6 +16,7 @@ Managed with GNU Stow, structured for reproducibility and easy bootstrap on a fr
   - [Neovim](#neovim)
   - [Tmux](#tmux)
   - [Zsh](#zsh)
+- [Issue → PR Workflow](#issue--pr-workflow)
 
 ---
 
