@@ -26,25 +26,7 @@ setup_ssh() {
     mkdir -p "$HOME/.ssh"
     chmod 700 "$HOME/.ssh"
     ssh-keygen -t ed25519 -C "$email" -f "$HOME/.ssh/id_ed25519" -N ""
-
-    echo ""
-    info "Your public key — add this to GitHub (Settings → SSH Keys):"
-    echo ""
-    cat "$HOME/.ssh/id_ed25519.pub"
-    echo ""
-    read -rp "  Press Enter once the key is added to GitHub..."
-
-    local attempts=0
-    while (( attempts < 3 )); do
-        if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
-            success "SSH connection to GitHub verified"
-            return
-        fi
-        (( attempts++ ))
-        warn "Connection failed (attempt $attempts/3)"
-        (( attempts < 3 )) && read -rp "  Press Enter to retry, or Ctrl+C to abort..."
-    done
-    warn "SSH verification failed — continuing anyway"
+    success "SSH key generated — GitHub CLI will upload it in the next step"
 }
 
 setup_git_identity() {
@@ -91,11 +73,16 @@ setup_gh_auth() {
 
     command -v gh &>/dev/null || sudo pacman -S --needed --noconfirm github-cli
 
-    info "Follow the device code flow to authenticate (no browser required)..."
+    info "Device code flow — when prompted, choose to upload your SSH key to GitHub."
     gh auth login --git-protocol ssh
 
     if gh auth status &>/dev/null; then
         success "GitHub CLI authenticated"
+        if ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
+            success "SSH connection to GitHub verified"
+        else
+            warn "SSH not yet verified — key upload may need a moment to propagate"
+        fi
     else
         warn "GitHub CLI authentication could not be verified — continuing"
     fi

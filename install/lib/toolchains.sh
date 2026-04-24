@@ -57,26 +57,26 @@ setup_sdkman() {
     section "SDKMAN"
     local sdkman_dir="$HOME/.sdkman"
 
+    # SDKMAN scripts freely reference unset positional params — suspend nounset for the whole function
+    set +u
+
     if [[ ! -f "$sdkman_dir/bin/sdkman-init.sh" ]]; then
         info "Installing SDKMAN to $sdkman_dir..."
         export SDKMAN_DIR="$sdkman_dir"
         if ! curl -s "https://get.sdkman.io" | bash; then
-            error "SDKMAN installation failed"
+            set -u; error "SDKMAN installation failed"
         fi
     else
         success "SDKMAN already installed at $sdkman_dir"
     fi
 
-    # sdkman-init.sh references vars that may be unset — suspend nounset around it
-    set +u
     # shellcheck disable=SC1090,SC1091
     source "$sdkman_dir/bin/sdkman-init.sh" || { set -u; error "Failed to source SDKMAN init script at $sdkman_dir/bin/sdkman-init.sh"; }
-    set -u
 
     if $DRY_RUN; then
         echo "  [DRY-RUN] sdk install java 21.0.9-tem"
         echo "  [DRY-RUN] sdk install gradle"
-        return
+        set -u; return
     fi
 
     info "Installing Java 21 (Temurin)..."
@@ -93,5 +93,6 @@ setup_sdkman() {
         sdk install maven || warn "Maven already installed"
     fi
 
+    set -u
     success "SDKMAN set up"
 }

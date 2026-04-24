@@ -9,8 +9,9 @@ setup_stow() {
     section "Dotfiles (stow)"
     command -v stow &>/dev/null || yay -S --needed --noconfirm stow
 
+    # 'scripts' lives at repo root, not in dotfiles/ — handled by the second stow call below
     local packages
-    packages=$(tr '\n' ' ' < "$STOW_PROFILE")
+    packages=$(grep -v '^scripts$' "$STOW_PROFILE" | tr '\n' ' ')
 
     if $DRY_RUN; then
         echo "  [DRY-RUN] stow --no-folding -d $DOTFILES_DIR -t $HOME $packages"
