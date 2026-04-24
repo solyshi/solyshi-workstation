@@ -17,7 +17,7 @@ KEYBOARD_LAYOUT="de"
 # Paths
 # =============================================================================
 DRY_RUN=false
-[[ "$1" == "--dry-run" ]] && DRY_RUN=true
+[[ "${1:-}" == "--dry-run" ]] && DRY_RUN=true
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PACKAGES_DIR="$REPO_DIR/install/pkg"
