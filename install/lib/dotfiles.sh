@@ -17,14 +17,15 @@ setup_stow() {
         return
     fi
 
-    # Detect conflicts (existing non-symlink files at stow target paths)
+    # Back up conflicting files so stow can create symlinks cleanly
     while IFS= read -r pkg; do
         [[ -z "$pkg" ]] && continue
         find "$DOTFILES_DIR/$pkg" -type f 2>/dev/null | while IFS= read -r src; do
             local rel="${src#"$DOTFILES_DIR/$pkg/"}"
             local dst="$HOME/$rel"
             if [[ -e "$dst" && ! -L "$dst" ]]; then
-                warn "Conflict: $dst exists and is not a symlink — skipping"
+                warn "Backing up $dst → ${dst}.bak"
+                mv "$dst" "${dst}.bak"
             fi
         done
     done < "$STOW_PROFILE"

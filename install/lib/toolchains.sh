@@ -7,6 +7,14 @@
 setup_spicetify() {
     section "SPICETIFY"
 
+    local prefs_file="$HOME/.config/spotify/prefs"
+    if [[ ! -f "$prefs_file" ]]; then
+        warn "Spotify prefs not found — launch Spotify once first, then run manually:"
+        warn "  spicetify backup apply"
+        warn "  curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh"
+        return
+    fi
+
     sudo chmod a+wr /opt/spotify
     sudo chmod a+wr /opt/spotify/App -R
 
@@ -16,7 +24,7 @@ setup_spicetify() {
     else
         if ! curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh; then
             warn "Spicetify Marketplace install failed — check network and retry manually"
-            return 1
+            return
         fi
         success "Spicetify successfully installed"
     fi
@@ -47,24 +55,16 @@ setup_rust() {
 
 setup_sdkman() {
     section "SDKMAN"
-    local sdkman_dir="${XDG_DATA_HOME:-$HOME/.local/share}/sdkman"
+    local sdkman_dir="$HOME/.sdkman"
 
-    if [[ -f "$sdkman_dir/bin/sdkman-init.sh" ]]; then
-        success "SDKMAN already installed"
-    else
+    if [[ ! -f "$sdkman_dir/bin/sdkman-init.sh" ]]; then
         info "Installing SDKMAN to $sdkman_dir..."
         export SDKMAN_DIR="$sdkman_dir"
         if ! curl -s "https://get.sdkman.io" | bash; then
             error "SDKMAN installation failed"
         fi
-
-        # Path fix: SDKMAN sometimes creates a .sdkman/ subdirectory
-        if [[ -d "$sdkman_dir/.sdkman" && ! -f "$sdkman_dir/bin/sdkman-init.sh" ]]; then
-            warn "Applying SDKMAN path fix..."
-            mv "$sdkman_dir/.sdkman/"* "$sdkman_dir/" 2>/dev/null || true
-            mv "$sdkman_dir/.sdkman/".* "$sdkman_dir/" 2>/dev/null || true
-            rm -rf "$sdkman_dir/.sdkman"
-        fi
+    else
+        success "SDKMAN already installed at $sdkman_dir"
     fi
 
     # sdkman-init.sh references vars that may be unset — suspend nounset around it

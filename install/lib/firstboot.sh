@@ -39,11 +39,17 @@ setup_tpm() {
         return
     fi
 
-    local tpm_script="$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh"
+    local tpm_dir="$HOME/.tmux/plugins/tpm"
+    local tpm_script="$tpm_dir/scripts/install_plugins.sh"
+
+    if [[ ! -d "$tpm_dir" ]]; then
+        info "Cloning TPM..."
+        git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
+    fi
 
     if [[ ! -f "$tpm_script" ]]; then
-        warn "TPM not found at $tpm_script — was tmux config stowed?"
-        FIRSTBOOT_SKIPPED+=("TPM bootstrap (tpm dir missing after stow)")
+        warn "TPM install script not found at $tpm_script"
+        FIRSTBOOT_SKIPPED+=("TPM bootstrap (script missing)")
         return
     fi
 

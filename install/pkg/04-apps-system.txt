@@ -1,0 +1,6 @@
+# ============================================================
+# 04-apps-system.txt — System Safety Tools
+# ============================================================
+
+# Pacman hook: auto-snapshot before every upgrade (requires cronie service)
+timeshift-autosnap

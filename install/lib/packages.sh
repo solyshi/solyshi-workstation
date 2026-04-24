@@ -149,6 +149,12 @@ install_apps_gaming() {
     success "Gaming apps installed"
 }
 
+install_apps_system() {
+    section "04 — System Tools"
+    install_from_file "$PACKAGES_DIR/04-apps-system.txt"
+    success "System tools installed"
+}
+
 setup_packages() {
     install_yay
 
@@ -166,6 +172,7 @@ setup_packages() {
     confirm "Set up Java / SDKMAN?"                                        && setup_sdkman
     confirm "Set up Rust toolchain?"                                       && setup_rust
     confirm "Install communication apps (Vesktop, Thunderbird)?"          && install_apps_comms
-    confirm "Install productivity apps (LibreOffice, Spotify, Timeshift)?" && install_apps_productivity
+    confirm "Install productivity apps (LibreOffice, Spotify)?"            && install_apps_productivity
     confirm "Install gaming apps (Steam, PrismLauncher)?"                 && install_apps_gaming
+    confirm "Install Timeshift (auto-snapshot pacman hook for rolling-release safety)?" && install_apps_system
 }

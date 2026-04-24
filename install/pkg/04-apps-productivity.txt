@@ -12,5 +12,3 @@ spicetify-cli
 # Trading
 tradingview
 
-# Rolling release safety (hooks into pacman, auto-snapshots before upgrades)
-timeshift-autosnap
