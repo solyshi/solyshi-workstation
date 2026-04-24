@@ -151,33 +151,6 @@ stow --no-folding -d dotfiles -t ~ $(cat profiles/desktop.stow)
 
 ---
 
-## Swap
-
-Swap is not configured by the bootstrap script — the right choice depends on your hardware.
-
-**Swapfile (recommended for most desktops):**
-```bash
-sudo fallocate -l 8G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-echo '/swapfile none swap defaults 0 0' | sudo tee -a /etc/fstab
-```
-
-**zram (recommended for low-RAM systems or SSDs you want to protect):**
-```bash
-yay -S zram-generator
-sudo tee /etc/systemd/zram-generator.conf <<EOF
-[zram0]
-zram-size = ram / 2
-compression-algorithm = zstd
-EOF
-sudo systemctl daemon-reload
-sudo systemctl start /dev/zram0
-```
-
----
-
 ## Theming
 
 Colors are generated with [matugen](https://github.com/InioX/matugen) based on the current wallpaper using Material You color extraction.
@@ -245,7 +218,7 @@ Plugin manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
 | Completion    | blink-cmp                          |
 | Snippets      | LuaSnip, friendly-snippets         |
 | Syntax        | Treesitter                         |
-| Git           | Neogit, Gitsigns, Diffview         |
+| Git           | Neogit, Gitsigns, Diffview, Octo   |
 | Navigation    | fzf-lua                            |
 | Formatting    | Conform                            |
 | Java          | nvim-java                          |
@@ -264,8 +237,6 @@ Plugin manager: TPM
 
 | Plugin                | Purpose                         |
 |-----------------------|---------------------------------|
-| tmux-resurrect        | Persist sessions across reboots |
-| tmux-continuum        | Automatic session saving        |
 | vim-tmux-navigator    | Seamless Neovim/tmux navigation |
 
 Session management via the `tmux-sessionizer` script, bound to a keybind in Hyprland.
