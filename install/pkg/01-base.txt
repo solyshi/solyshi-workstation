@@ -23,6 +23,7 @@ openssh
 # Shell & Tools
 zsh
 git
+github-cli
 wget
 curl
 unzip

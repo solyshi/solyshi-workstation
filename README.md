@@ -16,7 +16,6 @@ Managed with GNU Stow, structured for reproducibility and easy bootstrap on a fr
   - [Neovim](#neovim)
   - [Tmux](#tmux)
   - [Zsh](#zsh)
-- [Roadmap](#roadmap)
 
 ---
 
@@ -241,11 +240,3 @@ The theme config is stored in `system/sddm/sddm.conf.d/theme.conf` and symlinked
 > ```
 
 ---
-
-## Roadmap
-
-- [ ] Keybind cheatsheet (floating Kitty window + glow + Markdown)
-- [ ] Lockscreen (hyprlock + hypridle) — in-session screen lock
-- [ ] Zsh cleanup pass
-- [ ] Extend Waybar with more useful modules
-- [ ] Replace some UI packages with Quickshell eventually
