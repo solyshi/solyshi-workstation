@@ -240,3 +240,18 @@ The theme config is stored in `system/sddm/sddm.conf.d/theme.conf` and symlinked
 > ```
 
 ---
+
+## Issue → PR Workflow
+
+1. **Pick issue** — `<leader>gi` → open in Octo → assign yourself
+2. **Create branch** — `<ENTER>` -> develop issue
+3. **Do the work** — commit as you go with Neogit (`<leader>gg`) or lazygit
+4. **Push** — Neogit push menu → `u`
+5. **Open PR** — `<leader>gP` in Octo (branch already linked to issue via `gh issue develop`, no `Closes #X` needed)
+6. **Merge** — `<leader>gp` → open PR → merge
+7. **Clean up**
+   ```bash
+   git checkout main && git pull
+   git branch -d <branch>
+   git push origin --delete <branch>
+   ```
