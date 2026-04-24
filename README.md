@@ -86,6 +86,9 @@ solyshi-workstation/
 ## Installation
 
 ### 1. Clone the repository
+
+> **Note:** SSH is required. If you don't have an SSH key yet, the bootstrap script handles this in Stage 1 — just run it and follow the prompts.
+
 ```bash
 git clone git@github.com:solyshi/solyshi-workstation.git ~/solyshi-workstation
 cd ~/solyshi-workstation
@@ -97,30 +100,64 @@ Before running the script, set your keyboard layout at the top of `install/boots
 ```bash
 KEYBOARD_LAYOUT="de"   # change to e.g. us, fr, gb
 ```
-This is applied automatically to `~/.config/hypr/functionality/input.conf` after dotfiles are linked.
 
 ### 3. Run the bootstrap script
 
-The script supports an interactive menu and a dry-run mode to preview changes before applying.
 ```bash
-bash install/bootstrap.sh           # interactive
+bash install/bootstrap.sh           # interactive wizard
 bash install/bootstrap.sh --dry-run # preview without applying
 ```
 
-Available options:
+The script runs six stages in order. Each component within a stage is individually confirm-prompted — nothing is installed without your explicit `y`.
 
-- Dry-run mode — preview all actions without applying them
-- Interactive package group selection (base, desktop, dev, apps)
-- Automatic stow of dotfiles
+| Stage | What it covers |
+|-------|---------------|
+| 1 — Identity & Auth | SSH key gen, git config, gh auth login |
+| 2 — System Config | Hostname, timezone, locale |
+| 3 — Packages | Granular package groups with hardware detection |
+| 4 — Services | systemd services (NetworkManager, bluetooth, fstrim, etc.) |
+| 5 — Dotfiles | GNU Stow linking, XDG directories, keyboard layout |
+| 6 — First Boot | TPM plugins, matugen initial run, boot entry, summary |
 
-### 4. Apply dotfiles manually (optional)
+### 4. Post-install
+
+- Update `dotfiles/hypr/appearance/monitors.conf` for your specific display setup
+- Add a default wallpaper at `assets/wallpaper/default.jpg` if you skipped the matugen step
+- Reboot
+
+### 5. Apply dotfiles manually (optional)
 
 To stow individual packages without the bootstrap script:
 ```bash
 cd ~/solyshi-workstation
-stow -d ~/solyshi-workstation/dotfiles -t ~ $(cat ~/solyshi-workstation/profiles/desktop.stow)
-OR
-stow -d dotfiles -t ~ hypr kitty nvim zsh tmux waybar rofi mako matugen nautilus yazi
+stow --no-folding -d dotfiles -t ~ $(cat profiles/desktop.stow)
+```
+
+---
+
+## Swap
+
+Swap is not configured by the bootstrap script — the right choice depends on your hardware.
+
+**Swapfile (recommended for most desktops):**
+```bash
+sudo fallocate -l 8G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap defaults 0 0' | sudo tee -a /etc/fstab
+```
+
+**zram (recommended for low-RAM systems or SSDs you want to protect):**
+```bash
+yay -S zram-generator
+sudo tee /etc/systemd/zram-generator.conf <<EOF
+[zram0]
+zram-size = ram / 2
+compression-algorithm = zstd
+EOF
+sudo systemctl daemon-reload
+sudo systemctl start /dev/zram0
 ```
 
 ---
