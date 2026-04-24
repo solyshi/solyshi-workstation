@@ -5,7 +5,7 @@
 # Run: bash ~/solyshi-workstation/install/bootstrap.sh [--dry-run]
 # =============================================================================
 
-set -e
+set -uo pipefail
 
 # =============================================================================
 # User configuration — edit before running on a new machine
