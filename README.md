@@ -35,7 +35,7 @@ Managed with GNU Stow, structured for reproducibility and easy bootstrap on a fr
 | Display Manager | SDDM (Silent theme)    |
 | Notifications | Mako                   |
 | Browser       | Qutebrowser            |
-| File Manager  | Nautilus               |
+| File Manager  | Yazi (TUI)             |
 | Music         | Spotify + Spicetify    |
 | Theming       | matugen (Material You) |
 | Dotfile Mgmt  | GNU Stow               |
@@ -46,9 +46,9 @@ Managed with GNU Stow, structured for reproducibility and easy bootstrap on a fr
 ```
 solyshi-workstation/
 ├── dotfiles/
-│   ├── hypr/                   # Hyprland config (split into appearance, keybinds, rules, scripts)
+│   ├── hypr/                   # Hyprland config (appearance, keybinds, rules, scripts)
 │   ├── waybar/                 # Bar config, styles, launch script
-│   ├── yazi/                   # TUI File Browser configs 
+│   ├── yazi/                   # TUI file browser config
 │   ├── kitty/                  # Terminal colors and config
 │   ├── nvim/                   # Neovim config (lazy.nvim, LSP, plugins)
 │   ├── zsh/                    # .zshrc, .zprofile, p10k
@@ -59,27 +59,42 @@ solyshi-workstation/
 │   ├── qutebrowser/            # Browser config and colors
 │   ├── spicetify/              # Spotify theming
 │   ├── theme/                  # Wallpaper picker and apply script
-│   ├── emacs/                  # Emacs config (secondary editor)
-│   └── nautilus/               # File Browser Configurations
+│   └── emacs/                  # Emacs config (secondary editor, stowed on request)
 ├── install/
-│   ├── bootstrap.sh            # Interactive bootstrap script with dry-run support
-│   └── lib/
-│       ├── packages.sh         # yay, package group installation
-│       ├── toolchains.sh       # Rust, SDKMAN, Spicetify setup
-│       ├── services.sh         # systemd services, SDDM, boot config
-│       └── dotfiles.sh         # stow linking, shell, directories
-│   └── packages/
-│       ├── 01-base.txt
-│       ├── 02-desktop.txt
-│       ├── 03-dev.txt
-│       └── 04-apps.txt
+│   ├── bootstrap.sh            # 6-stage interactive wizard with dry-run support
+│   ├── lib/
+│   │   ├── identity.sh         # SSH keygen, git config, gh auth
+│   │   ├── system.sh           # hostname, timezone, locale
+│   │   ├── packages.sh         # yay, granular package group installation
+│   │   ├── toolchains.sh       # Rust, SDKMAN, Spicetify setup
+│   │   ├── services.sh         # systemd services, SDDM, capability checks
+│   │   ├── dotfiles.sh         # stow linking, shell, XDG directories
+│   │   └── firstboot.sh        # TPM bootstrap, matugen, boot entry, summary
+│   └── pkg/
+│       ├── 01-base.txt         # core system, shell tools, fonts, audio
+│       ├── 02-desktop-core.txt # Hyprland, Waybar, Kitty, Rofi, Mako, portals, polkit, hyprlock
+│       ├── 02-desktop-media.txt# grim, slurp, wf-recorder, wlsunset
+│       ├── 02-desktop-bluetooth.txt  # bluez (hardware-checked)
+│       ├── 02-desktop-brightness.txt # brightnessctl (backlight-checked)
+│       ├── 02-desktop-display.txt    # kanshi, playerctl
+│       ├── 02-desktop-apps.txt # qutebrowser, btop
+│       ├── 03-dev-core.txt     # compilers, editors, debuggers (gdb, lldb), CLI tools
+│       ├── 03-dev-langs.txt    # Node, Python, Rust, sdl2
+│       ├── 03-dev-java.txt     # sdkman-bin
+│       ├── 03-dev-db.txt       # postgresql
+│       ├── 03-dev-utils.txt    # yazi
+│       ├── 04-apps-comms.txt   # vesktop, thunderbird
+│       ├── 04-apps-productivity.txt  # libreoffice, spotify, timeshift-autosnap
+│       └── 04-apps-gaming.txt  # steam, prismlauncher, mpv
+├── assets/
+│   └── wallpaper/              # Place default.jpg here for matugen first-run
 ├── system/
 │   └── sddm/
 │       └── sddm.conf.d/
 │           └── theme.conf      # SDDM theme selection (symlinked to /etc/sddm.conf.d/)
 ├── scripts/                    # Utility scripts (tmux-sessionizer, etc.)
 └── profiles/
-    └── desktop.stow  # Stow profile for desktop setup
+    └── desktop.stow            # Stow profile for desktop setup
 ```
 
 ---
