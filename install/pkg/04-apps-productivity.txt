@@ -1,12 +1,8 @@
 # ============================================================
-# 04-apps.txt — Applications
+# 04-apps-productivity.txt — Productivity & Media Apps
 # ============================================================
 
-# Communications
-vesktop
-thunderbird
-
-# Productivity
+# Office
 libreoffice-fresh
 
 # Music
@@ -16,12 +12,5 @@ spicetify-cli
 # Trading
 tradingview
 
-# Gaming
-steam
-prismlauncher
-
-# Identification
-ausweisapp2
-
-# Video Player
-mpv
+# Rolling release safety (hooks into pacman, auto-snapshots before upgrades)
+timeshift-autosnap

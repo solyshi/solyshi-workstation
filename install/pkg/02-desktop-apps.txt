@@ -1,0 +1,15 @@
+# ============================================================
+# 02-desktop-apps.txt — Desktop Applications
+# ============================================================
+
+# Browser
+qutebrowser
+gst-plugins-base
+gst-plugins-good
+gst-plugins-bad
+gst-plugins-ugly
+gst-libav
+python-adblock
+
+# Resource Monitor
+btop

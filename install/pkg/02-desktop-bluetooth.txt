@@ -1,0 +1,7 @@
+# ============================================================
+# 02-desktop-bluetooth.txt — Bluetooth Support
+# Hardware-checked before install
+# ============================================================
+
+bluez
+bluez-utils

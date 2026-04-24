@@ -1,0 +1,19 @@
+# ============================================================
+# 03-dev-langs.txt — Language Runtimes & Toolchains
+# ============================================================
+
+# Frontend / JS
+nodejs
+npm
+pnpm
+typescript
+
+# Rust
+rustup
+
+# Python
+python
+python-pip
+
+# Libs
+sdl2
