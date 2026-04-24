@@ -1,8 +1,7 @@
 # ============================================================
-# 04-apps-gaming.txt — Gaming & Misc Apps
+# 04-apps-gaming.txt — Gaming
+# Note: steam requires [multilib] — enabled by install_apps_gaming()
 # ============================================================
 
 steam
 prismlauncher
-ausweisapp2
-mpv

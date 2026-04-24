@@ -4,3 +4,6 @@
 
 vesktop
 thunderbird
+
+# German eID / passport authentication — verify AUR package name before installing
+# ausweisapp2-bin

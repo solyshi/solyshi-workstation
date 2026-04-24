@@ -55,7 +55,7 @@ setup_rust() {
 
 setup_sdkman() {
     section "SDKMAN"
-    local sdkman_dir="$HOME/.sdkman"
+    local sdkman_dir="${XDG_DATA_HOME:-$HOME/.local/share}/sdkman"
 
     # SDKMAN scripts freely reference unset positional params — suspend nounset for the whole function
     set +u

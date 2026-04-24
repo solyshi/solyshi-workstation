@@ -8,11 +8,19 @@ FIRSTBOOT_SKIPPED=()
 
 setup_boot() {
     section "systemd-boot"
+
+    if [[ ! -d /boot/loader/entries ]]; then
+        info "systemd-boot not detected (GRUB or other bootloader in use) — skipping"
+        return
+    fi
+
     local entry
     entry=$(find /boot/loader/entries/ -maxdepth 1 -name "*lts*" 2>/dev/null | head -1 | xargs basename 2>/dev/null)
 
     if [[ -z "$entry" ]]; then
-        warn "No LTS boot entry found — skipping"
+        warn "No LTS boot entry found in /boot/loader/entries/ — skipping"
+        warn "If linux-lts was just installed, reboot once and re-run this step manually:"
+        warn "  sudo bootctl set-default <entry>.conf"
         FIRSTBOOT_SKIPPED+=("systemd-boot LTS entry")
         return
     fi

@@ -22,7 +22,6 @@ openssh
 
 # Shell & Tools
 zsh
-zsh-theme-powerlevel10k
 git
 github-cli
 wget
@@ -64,3 +63,4 @@ noto-fonts-emoji
 # Misc System
 xdg-user-dirs
 xdg-utils
+fastfetch

@@ -145,6 +145,16 @@ install_apps_productivity() {
 
 install_apps_gaming() {
     section "04 — Gaming"
+    # Steam lives in multilib — enable it if not already active
+    if ! grep -q '^\[multilib\]' /etc/pacman.conf; then
+        info "Enabling [multilib] repo for Steam..."
+        if $DRY_RUN; then
+            echo "  [DRY-RUN] uncomment [multilib] in /etc/pacman.conf"
+        else
+            sudo sed -i '/^#\[multilib\]/{N;s/#\[multilib\]\n#Include/[multilib]\nInclude/}' /etc/pacman.conf
+            sudo pacman -Sy --noconfirm
+        fi
+    fi
     install_from_file "$PACKAGES_DIR/04-apps-gaming.txt"
     success "Gaming apps installed"
 }

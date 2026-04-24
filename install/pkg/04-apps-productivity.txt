@@ -5,6 +5,9 @@
 # Office
 libreoffice-fresh
 
+# Media
+mpv
+
 # Music
 spotify
 spicetify-cli
