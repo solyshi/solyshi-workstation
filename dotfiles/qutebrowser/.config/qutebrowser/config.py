@@ -2050,6 +2050,9 @@ config.bind("Y", "prompt-accept --save yes", mode="yesno")
 config.bind("n", "prompt-accept no", mode="yesno")
 config.bind("y", "prompt-accept yes", mode="yesno")
 
+# Toggle Darkmode
+config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false')
+
 # ==========================
 # ========== ZEN ===========
 # ==========================

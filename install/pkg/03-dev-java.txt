@@ -1,5 +1,0 @@
-# ============================================================
-# 03-dev-java.txt — Java / JVM
-# SDKMAN itself is installed by setup_sdkman via the official curl installer.
-# Java and Gradle are then installed through SDKMAN.
-# ============================================================
