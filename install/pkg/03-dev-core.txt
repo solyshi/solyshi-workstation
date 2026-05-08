@@ -32,3 +32,5 @@ fd
 tmux
 tmuxinator
 zeal
+docker
+docker-compose
