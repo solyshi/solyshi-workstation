@@ -1,0 +1,10 @@
+return {
+    browser = "qutebrowser",
+    terminal = "kitty",
+    email = "thunderbird",
+    music = "spotify",
+    chat = "vesktop",
+    wallpaper = "~/.config/theme/wallpaper-picker.sh",
+    filegui = "nautilus",
+    files = "kitty --class yazi -e yazi",
+}

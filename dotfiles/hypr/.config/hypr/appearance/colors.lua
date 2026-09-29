@@ -1,0 +1,103 @@
+return {
+    
+        background = "rgba(1a120dff)",
+    
+        error = "rgba(ffb4abff)",
+    
+        error_container = "rgba(93000aff)",
+    
+        inverse_on_surface = "rgba(382e29ff)",
+    
+        inverse_primary = "rgba(8c4f27ff)",
+    
+        inverse_surface = "rgba(f0dfd7ff)",
+    
+        on_background = "rgba(f0dfd7ff)",
+    
+        on_error = "rgba(690005ff)",
+    
+        on_error_container = "rgba(ffdad6ff)",
+    
+        on_primary = "rgba(532200ff)",
+    
+        on_primary_container = "rgba(ffdbc9ff)",
+    
+        on_primary_fixed = "rgba(321200ff)",
+    
+        on_primary_fixed_variant = "rgba(6f3812ff)",
+    
+        on_secondary = "rgba(432b1cff)",
+    
+        on_secondary_container = "rgba(ffdbc9ff)",
+    
+        on_secondary_fixed = "rgba(2b1609ff)",
+    
+        on_secondary_fixed_variant = "rgba(5c4131ff)",
+    
+        on_surface = "rgba(f0dfd7ff)",
+    
+        on_surface_variant = "rgba(d7c2b8ff)",
+    
+        on_tertiary = "rgba(333209ff)",
+    
+        on_tertiary_container = "rgba(e9e5acff)",
+    
+        on_tertiary_fixed = "rgba(1e1d00ff)",
+    
+        on_tertiary_fixed_variant = "rgba(4a481dff)",
+    
+        outline = "rgba(9f8d84ff)",
+    
+        outline_variant = "rgba(52443cff)",
+    
+        primary = "rgba(ffb68cff)",
+    
+        primary_container = "rgba(6f3812ff)",
+    
+        primary_fixed = "rgba(ffdbc9ff)",
+    
+        primary_fixed_dim = "rgba(ffb68cff)",
+    
+        scrim = "rgba(000000ff)",
+    
+        secondary = "rgba(e5bfaaff)",
+    
+        secondary_container = "rgba(5c4131ff)",
+    
+        secondary_fixed = "rgba(ffdbc9ff)",
+    
+        secondary_fixed_dim = "rgba(e5bfaaff)",
+    
+        shadow = "rgba(000000ff)",
+    
+        source_color = "rgba(f97b1bff)",
+    
+        surface = "rgba(1a120dff)",
+    
+        surface_bright = "rgba(413732ff)",
+    
+        surface_container = "rgba(271e19ff)",
+    
+        surface_container_high = "rgba(312823ff)",
+    
+        surface_container_highest = "rgba(3d332dff)",
+    
+        surface_container_low = "rgba(221a15ff)",
+    
+        surface_container_lowest = "rgba(140d08ff)",
+    
+        surface_dim = "rgba(1a120dff)",
+    
+        surface_tint = "rgba(ffb68cff)",
+    
+        surface_variant = "rgba(52443cff)",
+    
+        tertiary = "rgba(ccc992ff)",
+    
+        tertiary_container = "rgba(4a481dff)",
+    
+        tertiary_fixed = "rgba(e9e5acff)",
+    
+        tertiary_fixed_dim = "rgba(ccc992ff)",
+    
+}
