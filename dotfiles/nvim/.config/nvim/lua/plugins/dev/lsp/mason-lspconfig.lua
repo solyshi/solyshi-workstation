@@ -21,7 +21,10 @@ return {
                 "pyright",
                 "tailwindcss",
                 "rust_analyzer",
-                "lemminx"
+                "lemminx",
+                "eslint",
+                "stylua",
+                "emmet_language_server",
             },
             automatic_enable = {
                 exclude = { "jdtls", "groovyls", "gradle_ls" },

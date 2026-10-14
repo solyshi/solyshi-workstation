@@ -8,7 +8,6 @@ preview_hovered = { underline = true }
 
 find_keyword  = { fg = "{{colors.tertiary.default.hex}}", bold = true }
 find_position = { fg = "{{colors.secondary.default.hex}}", italic = true }
-
 marker_copied  = { fg = "{{colors.tertiary.default.hex}}", bg = "{{colors.tertiary.default.hex}}" }
 marker_cut     = { fg = "{{colors.error.default.hex}}",    bg = "{{colors.error.default.hex}}" }
 marker_marked  = { fg = "{{colors.secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}" }

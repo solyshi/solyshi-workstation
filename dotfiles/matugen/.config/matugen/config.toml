@@ -1,6 +1,7 @@
 [config]
+source_color_index = 0
 reload_apps = true
-set_wallpaper = false  # We'll handle this with hyprpaper directly
+set_wallpaper = false  
 mode = "dark"
 
 [config.reload_apps_list]

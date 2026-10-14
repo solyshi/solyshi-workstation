@@ -1,56 +1,56 @@
 * {
-    primary: #ffb68c;
-    primary-fixed: #ffdbc9;
-    primary-fixed-dim: #ffb68c;
-    on-primary: #532200;
-    on-primary-fixed: #321200;
-    on-primary-fixed-variant: #6f3812;
-    primary-container: #6f3812;
-    on-primary-container: #ffdbc9;
-    secondary: #e5bfaa;
-    secondary-fixed: #ffdbc9;
-    secondary-fixed-dim: #e5bfaa;
-    on-secondary: #432b1c;
-    on-secondary-fixed: #2b1609;
-    on-secondary-fixed-variant: #5c4131;
-    secondary-container: #5c4131;
-    on-secondary-container: #ffdbc9;
-    tertiary: #ccc992;
-    tertiary-fixed: #e9e5ac;
-    tertiary-fixed-dim: #ccc992;
-    on-tertiary: #333209;
-    on-tertiary-fixed: #1e1d00;
-    on-tertiary-fixed-variant: #4a481d;
-    tertiary-container: #4a481d;
-    on-tertiary-container: #e9e5ac;
+    primary: #b2d18a;
+    primary-fixed: #cdeda3;
+    primary-fixed-dim: #b2d18a;
+    on-primary: #1f3701;
+    on-primary-fixed: #102000;
+    on-primary-fixed-variant: #354e16;
+    primary-container: #354e16;
+    on-primary-container: #cdeda3;
+    secondary: #c0cbad;
+    secondary-fixed: #dce7c8;
+    secondary-fixed-dim: #c0cbad;
+    on-secondary: #2a331e;
+    on-secondary-fixed: #161e0b;
+    on-secondary-fixed-variant: #404a33;
+    secondary-container: #404a33;
+    on-secondary-container: #dce7c8;
+    tertiary: #a0d0cb;
+    tertiary-fixed: #bcece7;
+    tertiary-fixed-dim: #a0d0cb;
+    on-tertiary: #003735;
+    on-tertiary-fixed: #00201e;
+    on-tertiary-fixed-variant: #1f4e4b;
+    tertiary-container: #1f4e4b;
+    on-tertiary-container: #bcece7;
     error: #ffb4ab;
     on-error: #690005;
     error-container: #93000a;
     on-error-container: #ffdad6;
-    surface: #1a120d;
-    on-surface: #f0dfd7;
-    on-surface-variant: #d7c2b8;
-    outline: #9f8d84;
-    outline-variant: #52443c;
+    surface: #12140e;
+    on-surface: #e2e3d8;
+    on-surface-variant: #c5c8ba;
+    outline: #8f9285;
+    outline-variant: #44483d;
     shadow: #000000;
     scrim: #000000;
-    inverse-surface: #f0dfd7;
-    inverse-on-surface: #382e29;
-    inverse-primary: #8c4f27;
-    surface-dim: #1a120d;
-    surface-bright: #413732;
-    surface-container-lowest: #140d08;
-    surface-container-low: #221a15;
-    surface-container: #271e19;
-    surface-container-high: #312823;
-    surface-container-highest: #3d332d;
+    inverse-surface: #e2e3d8;
+    inverse-on-surface: #2f312a;
+    inverse-primary: #4c662b;
+    surface-dim: #12140e;
+    surface-bright: #383a32;
+    surface-container-lowest: #0c0f09;
+    surface-container-low: #1a1c16;
+    surface-container: #1e201a;
+    surface-container-high: #282b24;
+    surface-container-highest: #33362e;
 
 }
 
 imagebox {
-    background-image: url("/home/solyshi/solyshi-workstation/dotfiles/assets/wallpapers/anime_girl_sword_glasses.jpg", height);
+    background-image: url("/home/solyshi/solyshi-workstation/dotfiles/assets/wallpapers/forest.jpg", height);
 }
 
 userimage {
-    background-image: url("/home/solyshi/solyshi-workstation/dotfiles/assets/wallpapers/anime_girl_sword_glasses.jpg", height);
+    background-image: url("/home/solyshi/solyshi-workstation/dotfiles/assets/wallpapers/forest.jpg", height);
 }

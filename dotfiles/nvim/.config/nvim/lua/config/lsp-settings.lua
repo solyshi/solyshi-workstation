@@ -132,7 +132,9 @@ function Lsp.start()
         local filetypes = vim.lsp.config[name] and vim.lsp.config[name].filetypes
 
         if filetypes and vim.tbl_contains(filetypes, vim.bo.filetype) then
-            local capabilities = require("blink.cmp").get_lsp_capabilities()
+            local capabilities = require("blink.cmp").get_lsp_capabilities({
+                general = { positionEncodings = { "utf-16" } },
+            })
             vim.lsp.config("*", {
                 capabilities = capabilities,
             })
