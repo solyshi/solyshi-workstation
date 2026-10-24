@@ -5,3 +5,6 @@ dotfiles/tmux/.config/tmux/plugins/
 dotfiles/theme/.config/theme/wallpaper
 dotfiles/yazi/.config/yazi/plugins/
 dotfiles/yazi/.config/yazi/flavors/matugen.yazi/flavor.toml
+
+# Claude Code local settings
+.claude/

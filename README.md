@@ -59,7 +59,8 @@ solyshi-workstation/
 │   ├── qutebrowser/            # Browser config and colors
 │   ├── spicetify/              # Spotify theming
 │   ├── theme/                  # Wallpaper picker and apply script
-│   └── emacs/                  # Emacs config (secondary editor, stowed on request)
+│   ├── assets/                 # Bundled wallpapers
+│   └── archive/                # Preserved-but-inactive configs (emacs)
 ├── install/
 │   ├── bootstrap.sh            # 6-stage interactive wizard with dry-run support
 │   ├── lib/
@@ -77,15 +78,15 @@ solyshi-workstation/
 │       ├── 02-desktop-bluetooth.txt  # bluez (hardware-checked)
 │       ├── 02-desktop-brightness.txt # brightnessctl (backlight-checked)
 │       ├── 02-desktop-display.txt    # kanshi, playerctl
-│       ├── 02-desktop-apps.txt # qutebrowser, btop
-│       ├── 03-dev-core.txt     # compilers, editors, debuggers (gdb, lldb), CLI tools
-│       ├── 03-dev-langs.txt    # Node, Python, Rust, sdl2
-│       ├── 03-dev-java.txt     # sdkman-bin
+│       ├── 02-desktop-apps.txt # qutebrowser (+ gstreamer, adblock), btop
+│       ├── 03-dev-core.txt     # compilers, debuggers (gdb, lldb), docker, zeal, CLI tools
+│       ├── 03-dev-langs.txt    # Node/pnpm/typescript, Python, Rust, sdl2
 │       ├── 03-dev-db.txt       # postgresql
 │       ├── 03-dev-utils.txt    # yazi
 │       ├── 04-apps-comms.txt   # vesktop, thunderbird
-│       ├── 04-apps-productivity.txt  # libreoffice, spotify, timeshift-autosnap
-│       └── 04-apps-gaming.txt  # steam, prismlauncher, mpv
+│       ├── 04-apps-productivity.txt  # libreoffice, mpv, spotify, spicetify, tradingview
+│       ├── 04-apps-gaming.txt  # steam, prismlauncher
+│       └── 04-apps-system.txt  # timeshift-autosnap (pre-upgrade snapshots)
 ├── assets/
 │   └── wallpaper/              # Place default.jpg here for matugen first-run
 ├── system/
@@ -159,7 +160,7 @@ Templates are provided for:
 
 | App         | Template file                             |
 |-------------|-------------------------------------------|
-| Hyprland    | `matugen/templates/hyprland-colors.conf`  |
+| Hyprland    | `matugen/templates/hyprland-colors.lua`   |
 | Kitty       | `matugen/templates/kitty-colors.conf`     |
 | Waybar      | `matugen/templates/waybar-colors.css`     |
 | Rofi        | `matugen/templates/rofi-colors.rasi`      |
@@ -181,53 +182,61 @@ The wallpaper picker at `dotfiles/theme/.config/theme/wallpaper-picker.sh` handl
 
 ### Hyprland
 
-Config is split into logical files, all sourced from `hyprland.conf`:
+Config is written in Lua modules (loaded via an `hl.config()` helper) rather than native hyprlang, split into logical files all required from `hyprland.lua`:
 ```
 hypr/
-├── hyprland.conf
+├── hyprland.lua
+├── hyprpaper.conf
 ├── appearance/
-│   ├── colors.conf
-│   ├── general.conf
-│   ├── layouts.conf
-│   ├── monitors.conf
-│   └── theme.conf
+│   ├── colors.lua
+│   ├── general.lua
+│   ├── layouts.lua
+│   ├── monitors.lua
+│   └── theme.lua
 ├── functionality/
-│   ├── autostart.conf
-│   ├── input.conf
-│   └── programs.conf
+│   ├── autostart.lua
+│   ├── input.lua
+│   └── programs.lua
 ├── keybinds/
-│   ├── apps.conf
-│   ├── main.conf
-│   ├── media.conf
-│   └── navigation.conf
+│   ├── apps.lua
+│   ├── main.lua
+│   ├── mainmod.lua
+│   ├── media.lua
+│   └── navigation.lua
 ├── rules/
-│   ├── layerrules.conf
-│   └── windowrules.conf
+│   ├── layerrules.lua
+│   └── windowrules.lua
 └── scripts/
+    ├── toggle-recorder.sh
     ├── toggle-scratch-btop.sh
-    └── toggle-scratch-term.sh
+    ├── toggle-scratch-term.sh
+    └── toggle-scratch-zeal.sh
 ```
 
 ### Neovim
 
 Plugin manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
 
-| Category      | Plugin(s)                          |
-|---------------|------------------------------------|
-| LSP           | nvim-lspconfig, Mason              |
-| Completion    | blink-cmp                          |
-| Snippets      | LuaSnip, friendly-snippets         |
-| Syntax        | Treesitter                         |
-| Git           | Neogit, Gitsigns, Diffview, Octo   |
-| Navigation    | fzf-lua                            |
-| Formatting    | Conform                            |
-| Java          | nvim-java                          |
-| C++/CMake     | cmake-tools.nvim                   |
-| File Manager  | ranger.nvim                        |
-| UI            | snacks.nvim, slimline.nvim         |
-| Editing       | nvim-autopairs, nvim-ts-autotag    |
-| Utilities     | todo-comments, undotree, csvview   |
-| Tmux          | vim-tmux-navigator                 |
+| Category      | Plugin(s)                                      |
+|---------------|------------------------------------------------|
+| Colorscheme   | sonokai (espresso)                             |
+| LSP           | nvim-lspconfig, Mason, lazydev                 |
+| Diagnostics   | trouble.nvim                                   |
+| Completion    | blink-cmp                                      |
+| Snippets      | LuaSnip, friendly-snippets                     |
+| Syntax        | Treesitter                                     |
+| Git           | Neogit, Gitsigns, Diffview, Octo               |
+| Navigation    | fzf-lua                                         |
+| Formatting    | Conform                                        |
+| Java          | nvim-java                                      |
+| C++/CMake     | cmake-tools.nvim                               |
+| File Manager  | yazi.nvim                                      |
+| UI            | snacks.nvim, slimline.nvim, which-key          |
+| Visuals       | zen-mode, twilight, precognition, transparent  |
+| Editing       | nvim-autopairs, nvim-ts-autotag, undotree      |
+| Utilities     | todo-comments, csvview, luxterm, neovim-tips   |
+| Docs          | zeavim (Zeal integration)                      |
+| Tmux          | vim-tmux-navigator                             |
 
 Build/Run philosophy: stack-specific CLI commands via tmux, no unified build abstraction in Neovim.
 
