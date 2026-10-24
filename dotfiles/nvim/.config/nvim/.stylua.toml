@@ -1,0 +1,9 @@
+# stylua defaults to tabs. conform formats lua on save (plugins/dev/util/conform.lua),
+# so without this file the first save of any config file would retab it and produce a
+# whole-file whitespace diff -- against a config that sets expandtab with
+# shiftwidth/tabstop/softtabstop = 4 in config/options.lua.
+#
+# Keep indent_width in sync with those options.
+indent_type = "Spaces"
+indent_width = 4
+column_width = 100
