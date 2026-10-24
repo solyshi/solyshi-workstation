@@ -13,3 +13,6 @@ python-adblock
 
 # Resource Monitor
 btop
+
+# GUI file manager — SUPER+E (programs.filegui); yazi remains the primary TUI
+nautilus

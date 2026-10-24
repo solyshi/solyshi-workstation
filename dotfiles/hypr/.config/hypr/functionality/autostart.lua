@@ -12,12 +12,13 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
 
-    -- Apps auf Workspaces
+    -- Apps on workspaces
     hl.exec_cmd(programs.terminal, { workspace = "1 silent" })
     hl.exec_cmd(programs.browser, { workspace = "2 silent" })
     hl.exec_cmd(programs.files, { workspace = "3 silent" })
     hl.exec_cmd("thunderbird", { workspace = "9 silent" })
-    hl.exec_cmd("tradingview", { workspace = "0 silent" })
+    -- Workspace 10 (keybind "0"); matches the ws-trading window rule
+    hl.exec_cmd("tradingview", { workspace = "10 silent" })
 
     -- Misc
     hl.exec_cmd(os.getenv("HOME") .. "/.config/theme/apply.sh")

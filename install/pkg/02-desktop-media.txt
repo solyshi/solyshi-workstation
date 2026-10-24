@@ -7,3 +7,6 @@ grim
 slurp
 wf-recorder
 wlsunset
+
+# Image viewer — yazi's "image" opener
+imv

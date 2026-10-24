@@ -1,7 +1,9 @@
 @import "colors.rasi"
 
 * {
-  font: "JetBrains Mono Nerd 12";
+  /* "JetBrains Mono Nerd" was not a real family name and silently fell back
+     to DejaVu Sans Mono. Iosevka primary, JetBrainsMono NF for icon glyphs. */
+  font: "Iosevka, JetBrainsMono NF 12";
 
   /* Safe Matugen Mappings */
   accent:         @primary;
@@ -26,9 +28,9 @@ window {
     width:              1000px;
     
     /* Fixed border syntax */
-    border:             2px;
-    border-color:       @brdr-col; 
-    border-radius:      15px;
+    border:             1px;
+    border-color:       @brdr-col;
+    border-radius:      10px;
     background-color:   @bg-main;
 }
 

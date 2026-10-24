@@ -1,7 +1,7 @@
 @import "colors.rasi"
 
 * {
-    font: "JetBrainsMono NF 12";
+    font: "Iosevka, JetBrainsMono NF 12";
     background: @surface;
     foreground: @on-surface;
     accent: @primary;
@@ -16,9 +16,9 @@ window {
     transparency: "real";
     location: center;
     width: 800px;
-    border: 2px;
+    border: 1px;
     border-color: @outline-variant;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: @background;
 }
 
@@ -37,7 +37,7 @@ listview {
 
 element {
     padding: 25px 10px;
-    border-radius: 15px;
+    border-radius: 8px;
     background-color: @surface-container-high;
 }
 
@@ -51,6 +51,8 @@ element-icon {
 }
 
 element-text {
+    /* Entries are pure Nerd glyphs (󰐥 󰑓 …), which Iosevka does not
+       provide - keep JetBrainsMono NF first here deliberately. */
     font: "JetBrainsMono NF 32";
     horizontal-align: 0.5;
     vertical-align: 0.5;
@@ -65,7 +67,7 @@ imagebox {
 
 inputbar {
     padding: 12px;
-    border-radius: 12px;
+    border-radius: 8px;
     background-color: @error-container;
     text-color: @on-error-container;
     children: [ "dummy", "prompt", "dummy" ];
@@ -73,7 +75,7 @@ inputbar {
 
 message {
     padding: 12px;
-    border-radius: 12px;
+    border-radius: 8px;
     background-color: @surface-container-highest;
 }
 

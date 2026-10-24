@@ -4,14 +4,15 @@ include=~/.config/mako/colors
 max-history=100
 sort=-time
 
-# --- Look & Feel (Matching your System) ---
+# --- Look & Feel ---
+# Shared tokens: 10px container radius, 1px border, Iosevka + NF icon fallback
 width=300
 height=110
 margin=10
 padding=15
-border-size=2
-border-radius=12
-font=JetBrainsMono NF 10
+border-size=1
+border-radius=10
+font=Iosevka, JetBrainsMono NF 10
 default-timeout=5000
 
 # Icons

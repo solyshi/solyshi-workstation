@@ -1,8 +1,15 @@
 /* Import matugen colors */
 @import "colors.css";
 
+/*
+ * Design tokens
+ *   radius: 10px containers / 8px inner elements
+ *   border: 1px
+ *   font:   Iosevka, with JetBrainsMono NF supplying icon glyphs
+ */
+
 * {
-    font-family: "JetBrainsMono NF", "Icomoon-Feather", "Noto Color Emoji";
+    font-family: "Iosevka", "JetBrainsMono NF", "Noto Color Emoji";
     font-size: 13px;
     font-weight: bold;
 }
@@ -14,7 +21,7 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-    border-radius: 12px;
+    border-radius: 10px;
     background-color: @surface_container_low;
     padding: 0px 6px;
     margin: 2px 5px;
@@ -36,13 +43,13 @@ window#waybar {
     box-shadow: 0px 0px 10px @primary;
 }
 
-/* --- CPU & MEMORY (Neu strukturiert) --- */
+/* --- CPU & MEMORY --- */
 #cpu,
 #memory {
     padding: 0 8px;
     margin: 2px 3px;
     background-color: @surface_container_high;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid @outline_variant;
 }
 
@@ -60,7 +67,6 @@ window#waybar {
     padding: 0 10px;
     margin: 2px 4px;
     border-radius: 8px;
-
 }
 
 #clock:hover {
@@ -89,7 +95,6 @@ window#waybar {
     background-color: @surface_container_high;
     border: 1px solid @error;
     border-radius: 8px;
-    /* Margin von 4px auf 2px reduziert, um die Bar-Höhe nicht zu sprengen */
     margin: 2px 2px 2px 5px;
     padding: 0 10px;
 }
@@ -107,15 +112,27 @@ window#waybar {
 
 #pulseaudio-slider trough {
     min-height: 4px;
-    /* Dünner wirkt edler */
     min-width: 70px;
     border-radius: 5px;
     background-color: @surface_variant;
-    /* Margin von 8px auf 2px reduziert -> Das ist der Hauptgrund für die Höhe */
     margin: 2px 0;
 }
 
 #pulseaudio-slider highlight {
     border-radius: 5px;
     background-color: @primary;
+}
+
+/*
+ * Flatten the GtkScale handle so the volume control reads as a thin bar
+ * rather than a slider with a knob. This is purely cosmetic - the bar's
+ * minimum height (~40px) comes from the modules' combined font, margins
+ * and borders, which is why config.jsonc no longer pins an exact height.
+ */
+#pulseaudio-slider slider {
+    min-height: 0;
+    min-width: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
 }

@@ -54,8 +54,11 @@ libpulse
 pavucontrol
 
 # Fonts
-ttf-jetbrains-mono
+# ttc-iosevka is the primary UI/terminal font; ttf-jetbrains-mono-nerd
+# supplies the Nerd icon glyphs that Iosevka does not ship.
+ttc-iosevka
 ttf-jetbrains-mono-nerd
+ttf-jetbrains-mono
 ttf-fira-code
 ttf-hack
 noto-fonts-emoji

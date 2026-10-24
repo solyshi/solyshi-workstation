@@ -3,3 +3,7 @@
 # ============================================================
 
 yazi
+
+# Document viewer — yazi's "pdf" opener
+zathura
+zathura-pdf-mupdf

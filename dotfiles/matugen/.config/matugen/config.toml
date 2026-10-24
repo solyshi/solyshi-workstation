@@ -44,3 +44,12 @@ output_path = "~/.config/qutebrowser/colors.py"
 [templates.yazi]
 input_path = "~/.config/matugen/templates/yazi-flavor.toml"
 output_path = "~/.config/yazi/flavors/matugen.yazi/flavor.toml"
+
+# Writes into its own theme dir so the Marketplace theme stays untouched.
+# To activate, set in config-xpui.ini:
+#   current_theme = matugen
+#   color_scheme  = blue-dark
+# then run: spicetify apply
+[templates.spicetify]
+input_path = "~/.config/matugen/templates/spicetify-color.ini"
+output_path = "~/.config/spicetify/Themes/matugen/color.ini"

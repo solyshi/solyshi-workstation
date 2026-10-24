@@ -47,11 +47,13 @@ setup_tpm() {
         return
     fi
 
-    local tpm_dir="$HOME/.tmux/plugins/tpm"
+    # Must match the run path in dotfiles/tmux/.config/tmux/tmux.conf
+    local tpm_dir="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/plugins/tpm"
     local tpm_script="$tpm_dir/scripts/install_plugins.sh"
 
     if [[ ! -d "$tpm_dir" ]]; then
         info "Cloning TPM..."
+        mkdir -p "$(dirname "$tpm_dir")"
         git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
     fi
 

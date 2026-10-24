@@ -1,4 +1,13 @@
 # ==============================================================================
+# Powerlevel10k Instant Prompt — MUST stay at the very top
+# ==============================================================================
+# Anything that writes to stdout (e.g. fastfetch) has to come after this block,
+# otherwise the instant prompt is disabled with a warning.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# ==============================================================================
 # XDG Base Directories
 # ==============================================================================
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -22,8 +31,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$CARGO_HOME/bin:$PATH"
 export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
 export PATH="$SDKMAN_DIR/candidates/java/current/bin:$PATH"
-export PATH="$HOME/scripts:$PATH"
-export PATH="$PATH:~/.spicetify:$PATH"
+export PATH="$HOME/.spicetify:$PATH"
 
 # ==============================================================================
 # DEFAULTS
@@ -142,12 +150,5 @@ bindkey -s '^f' 'tmux-sessionizer\n'
 # ==============================================================================
 if [[ -o interactive && -z "$TMUX" && "$SHLVL" -eq 1 ]]; then
   fastfetch
-fi
-
-# ==============================================================================
-# p10k Instant Prompt — has to be on bottom
-# ==============================================================================
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 

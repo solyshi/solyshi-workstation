@@ -17,6 +17,9 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("pavucontrol"))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("~/.config/rofi/scripts/powermenu.sh"))
 
 -- SCRATCHPADS
+-- Spotify and Vesktop are each bound twice on purpose: Hyprland fires every
+-- dispatcher registered to a key, so the pair toggles the special workspace
+-- and launches the app if it is not running yet. Keep both lines together.
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.workspace.toggle_special("spotify"))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pgrep -x spotify || spotify"))
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.workspace.toggle_special("vesktop"))

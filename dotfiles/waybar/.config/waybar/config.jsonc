@@ -1,7 +1,9 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
+    // No fixed height: the modules' font + margins + borders impose a ~40px
+    // floor, so pinning 30 only produced a startup warning and was ignored.
+    // Letting waybar size to content keeps config and reality in agreement.
     "spacing": 4,
     "modules-left": [
         "custom/powermenu",
@@ -76,6 +78,6 @@
     },
     "pulseaudio/slider": {
         "min": 0,
-        "max": 100,
+        "max": 100
     }
 }
