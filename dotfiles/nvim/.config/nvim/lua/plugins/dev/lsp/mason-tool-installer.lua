@@ -21,12 +21,24 @@
 return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     dependencies = { "mason-org/mason.nvim" },
-    cmd = { "MasonToolsInstall", "MasonToolsUpdate", "MasonToolsClean" },
+    -- The *Sync variants block until done, which is what you want when driving
+    -- this from a script or headless. They were missing from this list, so
+    -- :MasonToolsInstallSync failed with E492 until the plugin happened to be
+    -- loaded by something else.
+    cmd = {
+        "MasonToolsInstall", "MasonToolsInstallSync",
+        "MasonToolsUpdate", "MasonToolsUpdateSync",
+        "MasonToolsClean",
+    },
     event = "VeryLazy",
     opts = {
         ensure_installed = {
             "prettier",
             "stylua",
+            -- DAP adapter for C/C++, used by dev/util/dap.lua. Java's adapter
+            -- comes bundled with nvim-java instead, and shellcheck/shfmt come
+            -- from install/pkg/03-dev-utils.txt rather than mason.
+            "codelldb",
         },
         run_on_start = true,
         -- Don't block startup; install in the background on first launch.
