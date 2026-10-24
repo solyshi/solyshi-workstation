@@ -1,8 +1,10 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
+        -- lazy = false and event = "BufRead" were both set; lazy = false wins
+        -- and the event was simply ignored. Loading eagerly is what we want,
+        -- since highlighting should be up before the first buffer renders.
         lazy = false,
-        event = "BufRead",
         branch = "main",
         build = ':TSUpdate',
         --- @class TSConfig
@@ -34,66 +36,85 @@ return {
             }
         },
         config = function(_, opts)
-            -- install parsers from opts.ensure_installed
-            if opts.ensure_installed and #opts.ensure_installed > 0 then
-                require("nvim-treesitter").install(opts.ensure_installed)
-                -- register and start parsers for filetypes
-                for _, parser in ipairs(opts.ensure_installed) do
-                    local filetypes = parser
-                    vim.treesitter.language.register(parser, filetypes)
+            local ts = require("nvim-treesitter")
 
-                    vim.api.nvim_create_autocmd({ "FileType" }, {
-                        pattern = filetypes,
-                        callback = function(event)
-                            vim.treesitter.start(event.buf, parser)
-                        end,
-                    })
-                end
+            -- Install the pinned parser set. This is async; parsers that are
+            -- already present are skipped, so it is cheap on later startups.
+            if opts.ensure_installed and #opts.ensure_installed > 0 then
+                ts.install(opts.ensure_installed)
             end
 
-            -- Auto install and start parsers for any buffer
-            vim.api.nvim_create_autocmd({ "BufRead" }, {
+            -- Start treesitter for any buffer whose language has a parser.
+            --
+            -- The previous version also called
+            -- vim.treesitter.language.register(parser, parser) for every entry,
+            -- which only ever registered a language under its own name. That is
+            -- a no-op for "c" or "lua" and plain wrong for entries that are not
+            -- filetypes at all ("jsdoc", "luadoc", "vimdoc", "json5", "regex")
+            -- or whose filetype differs from the parser name ("tsx" is the
+            -- parser for the typescriptreact filetype). Neovim already ships
+            -- those mappings, so get_lang below is enough.
+            vim.api.nvim_create_autocmd("FileType", {
+                group = vim.api.nvim_create_augroup("treesitter-start", { clear = true }),
                 callback = function(event)
                     local bufnr = event.buf
-                    local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
-
-                    -- Skip if no filetype
+                    local filetype = vim.bo[bufnr].filetype
                     if filetype == "" then
                         return
                     end
 
-                    -- Check if this filetype is already handled by explicit ensure_installed config
-                    for _, filetypes in pairs(opts.ensure_installed) do
-                        local ft_table = type(filetypes) == "table" and filetypes or { filetypes }
-                        if vim.tbl_contains(ft_table, filetype) then
+                    -- get_lang never returns nil for a non-empty filetype: it
+                    -- falls back to `ft_to_lang[ft] or ft` (see
+                    -- runtime/lua/vim/treesitter/language.lua:45). So for an
+                    -- ad-hoc scratch filetype like "cheatsheet" this hands back
+                    -- "cheatsheet", and the real check has to be whether a
+                    -- parser for that name exists.
+                    local lang = vim.treesitter.language.get_lang(filetype)
+                    if not lang then
+                        return
+                    end
+
+                    -- Already installed: start immediately.
+                    --
+                    -- language.add() returns true when the parser is loadable
+                    -- and nil + message otherwise. The previous version tested
+                    -- `pcall(vim.treesitter.get_parser, ...)` instead, but
+                    -- get_parser *returns* nil + message rather than raising,
+                    -- so the pcall always succeeded and execution always fell
+                    -- through to vim.treesitter.start() -- which does assert,
+                    -- and threw "Parser could not be created for buffer N and
+                    -- language X" on every parser-less filetype.
+                    if vim.treesitter.language.add(lang) then
+                        pcall(vim.treesitter.start, bufnr, lang)
+                        return
+                    end
+
+                    -- Not installed yet. Install in the background and start
+                    -- when it lands, so opening the file never blocks.
+                    --
+                    -- This used to be install(...):wait(30000), which froze the
+                    -- editor for up to 30 seconds while a parser compiled.
+                    if not vim.tbl_contains(ts.get_available(), lang) then
+                        return
+                    end
+
+                    ts.install({ lang }):await(function(err)
+                        if err then
                             return
                         end
-                    end
-
-                    -- Get parser name based on ft
-                    local parser_name = vim.treesitter.language.get_lang(filetype)
-                    if not parser_name then
-                        return
-                    end
-
-                    -- Try get existing parser
-                    local parser_configs = require("nvim-treesitter.parsers")
-                    if not parser_configs[parser_name] then
-                        return
-                    end
-
-                    local parser_installed = pcall(vim.treesitter.get_parser, bufnr, parser_name)
-                    if not parser_installed then
-                        require("nvim-treesitter").install({ parser_name }):wait(30000)
-                    end
-
-                    -- Check again
-                    parser_installed = pcall(vim.treesitter.get_parser, bufnr, parser_name)
-                    -- Start treesitter
-                    if parser_installed then
-                        vim.treesitter.start(bufnr, parser_name)
-                    end
-                end
+                        -- The callback can run off the main loop, so defer any
+                        -- API calls.
+                        vim.schedule(function()
+                            if not vim.api.nvim_buf_is_valid(bufnr) then
+                                return
+                            end
+                            -- Filetype may have changed while compiling.
+                            if vim.bo[bufnr].filetype == filetype then
+                                pcall(vim.treesitter.start, bufnr, lang)
+                            end
+                        end)
+                    end)
+                end,
             })
         end
     }

@@ -18,14 +18,13 @@ opt.smartindent = true        -- Enable smart indentation
 opt.breakindent = true        -- Preserve indentation on wrapped lines
 opt.backup = false            -- Disable backup files
 opt.clipboard = "unnamedplus" -- System clipboard access
-opt.encoding = "UTF-8"        -- Set file encoding
 opt.showmode = false          -- Hide mode display
 opt.splitbelow = true         -- Force splits below
 opt.splitright = true         -- Force splits to the right
 opt.termguicolors = true      -- Enable Term GUI Colors
 opt.undofile = true           -- Enable persistent undo
 opt.updatetime = 100          -- Faster completion
-opt.writebackup = false       -- Prevent editing of files beeing edited elsewhere
+opt.writebackup = false       -- Don't write a temp backup before overwriting a file
 opt.cursorline = true         -- Highlight currentline
 opt.swapfile = false          -- Disable creation of swapfile
 

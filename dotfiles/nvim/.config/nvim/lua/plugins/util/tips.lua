@@ -14,12 +14,12 @@ return {
         -- OPTIONAL: Bookmark symbol (default: "🌟 ")
         bookmark_symbol = "🌟 ",
     },
-    init = function()
-        -- OPTIONAL: Change to your liking or drop completely
-        -- The plugin does not provide default key mappings, only commands
-        local map = vim.keymap.set
-        map("n", "<leader>no", ":NeovimTips<CR>", { desc = "Neovim tips", silent = true })
-        map("n", "<leader>nr", ":NeovimTipsRandom<CR>", { desc = "Show random tip", silent = true })
-        map("n", "<leader>np", ":NeovimTipsPdf<CR>", { desc = "Open Neovim tips PDF", silent = true })
-    end
+    -- The plugin ships commands but no default mappings. These were plain
+    -- vim.keymap.set calls in `init`; as `keys` they get a which-key entry and
+    -- the `silent` flag is implied by the `<cmd>` form.
+    keys = {
+        { "<leader>no", "<cmd>NeovimTips<cr>",       desc = "Browse Neovim tips" },
+        { "<leader>nr", "<cmd>NeovimTipsRandom<cr>", desc = "Random tip" },
+        { "<leader>np", "<cmd>NeovimTipsPdf<cr>",    desc = "Open tips PDF" },
+    },
 }

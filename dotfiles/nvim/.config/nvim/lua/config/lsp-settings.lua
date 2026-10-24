@@ -3,7 +3,7 @@ vim.diagnostic.config({
     -- Select either virtual lines or text below otherwise it gets messy
     virtual_text = {
         spacing = 4,
-        prefix = "●", -- This is fine as a string
+        prefix = "●",
     },
 
     underline = true,
@@ -27,13 +27,30 @@ vim.diagnostic.config({
     },
 })
 
--- define common keybindings
+-- Advertise blink.cmp's completion capabilities to every server.
+--
+-- This used to sit inside an Lsp.start() helper that nothing ever called, so
+-- servers silently fell back to Neovim's built-in defaults. Those do cover
+-- snippetSupport and resolveSupport, but not blink's extras such as
+-- completionList.itemDefaults. Servers themselves are started by
+-- mason-lspconfig's `automatic_enable`, not from here.
+vim.lsp.config("*", {
+    capabilities = require("blink.cmp").get_lsp_capabilities({
+        general = { positionEncodings = { "utf-16" } },
+    }),
+})
+
+-- LSP keymaps, grouped under <leader>c (Code). Diagnostic *lists* live under
+-- <leader>x instead, see plugins/dev/util/trouble.lua.
 local key_mappings = {
-    { "<leader>cR", "<cmd>FzfLua lsp_references<CR>",      "Show LSP references" },
+    -- Navigation
+    { "<leader>cd", "<cmd>FzfLua lsp_definitions<CR>",     "Go to definition" },
     { "<leader>cD", "<cmd>FzfLua lsp_declarations<CR>",    "Go to declaration" },
-    { "<leader>cd", "<cmd>FzfLua lsp_definitions<CR>",     "Show LSP definitions" },
-    { "<leader>ci", "<cmd>FzfLua lsp_implementations<CR>", "Show LSP implementations" },
-    { "<leader>ct", "<cmd>FzfLua lsp_typedefs<CR>",        "Show LSP type definitions" },
+    { "<leader>cR", "<cmd>FzfLua lsp_references<CR>",      "References" },
+    { "<leader>ci", "<cmd>FzfLua lsp_implementations<CR>", "Implementations" },
+    { "<leader>ct", "<cmd>FzfLua lsp_typedefs<CR>",        "Type definitions" },
+
+    -- Actions
     {
         "<leader>ca",
         function()
@@ -41,127 +58,63 @@ local key_mappings = {
         end,
         "Code actions",
     },
-    { "<leader>cr", vim.lsp.buf.rename,                         "Smart rename" },
-    { "<leader>cb", "<cmd>FzfLua lsp_document_diagnostics<CR>", "Show buffer diagnostics" },
+    { "<leader>cr", vim.lsp.buf.rename, "Rename symbol" },
+    {
+        "<leader>cf",
+        function()
+            require("conform").format({ async = true, lsp_format = "fallback" })
+        end,
+        "Format buffer",
+    },
+    { "<leader>cq", "<cmd>LspRestart<CR>", "Restart LSP" },
+
+    -- Diagnostics
+    { "<leader>cb", "<cmd>FzfLua lsp_document_diagnostics<CR>", "Buffer diagnostics (fzf)" },
     {
         "<leader>cl",
         function()
             vim.diagnostic.open_float({ border = "rounded" })
         end,
-        "Show line diagnostics",
+        "Line diagnostics",
     },
     {
         "[d",
         function()
             vim.diagnostic.jump({ count = -1, float = true })
         end,
-        "Go to previous diagnostic",
+        "Previous diagnostic",
     },
     {
         "]d",
         function()
             vim.diagnostic.jump({ count = 1, float = true })
         end,
-        "Go to next diagnostic",
+        "Next diagnostic",
     },
+
+    -- Docs
     {
         "K",
         function()
             vim.lsp.buf.hover({ border = "rounded" })
         end,
-        "Show documentation",
+        "Hover documentation",
     },
-    { "<leader>cq", ":LspRestart<CR>", "Restart LSP" },
+
+    -- Toggle
     {
         "<leader>tD",
         function()
-            local is_enabled = vim.diagnostic.is_enabled()
-            vim.diagnostic.enable(not is_enabled)
+            vim.diagnostic.enable(not vim.diagnostic.is_enabled())
         end,
-        "Toggle Diagnostics for this repo",
+        "Toggle diagnostics",
     },
 }
--- set all keybindings
+
 for _, mapping in ipairs(key_mappings) do
-    local opts = { noremap = true, silent = true }
-    vim.keymap.set("n", mapping[1], mapping[2], vim.tbl_extend("force", opts, { desc = mapping[3] }))
+    vim.keymap.set("n", mapping[1], mapping[2], {
+        noremap = true,
+        silent = true,
+        desc = mapping[3],
+    })
 end
-
-local servers = {
-    -- lspconfigName
-    "asm_lsp",
-    "bashls",
-    "cssls", -- with  vscode-langservers-extracted
-    "clangd",
-    "neocmake",
-    "emmet_language_server", -- with default-npm-packages
-    "eslint",                -- with vscode-langservers-extracted
-    "html",                  -- with  vscode-langservers-extracted
-    "jsonls",                -- with  vscode-langservers-extracted
-    "lua_ls",                -- lsp/formatter
-    "ts_ls",                 -- "typescript-language-server"
-    "yamlls",                -- "yaml-language-server",
-    "pyright",
-    "ruff",
-    "rust_analyzer",
-    "lemminx"
-}
-
-local Lsp = {}
-
-local function init()
-    -- populate list of servers from lsp/*.lua configs
-    local config_files = vim.api.nvim_get_runtime_file('lsp/*.lua', true)
-
-    for _, config_file in ipairs(config_files) do
-        local name = config_file:match("([^/]*)%.lua$")
-
-        if name and (name:len() > 0) then
-            if not vim.tbl_contains(table, name) then
-                table.insert(servers, name)
-            end
-        end
-    end
-
-    return Lsp
-end
-
--- enables and starts clients relevant to the filetype of the current buffer
-function Lsp.start()
-    for _, name in ipairs(servers) do
-        local filetypes = vim.lsp.config[name] and vim.lsp.config[name].filetypes
-
-        if filetypes and vim.tbl_contains(filetypes, vim.bo.filetype) then
-            local capabilities = require("blink.cmp").get_lsp_capabilities({
-                general = { positionEncodings = { "utf-16" } },
-            })
-            vim.lsp.config("*", {
-                capabilities = capabilities,
-            })
-            vim.lsp.enable(name)
-        end
-    end
-end
-
--- stops and disables clients connected to the current buffer
-function Lsp.stop()
-    local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
-
-    for _, client in ipairs(clients) do
-        vim.lsp.enable(client.name, false)
-    end
-end
-
--- toggle LSP for the file type of the current buffer
-function Lsp.toggle()
-    -- clients active for the current buffer
-    local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
-
-    if vim.tbl_isempty(clients) then
-        Lsp.start()
-    else
-        Lsp.stop()
-    end
-end
-
-return init()

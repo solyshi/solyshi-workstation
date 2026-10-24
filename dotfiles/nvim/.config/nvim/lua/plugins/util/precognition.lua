@@ -19,6 +19,9 @@ return {
         },
     },
     keys = {
-        { "<leader>tp", "<cmd>lua require('precognition').toggle()<cr>", desc = "Toggle Precognition" },
+        -- <leader>tp was also claimed by triforce's profile window, so one of
+        -- the two always lost. Precognition keeps the Toggle slot since it is a
+        -- display toggle; triforce moved to <leader>pt.
+        { "<leader>tp", function() require("precognition").toggle() end, desc = "Toggle Precognition hints" },
     },
 }

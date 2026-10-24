@@ -1,14 +1,13 @@
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
     callback = function()
-        vim.highlight.on_yank()
+        -- vim.highlight is a deprecated alias for vim.hl since 0.11, see
+        -- runtime/lua/vim/_core/editor.lua -> _defer_deprecated_module.
+        vim.hl.on_yank()
     end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
-    callback = function(args)
-        require("conform").format({ bufnr = args.buf })
-    end,
-})
+-- Format-on-save lives in conform's own `format_on_save` option, see
+-- plugins/dev/util/conform.lua. A hand-rolled BufWritePre autocmd used to sit
+-- here as well, which meant every write got formatted twice.

@@ -20,8 +20,11 @@ return {
             },
         },
         cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
-        config = function()
-            vim.keymap.set("n", "<leader>td", "<cmd>:CsvViewToggle<cr>", { desc = "Toggle Data Viewer" })
-        end
+        -- Was set from `config`, so the mapping did not exist until something
+        -- else had already loaded the plugin. The `<cmd>:Csv...` colon was
+        -- redundant too.
+        keys = {
+            { "<leader>td", "<cmd>CsvViewToggle<cr>", desc = "Toggle CSV table view" },
+        },
     }
 }

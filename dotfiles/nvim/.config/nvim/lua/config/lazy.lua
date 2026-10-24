@@ -7,7 +7,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         vim.api.nvim_echo({
             { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
             { out,                            "WarningMsg" },
-            { "\nPress any key to exist..." },
+            { "\nPress any key to exit..." },
         }, true, {})
         vim.fn.getchar()
         os.exit(1)
@@ -22,6 +22,21 @@ require("lazy").setup({
         -- import your plugins
         { import = "plugins" },
     },
-    -- automatically check for plugin updates
-    checker = { enabled = true },
+    -- Check for plugin updates in the background, but stay quiet about it.
+    -- <leader>pl opens the Lazy UI when you actually want to look.
+    checker = { enabled = true, notify = false },
+    change_detection = { notify = false },
+    performance = {
+        rtp = {
+            -- Built-in Vim plugins this config never uses.
+            disabled_plugins = {
+                "gzip",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+                "netrwPlugin",
+            },
+        },
+    },
 })

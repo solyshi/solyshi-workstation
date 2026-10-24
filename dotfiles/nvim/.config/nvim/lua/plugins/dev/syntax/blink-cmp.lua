@@ -42,6 +42,14 @@ return {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
         },
 
+        -- Stated explicitly because this was previously left at the default
+        -- while LuaSnip was installed as its own spec. The 'default' preset
+        -- uses Neovim's built-in vim.snippet, so LuaSnip loaded every session
+        -- and was never used; its spec has been removed. friendly-snippets
+        -- stays as a dependency above -- the 'snippets' source reads its
+        -- vscode-format files straight off the runtimepath.
+        snippets = { preset = 'default' },
+
         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
         -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
         -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
