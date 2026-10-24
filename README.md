@@ -16,6 +16,7 @@ Managed with GNU Stow, structured for reproducibility and easy bootstrap on a fr
   - [Neovim](#neovim)
   - [Tmux](#tmux)
   - [Zsh](#zsh)
+  - [Default Applications](#default-applications)
 - [Issue → PR Workflow](#issue--pr-workflow)
 
 ---
@@ -59,6 +60,7 @@ solyshi-workstation/
 │   ├── qutebrowser/            # Browser config and colors
 │   ├── spicetify/              # Spotify theming
 │   ├── theme/                  # Wallpaper picker and apply script
+│   ├── xdg/                    # Default applications (hyprland-mimeapps.list)
 │   ├── assets/                 # Bundled wallpapers
 │   └── archive/                # Preserved-but-inactive configs (emacs)
 ├── install/
@@ -258,6 +260,18 @@ Workflow: one tmux session per project, window 1 = Neovim, window 2 = build/run 
 - Navigation: `zoxide` (smart `cd`), `eza` (modern `ls`)
 - Plugins: syntax highlighting, autosuggestions, completions
 - Colored man pages, sensible `setopt` defaults
+
+---
+
+### Default Applications
+
+Defaults (browser, PDF, images, video, mail, …) are declared in `xdg/.config/hyprland-mimeapps.list`. Because `XDG_CURRENT_DESKTOP=Hyprland`, `xdg-open`/`gio` read this file **before** `~/.config/mimeapps.list`, so its entries always win.
+
+`~/.config/mimeapps.list` is intentionally left untracked: apps (Thunderbird, "set as default" dialogs) rewrite it and add machine-specific IDs like `userapp-Thunderbird-XXXX.desktop`. Choosing a different default inside an app has no effect for types listed in the tracked file — change it there instead.
+
+```bash
+xdg-mime query default x-scheme-handler/https   # check what a type resolves to
+```
 
 ---
 
