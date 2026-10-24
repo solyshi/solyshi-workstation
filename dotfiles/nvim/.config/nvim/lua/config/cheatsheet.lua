@@ -17,6 +17,7 @@ local GROUPS = {
     { key = "F", title = "File operations" },
     { key = "c", title = "Code / LSP" },
     { key = "x", title = "Diagnostics & lists" },
+    { key = "r", title = "Replace" },
     { key = "g", title = "Git" },
     { key = "t", title = "Toggle" },
     { key = "p", title = "Plugins" },

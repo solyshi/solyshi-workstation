@@ -30,6 +30,7 @@ return {
                 { "<leader>F", group = "File operations" },
                 { "<leader>c", group = "Code / LSP" },
                 { "<leader>x", group = "Diagnostics & lists" },
+                { "<leader>r", group = "Replace" },
                 { "<leader>g", group = "Git" },
                 { "<leader>t", group = "Toggle" },
                 { "<leader>p", group = "Plugins" },

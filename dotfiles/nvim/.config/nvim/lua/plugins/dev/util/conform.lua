@@ -31,6 +31,12 @@ return {
             jsonc = { "prettier" },
             yaml = { "prettier" },
             lua = { "stylua" },
+            -- shfmt from install/pkg/03-dev-utils.txt, not mason. Paired with
+            -- shellcheck in dev/util/lint.lua -- the install/ tree is all bash
+            -- and had no formatter. zsh is left out: shfmt cannot parse it, and
+            -- .zshrc is zsh.
+            sh = { "shfmt" },
+            bash = { "shfmt" },
             -- Two passes: sort imports, then format.
             python = { "ruff_organize_imports", "ruff_format" },
             -- There is no `cs` entry. It mapped to csharpier, which is a
