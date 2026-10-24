@@ -6,12 +6,19 @@ return {
 
         -- Resolve the project root from the build file so multi-module
         -- projects attach at the top level instead of per-module.
-        local java_root = function(bufnr)
-            return vim.fs.root(bufnr, {
+        --
+        -- A function root_dir is called as root_dir(bufnr, on_dir) and must
+        -- hand the root to on_dir; its return value is ignored. Returning it
+        -- instead meant on_dir never fired and jdtls never started.
+        local java_root = function(bufnr, on_dir)
+            local root = vim.fs.root(bufnr, {
                 'build.gradle',
                 'build.gradle.kts',
                 'pom.xml',
             })
+            if root then
+                on_dir(root)
+            end
         end
 
         -- vim.lsp.enable(name, enable) takes a *boolean* second argument, not a
