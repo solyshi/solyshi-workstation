@@ -2,7 +2,7 @@
 set -euo pipefail
 
 for _ in {1..5}; do
-    sleep 0.1 
+    sleep 0.1
 done
 
 WALLPAPER_FILE="$HOME/.config/theme/wallpaper"
@@ -17,6 +17,7 @@ matugen image "$WALLPAPER"
 # Reload apps
 hyprctl reload
 makoctl reload
+spicetify apply
 ~/.config/waybar/scripts/launch.sh
 kill -SIGUSR1 $(pgrep kitty)
-echo "config-source" > "${XDG_RUNTIME_DIR}/qutebrowser/fifo" 2>/dev/null || true
+echo "config-source" >"${XDG_RUNTIME_DIR}/qutebrowser/fifo" 2>/dev/null || true
