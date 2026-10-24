@@ -7,3 +7,20 @@ yazi
 # Document viewer — yazi's "pdf" opener
 zathura
 zathura-pdf-mupdf
+
+# Shell tooling. The whole install/ tree is bash and had no linter or
+# formatter. shellcheck and jq were already present on the working machine but
+# listed in no package file, so a fresh bootstrap would not have had them.
+shellcheck
+shfmt
+jq
+
+# Syntax-highlighted git diffs, wired up in git/.gitconfig.
+git-delta
+
+# Per-directory env loading. The powerlevel10k config already renders a direnv
+# prompt segment, which was permanently dead with direnv not installed.
+direnv
+
+# Git TUI, bound to prefix+g as a tmux popup.
+lazygit

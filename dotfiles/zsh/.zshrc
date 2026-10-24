@@ -108,6 +108,14 @@ z() {
 }
 
 # ==============================================================================
+# direnv
+# ==============================================================================
+# Loads/unloads a project's .envrc on cd. The powerlevel10k prompt already had
+# a direnv segment configured, which showed nothing until direnv was installed.
+# Guarded so the shell still starts on a machine where it is missing.
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+
+# ==============================================================================
 # Aliases — Git
 # ==============================================================================
 alias gs="git status"

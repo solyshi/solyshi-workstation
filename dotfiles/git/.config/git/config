@@ -1,0 +1,50 @@
+# Non-personal git configuration.
+#
+# This is deliberately separate from ~/.gitconfig. git reads both this file
+# (as $XDG_CONFIG_HOME/git/config) and ~/.gitconfig, with ~/.gitconfig taking
+# precedence on any key set in both. install/lib/identity.sh writes user.name
+# and user.email into ~/.gitconfig interactively at install time, so identity
+# stays machine-local and out of the repo while everything below is shared.
+#
+# init.defaultBranch, push.autoSetupRemote and fetch.prune are already in
+# ~/.gitconfig and were left there rather than moved, to avoid two files
+# fighting over the same keys.
+
+[core]
+    # Falls back to less when delta is not installed. A bare `pager = delta`
+    # makes every interactive git diff die with
+    #   fatal: unable to execute pager 'delta'
+    # which is exactly what a fresh clone hits before install/pkg has run.
+    # git hands this string to the shell, so the test works.
+    pager = command -v delta >/dev/null 2>&1 && delta || less -FRX
+
+[interactive]
+    # Same fallback as core.pager above: this one feeds `git add -p`, so an
+    # unguarded delta breaks staging hunks rather than just viewing diffs.
+    diffFilter = command -v delta >/dev/null 2>&1 && delta --color-only || cat
+
+[delta]
+    # n / N jump between diff hunks like a pager.
+    navigate = true
+    line-numbers = true
+    # Side-by-side needs more columns than a split pane usually has; the
+    # line-numbers view stays readable at any width.
+    side-by-side = false
+    hyperlinks = true
+
+[diff]
+    # histogram produces noticeably better hunks than the default myers,
+    # especially on reordered or reindented code.
+    algorithm = histogram
+    colorMoved = default
+
+[merge]
+    # zdiff3 shows the common ancestor and hoists shared lines out of the
+    # conflict markers, which makes conflicts much easier to read than the
+    # default two-sided view.
+    conflictStyle = zdiff3
+
+[rerere]
+    # Remember how a conflict was resolved and replay it on the next rebase.
+    enabled = true
+    autoUpdate = true
