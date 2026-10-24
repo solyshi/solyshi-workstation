@@ -33,6 +33,42 @@ opt.hlsearch = true   -- Highlight all matches in search
 opt.ignorecase = true -- Ignore case in search
 opt.smartcase = true  -- Match case if explicitly stated
 
+-- Live preview of :s/:g/:sort as you type, plus a scratch split listing every
+-- match in the file. Pairs with the <C-f> :%s mapping in config/remaps.lua,
+-- which previously gave no feedback until the substitution was committed.
+opt.inccommand = "split"
+
+-- Default border for every float that does not ask for its own. Replaces the
+-- border = "rounded" that was repeated at each call site (diagnostic floats,
+-- LSP hover, the <leader>? cheatsheet). mason.nvim keeps its explicit setting,
+-- since its ui.border option defaults to "none" rather than deferring here.
+opt.winborder = "rounded"
+
+-- Keep the text visually still when a split opens or closes above the current
+-- window -- noticeable with trouble.nvim and the quickfix list (<leader>x*).
+opt.splitkeep = "screen"
+
+-- linematch aligns changed lines within a hunk instead of diffing the hunk as
+-- one block, which makes diffview's output much easier to read. Neovim 0.12
+-- already enables it as linematch:40, so this only raises the hunk-size
+-- ceiling. It has to replace rather than append: a plain :append left both
+-- linematch:40 and linematch:60 in the list.
+opt.diffopt = vim.tbl_filter(function(v)
+    return not v:match("^linematch:")
+end, vim.opt.diffopt:get())
+opt.diffopt:append("linematch:60")
+
+-- Prompt to save instead of erroring on :q with unsaved changes.
+opt.confirm = true
+
+-- Cap the completion menu so blink.cmp cannot cover most of the buffer.
+opt.pumheight = 10
+
+-- stack: <C-o>/<C-i> behave like a browser's back/forward rather than
+-- overwriting the jumplist from the middle. view: restore the cursor and scroll
+-- position of the window when jumping back.
+opt.jumpoptions = "stack,view"
+
 vim.filetype.add({
     extension = {
         fxml = "xml"

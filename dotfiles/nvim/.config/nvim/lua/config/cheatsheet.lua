@@ -188,7 +188,7 @@ function M.open()
         row = math.floor((vim.o.lines - height) / 2) - 1,
         col = math.floor((vim.o.columns - width) / 2),
         style = "minimal",
-        border = "rounded",
+        -- border comes from the global winborder option (config/options.lua).
         title = " Keymaps ",
         title_pos = "center",
     })

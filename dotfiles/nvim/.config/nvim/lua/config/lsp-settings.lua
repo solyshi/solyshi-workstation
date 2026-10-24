@@ -10,7 +10,7 @@ vim.diagnostic.config({
     update_in_insert = false,
     severity_sort = true,
     float = {
-        border = "rounded",
+        -- border comes from the global winborder option (config/options.lua).
         source = true,
     },
     signs = {
@@ -73,7 +73,7 @@ local key_mappings = {
     {
         "<leader>cl",
         function()
-            vim.diagnostic.open_float({ border = "rounded" })
+            vim.diagnostic.open_float()
         end,
         "Line diagnostics",
     },
@@ -96,7 +96,7 @@ local key_mappings = {
     {
         "K",
         function()
-            vim.lsp.buf.hover({ border = "rounded" })
+            vim.lsp.buf.hover()
         end,
         "Hover documentation",
     },
