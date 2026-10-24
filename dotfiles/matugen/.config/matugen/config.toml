@@ -45,6 +45,14 @@ output_path = "~/.config/qutebrowser/colors.py"
 input_path = "~/.config/matugen/templates/yazi-flavor.toml"
 output_path = "~/.config/yazi/flavors/matugen.yazi/flavor.toml"
 
+# tmux is not in matugen's built-in reload_apps_list, so the new colours are
+# pushed with an explicit post_hook. `tmux source-file` fails harmlessly when
+# no server is running, hence the has-session guard.
+[templates.tmux]
+input_path = "~/.config/matugen/templates/tmux-colors.conf"
+output_path = "~/.config/tmux/colors.conf"
+post_hook = "tmux has-session 2>/dev/null && tmux source-file ~/.config/tmux/tmux.conf || true"
+
 # Writes into its own theme dir so the Marketplace theme stays untouched.
 # To activate, set in config-xpui.ini:
 #   current_theme = matugen
