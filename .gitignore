@@ -4,7 +4,13 @@ dotfiles/qutebrowser/.config/qutebrowser/quickmarks
 dotfiles/tmux/.config/tmux/plugins/
 dotfiles/theme/.config/theme/wallpaper
 dotfiles/yazi/.config/yazi/plugins/
-dotfiles/yazi/.config/yazi/flavors/matugen.yazi/flavor.toml
+
+# Matugen-generated colour files are deliberately *not* ignored. They have to be
+# committed because several configs hard-require them: hypr/hyprland.lua does
+# require("appearance.colors"), and rofi/waybar @import theirs, so a clone
+# without them gets a Hyprland that will not start rather than one that is
+# merely unthemed. firstboot.sh only runs matugen behind a confirm prompt, so
+# the files cannot be treated as reliably regenerated.
 
 # Claude Code local settings
 .claude/
