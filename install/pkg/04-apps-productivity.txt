@@ -10,7 +10,9 @@ mpv
 
 # Music
 spotify
-spicetify-cli
+# spicetify-bin ships the prebuilt binary; spicetify-cli builds from source
+# and was replaced here to match what is actually installed.
+spicetify-bin
 
 # Trading
 tradingview
