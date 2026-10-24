@@ -1,33 +1,33 @@
 hl.config({
-    decoration = {
-        rounding = 8,
-        active_opacity = 0.97,
-        inactive_opacity = 0.88,
+	decoration = {
+		rounding = 8,
+		active_opacity = 0.97,
+		inactive_opacity = 0.88,
 
-        blur = {
-            enabled = true,
-            size = 4,
-            passes = 2,
-            new_optimizations = true,
-            ignore_opacity = true,
-            vibrancy = 0.1696,
-        },
+		blur = {
+			enabled = true,
+			size = 4,
+			passes = 2,
+			new_optimizations = true,
+			ignore_opacity = true,
+			vibrancy = 0.1696,
+		},
 
-        shadow = {
-            range = 10,
-            render_power = 1,
-            color = "rgba(00000044)",
-        },
-    },
+		shadow = {
+			range = 10,
+			render_power = 1,
+			color = "rgba(00000044)",
+		},
+	},
 
-    animations = {
-        enabled = true,
-    },
+	animations = {
+		enabled = true,
+	},
 
-    misc = {
-        force_default_wallpaper = 0,
-        disable_hyprland_logo = true,
-    }
+	misc = {
+		force_default_wallpaper = 0,
+		disable_hyprland_logo = true,
+	},
 })
 
 -- Default curves and animations, see https://wiki.hypr.land/configuring/core/animations/
