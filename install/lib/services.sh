@@ -15,6 +15,18 @@ setup_services() {
     fi
     success "NetworkManager active"
 
+    # Tailscale — mesh VPN for remote SSH access. Login needs a browser, so
+    # the script only enables the daemon; `tailscale up` stays manual.
+    if confirm "Set up Tailscale?"; then
+        if $DRY_RUN; then
+            echo "  [DRY-RUN] sudo systemctl enable --now tailscaled"
+        else
+            sudo systemctl enable --now tailscaled
+            success "tailscaled active"
+            info "Log in with: sudo tailscale up"
+        fi
+    fi
+
     # Bluetooth — only if unit exists (packages were installed)
     if systemctl cat bluetooth.service &>/dev/null; then
         info "Enabling Bluetooth service..."
@@ -108,4 +120,44 @@ setup_sddm() {
     sudo ln -sf "$conf_src" "$conf_dst"
     sudo systemctl enable sddm
     success "SDDM configured and enabled"
+}
+
+setup_ssh() {
+    section "SSH"
+
+    confirm "Set up SSH server (key-only login)?" || return
+
+    local conf_src="$REPO_DIR/system/ssh/sshd_config.d/10-hardening.conf"
+    local conf_dst="/etc/ssh/sshd_config.d/10-hardening.conf"
+
+    if [[ ! -f "$conf_src" ]]; then
+        warn "SSH config not found at $conf_src - skipping"
+        return
+    fi
+
+    if $DRY_RUN; then
+        echo "  [DRY-RUN] sudo install -m 644 -o root -g root $conf_src $conf_dst"
+        echo "  [DRY-RUN] sudo sshd -t"
+        echo "  [DRY-RUN] sudo systemctl enable sshd"
+        echo "  [DRY-RUN] sudo systemctl restart sshd"
+        return
+    fi
+
+    # Copy, not symlink: the repo is user-owned, so a symlink would let the
+    # normal user rewrite sshd's config without sudo.
+    sudo install -m 644 -o root -g root "$conf_src" "$conf_dst"
+    success "Hardening config installed"
+
+    # Validate the merged config before (re)starting. A broken config would
+    # otherwise take sshd down.
+    if ! sudo sshd -t; then
+        warn "sshd config invalid - sshd NOT enabled"
+        return
+    fi
+
+    # enable + restart rather than enable --now: --now does not restart an
+    # already running sshd, so a changed config would not take effect.
+    sudo systemctl enable sshd
+    sudo systemctl restart sshd
+    success "sshd active (key-only)"
 }

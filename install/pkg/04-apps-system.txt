@@ -4,3 +4,4 @@
 
 # Pacman hook: auto-snapshot before every upgrade (requires cronie service)
 timeshift-autosnap
+pacman-contrib

@@ -35,10 +35,13 @@ BLUE='\033[0;34m'
 BOLD='\033[1m'
 NC='\033[0m'
 
-info()    { echo -e "${BLUE}[INFO]${NC} $1"; }
+info() { echo -e "${BLUE}[INFO]${NC} $1"; }
 success() { echo -e "${GREEN}[ OK ]${NC} $1"; }
-warn()    { echo -e "${YELLOW}[WARN]${NC} $1"; }
-error()   { echo -e "${RED}[ERR ]${NC} $1"; exit 1; }
+warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
+error() {
+    echo -e "${RED}[ERR ]${NC} $1"
+    exit 1
+}
 
 section() {
     echo ""
@@ -116,6 +119,7 @@ main() {
     # ── Stage 4 ──────────────────────────────────────────────────────────────
     section "[4/6] Services"
     setup_services
+    setup_ssh
 
     # ── Stage 5 ──────────────────────────────────────────────────────────────
     section "[5/6] Dotfiles"
